@@ -1,0 +1,22 @@
+[
+ {
+  "id": "dp-700",
+  "name": "Microsoft Fabric DP-700",
+  "subtitle": "Data Engineer Associate",
+  "file": "data/dp700/questions.json",
+  "questions": 139,
+  "overlay": {
+   "en": "data/dp700/questions.en.json"
+  }
+ },
+ {
+  "id": "dp-600",
+  "name": "Microsoft Fabric DP-600",
+  "subtitle": "Fabric Analytics Engineer Associate",
+  "file": "data/dp600/questions.json",
+  "questions": 199,
+  "overlay": {
+   "en": "data/dp600/questions.en.json"
+  }
+ }
+]

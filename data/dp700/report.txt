@@ -1,0 +1,15 @@
+Preguntas: 139 {'single': 88, 'visual': 43, 'multi': 8}
+Casos de estudio distintos: 2  (19 preguntas con caso)
+Repetidas: 15  grupos: 8  con respuesta distinta: 5
+Primeras partes de cabecera de caso: {'Resumen': 20, 'Entorno existente': 94, 'Requisitos': 76}
+Temas: {'Spark y notebooks': 41, 'Ingesta y orquestación': 27, 'Monitorización y rendimiento': 9, 'Streaming y KQL': 24, 'T-SQL y Warehouse': 12, 'Seguridad y permisos': 13, 'Control de versiones y despliegue': 11, 'General': 2}
+Enlaces: 651  | Problemas: 9
+q034: enlace no oficial/raro: https://spark.apache.org/docs/latest/sql-performance-tuning.html#caching-data-in-memory
+q038: sin sección de opciones incorrectas separada
+q044: enlace no oficial/raro: https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-join.html
+q050: enlace no oficial/raro: https://docs.python.org/es/3/tutorial/controlflow.html#defining-functions
+q118: sin sección de opciones incorrectas separada
+q139: enlace no oficial/raro: https://github.com/MicrosoftDocs/fabric-docs/blob/main/docs/data-engineering/spark-detail-
+caso Litware, Inc.: variante litware-inc-acad43 vs litware-inc-8984ce: similitud 0.997 (unificada)
+caso Contoso, Ltd.: variante contoso-ltd-5e5ebf vs contoso-ltd-0b2780: similitud 1.000 (unificada)
+caso Contoso, Ltd.: variante contoso-ltd-19a153 vs contoso-ltd-0b2780: similitud 1.000 (unificada)

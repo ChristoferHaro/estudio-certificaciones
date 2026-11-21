@@ -22,7 +22,7 @@ main{max-width:920px;margin:0 auto;padding:1.2rem 1rem 2rem}
 h1{font-size:1.8rem;line-height:1.2;margin:.2rem 0 .4rem}h2{font-size:1.2rem;margin:1.6rem 0 .6rem}h3{font-size:1rem;margin:.8rem 0 .3rem}
 button,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem .9rem;cursor:pointer}textarea{width:100%;min-height:90px;cursor:text;font-size:.8rem}
 button:hover{border-color:var(--acc)}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-button.p{background:var(--acc);color:var(--on);border-color:var(--acc);font-weight:600}button.d{color:var(--bad);border-color:var(--bad)}button:disabled{opacity:.5;cursor:default}
+button.p{background:var(--acc);color:var(--on);border-color:var(--acc);font-weight:600}button.d{color:var(--bad);border-color:var(--bad)}button:disabled{opacity:.5;cursor:default}button.nv:not(:disabled){background:#111;color:#fff;border-color:#111;font-weight:600}[data-theme=dark] button.nv:not(:disabled){background:#f2f2f2;color:#111;border-color:#f2f2f2}button.nv:disabled{background:var(--soft);color:var(--mut)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;margin:.8rem 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem}.stat b{display:block;font-size:1.9rem;line-height:1.1}.stat span,.mut{color:var(--mut);font-size:.9rem}
 .row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}.row label{display:flex;flex-direction:column;gap:.2rem;font-size:.9rem;color:var(--mut)}
@@ -140,16 +140,16 @@ function bank(){stop();view='bank';side();
     $('#bl').innerHTML=L.length?L.slice(0,200).map(qRow).join('')+(L.length>200?`<p class="mut">${t('Se muestran las 200 primeras; afina los filtros.')}</p>`:''):`<div class="card mut">${t('Ninguna pregunta coincide con los filtros.')}</div>`};
   app.onchange=e=>{const f=e.target.dataset.f;if(f){BF[f]=e.target.value;draw()}};
   app.oninput=e=>{if(e.target.id==='bq'){BF.q=e.target.value;draw()}};
-  app.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s)start([b.dataset.s],'study');if(b.id==='bp')start(bankList().map(q=>q.id),'study');if(b.id==='bx'){BF={st:'',tp:'',cs:'',ty:'',rp:'',q:''};bank()}};
+  app.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s){const l=bankList().map(q=>q.id);start(l.includes(b.dataset.s)?l:[b.dataset.s],'study',b.dataset.s)}if(b.id==='bp')start(bankList().map(q=>q.id),'study');if(b.id==='bx'){BF={st:'',tp:'',cs:'',ty:'',rp:'',q:''};bank()}};
   draw()}
 function reps(){stop();view='rep';side();
   const groups=[...new Set(Q.filter(q=>q.group).map(q=>q.group))];
   app.innerHTML=`<h1>${t('Preguntas repetidas')}</h1><p class="mut">${t('Se conservan por si cambia alguna respuesta. Las marcadas “respuesta distinta” merecen revisión.')}</p>${langNote()}`+(groups.length?groups.map(g=>{const m=Q.filter(q=>q.group===g);return`<div class="card"><div class="row" style="justify-content:space-between"><b>${t('Preguntas')} ${m.map(q=>q.n).join(', ')} ${m.some(q=>q.conflict)?`<span class="tag w">${t('respuesta distinta')}</span>`:''}</b><button class="p" data-grp="${g}">${t('Repasar grupo')}</button></div>${m.map(q=>`<div class="row" style="justify-content:space-between;padding:.35rem 0;border-top:1px solid var(--line)"><span><b>${q.n}</b> · <span class="mut">${esc(plain(q.stem).slice(0,120))}…</span></span><button data-s="${q.id}">${t('Practicar')}</button></div>`).join('')}</div>`}).join(''):`<div class="card mut">${t('No hay preguntas repetidas.')}</div>`);
-  app.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s)start([b.dataset.s],'study');if(b.dataset.grp)start(Q.filter(q=>q.group===b.dataset.grp).map(q=>q.id),'study')}}
+  app.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s){const l=groups.flatMap(g=>Q.filter(q=>q.group===g).map(q=>q.id));start(l,'study',b.dataset.s)}if(b.dataset.grp)start(Q.filter(q=>q.group===b.dataset.grp).map(q=>q.id),'study')}}
 function favs(){stop();view='fav';side();const L=Q.filter(q=>S.favs.includes(q.id));
   app.innerHTML=`<h1>${t('Favoritas')}</h1>${langNote()}${L.length?`<p><button class="p" id="fp">${t('Practicar todas las favoritas')} (${L.length})</button></p>`:`<div class="card mut">${t('Aún no has marcado ninguna pregunta como favorita. Usa el botón ☆ mientras estudias.')}</div>`}`+L.map(q=>`<div class="card"><span class="tag">${esc(t(q.topic))}</span><span class="tag">nº ${q.n}</span><p>${esc(plain(q.stem).slice(0,180))}…</p><div class="row"><button data-s="${q.id}">${t('Estudiar')}</button><button data-u="${q.id}">${t('Quitar de favoritas')}</button></div></div>`).join('');
   if($('#fp'))$('#fp').onclick=()=>start(L.map(q=>q.id),'study');
-  app.onclick=e=>{const s=e.target.dataset.s,u=e.target.dataset.u;if(s)start([s],'study');if(u){S.favs=S.favs.filter(i=>i!==u);save();favs()}}}
+  app.onclick=e=>{const s=e.target.dataset.s,u=e.target.dataset.u;if(s)start(L.map(q=>q.id),'study',s);if(u){S.favs=S.favs.filter(i=>i!==u);save();favs()}}}
 function stats(){stop();view='stats';side();const ids=Object.keys(S.ans).filter(i=>byId[i]),ok=ids.filter(i=>A(i).last).length,topics=[...new Set(Q.map(q=>q.topic))].sort(),box=[1,2,3,4,5].map(b=>ids.filter(i=>A(i).box===b).length),ex=S.hist.filter(h=>h.mode==='exam').slice(-10).reverse();
   app.innerHTML=`<h1>${t('Estadísticas')}</h1><p class="mut">${esc(P.name)}</p>
   <div class="grid"><div class="card stat"><b>${ids.length}/${Q.length}</b><span>${t('practicadas')}</span></div><div class="card stat"><b>${ids.length?Math.round(ok/ids.length*100)+' %':'–'}</b><span>${t('acierto (último intento)')}</span></div><div class="card stat"><b>${ids.filter(due).length}</b><span>${t('pendientes de repaso')}</span></div><div class="card stat"><b>${S.favs.length}</b><span>${t('Favoritas')}</span></div></div>
@@ -162,8 +162,8 @@ function build(o){let L=Q.slice();
   if(o.src==='fav')L=L.filter(q=>S.favs.includes(q.id));if(o.src==='case')L=L.filter(q=>q.case);if(o.src==='novis')L=L.filter(q=>q.type!=='visual');if(o.src==='vis')L=L.filter(q=>q.type==='visual');if(o.topic)L=L.filter(q=>q.topic===o.topic);
   if(o.rep==='no')L=L.filter(q=>!q.repeat);if(o.rep==='only')L=L.filter(q=>q.group);if(o.rep==='diff')L=L.filter(q=>q.conflict);
   if(o.src!=='due')shuffle(L);return L.slice(0,+o.n||50).map(q=>q.id)}
-function start(ids,mode){if(!ids.length){toast(t('No hay preguntas con ese filtro todavía.'));return}
-  ses={mode,from:view,ids,i:0,picks:{},checked:{},rev:false,ctab:{}};if(mode==='exam'){ses.end=Date.now()+ids.length*90e3;tmr=setInterval(tick,1000)}question()}
+function start(ids,mode,i0){if(!ids.length){toast(t('No hay preguntas con ese filtro todavía.'));return}
+  ses={mode,from:view,ids,i:Math.max(0,ids.indexOf(i0)),picks:{},checked:{},rev:false,ctab:{}};if(mode==='exam'){ses.end=Date.now()+ids.length*90e3;tmr=setInterval(tick,1000)}question()}
 function tick(){const e=$('#tm');if(!e)return;const s=Math.max(0,Math.round((ses.end-Date.now())/1e3));e.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');if(!s)finish()}
 
 /* ---------- pregunta ---------- */
@@ -174,7 +174,7 @@ function question(){const q=byId[ses.ids[ses.i]],study=ses.mode==='study',exam=s
   app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="mut">${t('Pregunta')} ${ses.i+1} ${t('de')} ${ses.ids.length} (nº ${q.n})${study?` · <b>${t('Modo estudio')}</b> · ${t('no cuenta para las estadísticas')}`:''}</span>${exam?'<b id="tm"></b>':''}<button id="fav" aria-pressed="${fav}">${fav?'★ '+t('Favorita'):'☆ '+t('Favorita')}</button></div>
   ${exam?`<div class="map">${ses.ids.map((id,k)=>`<button data-j="${k}" class="${ses.picks[id]&&ses.picks[id].length?'d':''} ${k===ses.i?'c':''}">${k+1}</button>`).join('')}</div>`:''}
   <div class="card">${tags}${cs?caseHtml(q.case,cs):''}<div>${q.stem}</div>${q.type==='multi'?`<p class="mut">${t('Selecciona')} ${q.correct.length} ${t('respuestas.')}</p>`:''}<div id="o">${opts}</div><div id="act"></div></div><div id="res"></div>
-  <div class="row"><button id="pv" ${ses.i?'':'disabled'}>${t('Anterior')}</button><button id="nx" class="p">${ses.i===ses.ids.length-1?(study?t('Volver al listado'):ses.rev?t('Volver a resultados'):t('Terminar')):t('Siguiente')}</button></div>`;
+  <div class="row"><button id="pv" class="${study?'nv':''}" ${ses.i?'':'disabled'}>${t('Anterior')}</button>${study?`<button id="nx" class="nv" ${ses.i===ses.ids.length-1?'disabled':''}>${t('Siguiente')}</button><button id="bk">${t('Volver al listado')}</button>`:`<button id="nx" class="p">${ses.i===ses.ids.length-1?(ses.rev?t('Volver a resultados'):t('Terminar')):t('Siguiente')}</button>`}</div>`;
   if(exam)tick();const act=$('#act');
   if(!done){if(q.type==='visual')act.innerHTML=exam?`<p class="mut">${t('Ejercicio visual: se autoevalúa al terminar el simulacro.')}</p>`:`<button class="p" id="sh">${t('Mostrar respuesta')}</button>`;else if(!exam)act.innerHTML=`<button class="p" id="ck">${t('Comprobar respuesta')}</button>`}
   $('#o').onchange=()=>{ses.picks[q.id]=[...document.querySelectorAll('#o input:checked')].map(i=>+i.value)};
@@ -183,8 +183,8 @@ function question(){const q=byId[ses.ids[ses.i]],study=ses.mode==='study',exam=s
   if(done)feedback(q);
   $('#fav').onclick=()=>{const i=S.favs.indexOf(q.id);i<0?S.favs.push(q.id):S.favs.splice(i,1);save();question()};
   $('#pv').onclick=()=>{ses.i--;question()};
-  $('#nx').onclick=()=>{if(ses.i<ses.ids.length-1){ses.i++;question()}else if(study){(VIEWS[ses.from]||home)()}else if(ses.rev){ses.rev=false;results()}else if(ses.mode==='exam')finish();else results()};
-  document.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{ses.i=+b.dataset.j;question()});
+  $('#nx').onclick=()=>{if(ses.i<ses.ids.length-1){ses.i++;question()}else if(study){}else if(ses.rev){ses.rev=false;results()}else if(ses.mode==='exam')finish();else results()};
+  if($('#bk'))$('#bk').onclick=()=>{(VIEWS[ses.from]||home)()};document.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{ses.i=+b.dataset.j;question()});
   app.onclick=e=>{const x=e.target.closest('[data-t]');if(x){ses.ctab[q.case]=x.dataset.t;question();return}if(e.target.tagName==='IMG')window.open(e.target.src,'_blank')}}
 const grade=q=>{const p=(ses.picks[q.id]||[]).slice().sort(),c=q.correct.slice().sort();return c.length>0&&p.length===c.length&&p.every((v,i)=>v===c[i])};
 function caseHtml(k,cs){const tabs=cs.tabs.map(x=>[x.title,x.html]);if(cs.intro)tabs.push(['Instrucciones',cs.intro]);tabs.push(['Todo el caso',cs.tabs.map(x=>`<h3>${esc(t(x.title))}</h3>${x.html}`).join('')]);

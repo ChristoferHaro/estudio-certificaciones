@@ -4,7 +4,7 @@
   "name": "Microsoft Fabric DP-700",
   "subtitle": "Data Engineer Associate",
   "file": "data/dp700/questions.json",
-  "questions": 139,
+  "questions": 161,
   "overlay": {
    "en": "data/dp700/questions.en.json"
   }

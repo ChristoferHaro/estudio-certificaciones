@@ -63,7 +63,7 @@ const plain=h=>h.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(),fdate=ms=>ne
 function ask(msg,yes,label){const m=$('#mod');m.innerHTML=`<div class="ov"><div class="dlg" role="dialog" aria-modal="true"><p>${msg}</p><div class="row"><button class="d" id="my">${label}</button><button id="mn">${t('Cancelar')}</button></div></div></div>`;$('#mn').focus();$('#mn').onclick=()=>m.innerHTML='';$('#my').onclick=()=>{m.innerHTML='';yes()}}
 
 /* ---------- menú lateral ---------- */
-function side(){document.documentElement.lang=lang;$('#ft').textContent=t('Proyecto de estudio interno. Las respuestas proceden del documento de estudio y pueden estar desactualizadas: contrástalas con los enlaces oficiales de Microsoft Learn. No es un examen oficial.')+' · v8';$('#ttl').textContent=cert?P.name:t('Estudio de certificaciones');
+function side(){document.documentElement.lang=lang;$('#ft').textContent=t('Proyecto de estudio interno. Las respuestas proceden del documento de estudio y pueden estar desactualizadas: contrástalas con los enlaces oficiales de Microsoft Learn. No es un examen oficial.')+' · v9';$('#ttl').textContent=cert?P.name:t('Estudio de certificaciones');
   const it=cert?[['home','⌂','Inicio'],['bank','☰','Banco de preguntas',Q.length],['rep','⧉','Preguntas repetidas'],['fav','★','Favoritas',S.favs.length],['stats','▥','Estadísticas'],['err','↻','Repasar errores'],['data','⚙','Datos y ajustes'],['cat','⇄','Cambiar certificación']]:[];
   $('#side').innerHTML=`<div class="sh"><button id="tg" style="width:auto" aria-label="${t('Contraer o expandir menú')}"><span class="ic">☰</span></button><span class="lb sb">${esc(cert?P.name:t('Estudio de certificaciones'))}</span></div><nav>${it.map(([k,i,l,n])=>`<button data-n="${k}" class="${view===k?'on':''}" title="${t(l)}"><span class="ic">${i}</span><span class="lb">${t(l)}</span>${n?`<span class="lb bd">${n}</span>`:''}</button>`).join('')}</nav><div class="sf"><button data-n="th" title="${t('Tema')}"><span class="ic">${dark()?'☀':'☾'}</span><span class="lb">${dark()?t('Tema claro'):t('Tema oscuro')}</span></button><button data-n="lg" title="Idioma / Language"><span class="ic">🌐</span><span class="lb">${lang==='en'?'English':'Español'}</span></button></div>`;
   $('#side').classList.toggle('col',!mobile()&&ls.get('certstudy:side')==='col')}
@@ -163,7 +163,10 @@ function build(o){let L=Q.slice();
   if(o.src==='new')L=L.filter(q=>!A(q.id));if(o.src==='wrong')L=L.filter(q=>A(q.id)&&!A(q.id).last);if(o.src==='due')L=L.filter(q=>due(q.id)).sort((a,b)=>A(a.id).due-A(b.id).due);
   if(o.src==='fav')L=L.filter(q=>S.favs.includes(q.id));if(o.src==='case')L=L.filter(q=>q.case);if(o.src==='novis')L=L.filter(q=>q.type!=='visual');if(o.src==='vis')L=L.filter(q=>q.type==='visual');if(o.topic)L=L.filter(q=>q.topic===o.topic);
   if(o.rep==='no')L=L.filter(q=>!q.repeat);if(o.rep==='only')L=L.filter(q=>q.group);if(o.rep==='diff')L=L.filter(q=>q.conflict);
-  if(o.src!=='due')shuffle(L);return L.slice(0,+o.n||50).map(q=>q.id)}
+  if(o.src!=='due')shuffle(L);const N=+o.n||50,K=cert&&cert.examCase;
+  if(o.mode==='exam'&&K&&o.src!=='case'){const by={};L.forEach(q=>{if(q.case)(by[q.case]=by[q.case]||[]).push(q)});const ks=Object.keys(by).filter(k=>by[k].length>=K);
+    if(ks.length){const k=ks[Math.floor(Math.random()*ks.length)],cs=by[k].slice(0,K).sort((a,b)=>a.n-b.n),rest=L.filter(q=>!q.case);return cs.concat(rest.slice(0,Math.max(0,N-K))).map(q=>q.id)}}
+  return L.slice(0,N).map(q=>q.id)}
 function start(ids,mode,i0){if(!ids.length){toast(t('No hay preguntas con ese filtro todavía.'));return}
   ses={mode,from:view,ids,i:Math.max(0,ids.indexOf(i0)),picks:{},checked:{},flags:{},rev:false,ctab:{}};if(mode==='exam'){ses.end=Date.now()+ids.length*90e3;tmr=setInterval(tick,1000)}question()}
 function tick(){const e=$('#tm');if(!e)return;const s=Math.max(0,Math.round((ses.end-Date.now())/1e3));e.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');if(!s)finish()}

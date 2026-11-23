@@ -517,12 +517,12 @@
    "conflict": null,
    "type": "single",
    "topic": "Warehouse y SQL",
-   "stem": "<p>Tienes un warehouse de Fabric que contiene una tabla llamada Staging.Sales.</p>\n<p>Staging.Sales contiene las siguientes columnas.</p>\n<img src=\"data/dp600/media/p069_0020.webp\" loading=\"lazy\" alt=\"\">\n<p>Debes escribir una consulta T-SQL que devuelva los datos del año 2023 mostrando ProductID y ProductName y con un Amount resumido superior a 10.000.</p>\n<p>¿Qué consulta debes usar?</p>\n<img src=\"data/dp600/media/p069_0021.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un warehouse de Fabric que contiene una tabla llamada Staging.Sales.</p>\n<p>Staging.Sales contiene las siguientes columnas.</p>\n<img src=\"data/dp600/media/p069_0020.webp\" loading=\"lazy\" alt=\"\">\n<p>Debes escribir una consulta T-SQL que devuelva los datos del año 2023 mostrando ProductID y ProductName y con un Amount resumido superior a 10.000.</p>\n<p>¿Qué consulta debes usar?</p>\n",
    "options": [
-    "",
-    "",
-    "",
-    ""
+    "<pre><code>SELECT ProductID, ProductName, SUM(Amount) AS TotalAmount\nFROM Staging.Sales\nWHERE DATEPART(YEAR,SaleDate) = &#x27;2023&#x27;\nGROUP BY ProductID, ProductName\nHAVING SUM(Amount) &gt; 10000</code></pre>",
+    "<pre><code>SELECT ProductID, ProductName, SUM(Amount) AS TotalAmount\nFROM Staging.Sales\nGROUP BY ProductID, ProductName\nHAVING DATEPART(YEAR,SaleDate) = &#x27;2023&#x27; AND SUM(Amount) &gt; 10000</code></pre>",
+    "<pre><code>SELECT ProductID, ProductName, SUM(Amount) AS TotalAmount\nFROM Staging.Sales\nWHERE DATEPART(YEAR,SaleDate) = &#x27;2023&#x27; AND SUM(Amount) &gt; 10000</code></pre>",
+    "<pre><code>SELECT ProductID, ProductName, SUM(Amount) AS TotalAmount\nFROM Staging.Sales\nWHERE DATEPART(YEAR,SaleDate) = &#x27;2023&#x27;\nGROUP BY ProductID, ProductName\nHAVING TotalAmount &gt; 10000</code></pre>"
    ],
    "correct": [
     0
@@ -7292,12 +7292,12 @@
    "conflict": null,
    "type": "single",
    "topic": "Warehouse y SQL",
-   "stem": "<p>Tienes un warehouse de Fabric que contiene una tabla llamada SalesOrderDetail. SalesOrderDetail contiene tres columnas llamadas OrderQty, ProductID y SalesOrderID. SalesOrderDetail contiene una fila por cada combinación de SalesOrderID y ProductID.</p>\n<p>Necesitas calcular la proporción de la cantidad total de cada pedido de venta que representa cada producto dentro del pedido.</p>\n<p>¿Qué instrucción T-SQL debes ejecutar?</p>\n<img src=\"data/dp600/media/p357_0158.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un warehouse de Fabric que contiene una tabla llamada SalesOrderDetail. SalesOrderDetail contiene tres columnas llamadas OrderQty, ProductID y SalesOrderID. SalesOrderDetail contiene una fila por cada combinación de SalesOrderID y ProductID.</p>\n<p>Necesitas calcular la proporción de la cantidad total de cada pedido de venta que representa cada producto dentro del pedido.</p>\n<p>¿Qué instrucción T-SQL debes ejecutar?</p>\n",
    "options": [
-    "",
-    "",
-    "",
-    ""
+    "<pre><code>SELECT SalesOrderID, ProductID, OrderQty\n  ,CAST(1. * OrderQty / SUM(OrderQty) OVER(PARTITION BY ProductID) * 100\n  AS DECIMAL(5,2)) AS PercentbyProductID\nFROM Sales.SalesOrderDetail;</code></pre>",
+    "<pre><code>SELECT SalesOrderID, ProductID, OrderQty\n  ,CAST(1. * OrderQty / SUM(OrderQty) OVER(ORDER BY SalesOrderID) * 100\n  AS DECIMAL(5,2)) AS PercentbyProductID\nFROM Sales.SalesOrderDetail;</code></pre>",
+    "<pre><code>SELECT SalesOrderID, ProductID, OrderQty\n  ,CAST(1. * OrderQty / SUM(OrderQty) OVER(ORDER BY ProductID) * 100\n  AS DECIMAL(5,2)) AS PercentbyProductID\nFROM Sales.SalesOrderDetail;</code></pre>",
+    "<pre><code>SELECT SalesOrderID, ProductID, OrderQty\n  ,CAST(1. * OrderQty / SUM(OrderQty) OVER(PARTITION BY SalesOrderID) * 100\n  AS DECIMAL(5,2)) AS PercentbyProductID\nFROM Sales.SalesOrderDetail;</code></pre>"
    ],
    "correct": [
     3

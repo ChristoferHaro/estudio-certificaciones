@@ -371,6 +371,30 @@
      "t": "Diferencias entre capacidades de Data Warehouse y Lakehouse - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/data-warehouse-lakehouse-capabilities"
     }
+   ],
+   "fields": [
+    {
+     "l": "Capa de bronce",
+     "le": "Bronze layer",
+     "o": [
+      "A Dataflow Gen2 dataflow",
+      "A notebook",
+      "A pipeline Copy activity",
+      "A pipeline stored procedure"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Capa de plata",
+     "le": "Silver layer",
+     "o": [
+      "A Dataflow Gen2 dataflow",
+      "A notebook",
+      "A pipeline Copy activity",
+      "A pipeline stored procedure"
+     ],
+     "c": 1
+    }
    ]
   },
   {
@@ -414,6 +438,31 @@
     {
      "t": "Operadores lógicos de Transact-SQL (AND) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/language-elements/logical-operators-transact-sql"
+    }
+   ],
+   "fields": [
+    {
+     "l": "FROM (vista de queryinsights)",
+     "le": "FROM (queryinsights view)",
+     "o": [
+      "queryinsights.exec_requests_history",
+      "queryinsights.exec_sessions_history",
+      "queryinsights.frequently_run_queries",
+      "queryinsights.long_running_queries"
+     ],
+     "c": 2
+    },
+    {
+     "l": "AND (condición)",
+     "le": "AND (condition)",
+     "o": [
+      "max_run_total_elapsed_time_ms > 7200000",
+      "median_total_elapsed_time_ms > 7200000",
+      "number_of_canceled_runs > 1",
+      "number_of_failed_runs > 1",
+      "number_of_runs > 1"
+     ],
+     "c": 3
     }
    ]
   },
@@ -514,6 +563,30 @@
      "t": "Función row_rank_min() en KQL - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/kusto/query/row-rank-min-function"
     }
+   ],
+   "fields": [
+    {
+     "l": "Statement1 (suma acumulada por VendorID)",
+     "le": "Statement1 (running total by VendorID)",
+     "o": [
+      "Row_cumsum",
+      "Row_rank_dense",
+      "Row_rank_min",
+      "Row_window_session"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Statement2 (sesión por tipo de pago)",
+     "le": "Statement2 (session by payment type)",
+     "o": [
+      "Row_cumsum",
+      "Row_rank_dense",
+      "Row_rank_min",
+      "Row_window_session"
+     ],
+     "c": 3
+    }
    ]
   },
   {
@@ -609,6 +682,29 @@
     {
      "t": "GROUP BY (Transact-SQL) - Sintaxis básica - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/queries/select-group-by-transact-sql"
+    }
+   ],
+   "fields": [
+    {
+     "l": "SELECT",
+     "le": "SELECT",
+     "o": [
+      "SELECT CAST",
+      "SELECT CONVERT",
+      "SELECT YEAR"
+     ],
+     "c": 2
+    },
+    {
+     "l": "GROUP BY",
+     "le": "GROUP BY",
+     "o": [
+      "CUBE(YEAR(SO.ModifiedDate), P.Name)",
+      "GROUPING SETS ((YEAR(SO.ModifiedDate), P.Name), (YEAR(SO.ModifiedDate)))",
+      "ROLLUP(YEAR(SO.ModifiedDate), P.Name)",
+      "YEAR(SO.ModifiedDate), P.Name"
+     ],
+     "c": 1
     }
    ]
   },
@@ -830,6 +926,26 @@
     {
      "t": "Propiedades de elementos que no se copian en el proceso de implementación - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process#item-properties-that-are-not-copied"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Los datos de los modelos semánticos se implementarán en la fase de destino.",
+     "le": "Data from the semantic models will be deployed to the target stage.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "Los dataflows Dataflow Gen1 se implementarán en la fase de destino.",
+     "le": "The Dataflow Gen1 dataflows will be deployed to the target stage.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "Las políticas de actualización programada se implementarán en la fase de destino.",
+     "le": "The scheduled refresh policies will be deployed to the target stage.",
+     "yn": 1,
+     "c": 1
     }
    ]
   },
@@ -1199,6 +1315,48 @@
      "t": "Orquestación de actualizaciones de modelos semánticos - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/semantic-model-refresh-activity"
     }
+   ],
+   "fields": [
+    {
+     "l": "Notebook1",
+     "le": "Notebook1",
+     "o": [
+      "Add Notebook1 to an Apache Spark job definition.",
+      "Add Notebook1 to Pipeline1.",
+      "From Real-Time hub, configure the execution of Notebook1."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Notebook2",
+     "le": "Notebook2",
+     "o": [
+      "Add Notebook2 to an Apache Spark job definition.",
+      "Add Notebook2 to Pipeline2.",
+      "From Real-Time hub, configure the execution of Notebook2."
+     ],
+     "c": 2
+    },
+    {
+     "l": "Pipeline1",
+     "le": "Pipeline1",
+     "o": [
+      "Add Pipeline1 to an Apache Spark job definition.",
+      "Configure the execution of Pipeline1 by using a schedule.",
+      "From Real-Time hub, configure the execution of Pipeline1."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Model1",
+     "le": "Model1",
+     "o": [
+      "Add Model1 to Pipeline1.",
+      "From Real-Time hub, configure Model1 to refresh.",
+      "Set Keep your Direct Lake data up to date to On."
+     ],
+     "c": 0
+    }
    ]
   },
   {
@@ -1368,6 +1526,52 @@
      "t": "Limitaciones de los elementos admitidos para la aprobación (Exclusión de paneles) - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/fundamentals/endorsement-promote-certify"
     }
+   ],
+   "fields": [
+    {
+     "l": "Entidad 1 (lakehouse, entidad central de la organización)",
+     "le": "Entity1 (lakehouse, central entity of the organization)",
+     "o": [
+      "Certified",
+      "Master data",
+      "Promoted",
+      "Cannot be endorsed"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Entidad 2 (modelo semántico que cumple los estándares)",
+     "le": "Entity2 (semantic model meeting organizational standards)",
+     "o": [
+      "Certified",
+      "Master data",
+      "Promoted",
+      "Cannot be endorsed"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Entidad 3 (informe listo para compartir y reutilizar)",
+     "le": "Entity3 (report ready to share and reuse)",
+     "o": [
+      "Certified",
+      "Master data",
+      "Promoted",
+      "Cannot be endorsed"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Entidad 4 (panel de Power BI)",
+     "le": "Entity4 (Power BI dashboard)",
+     "o": [
+      "Certified",
+      "Master data",
+      "Promoted",
+      "Cannot be endorsed"
+     ],
+     "c": 3
+    }
    ]
   },
   {
@@ -1399,6 +1603,26 @@
     {
      "t": "Roles y permisos en áreas de trabajo de Microsoft Fabric - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/get-started/roles-workspaces"
+    }
+   ],
+   "fields": [
+    {
+     "l": "User3 tiene acceso con el rol de Visor a Workspace3.",
+     "le": "User3 has Viewer role access to Workspace3.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "User3 tiene acceso de colaborador de dominio a Domain1.",
+     "le": "User3 has Domain contributor access to Domain1.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "User2 tiene acceso con el rol de Colaborador a Workspace3.",
+     "le": "User2 has Contributor role access to Workspace3.",
+     "yn": 1,
+     "c": 1
     }
    ]
   },
@@ -1521,6 +1745,44 @@
     {
      "t": "Entornos de ejecución de Spark en Microsoft Fabric - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/runtime"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "Change the runtime version.",
+      "Install the libraries.",
+      "Create a pool.",
+      "Create an environment.",
+      "Set the default environment."
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "Change the runtime version.",
+      "Install the libraries.",
+      "Create a pool.",
+      "Create an environment.",
+      "Set the default environment."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "Change the runtime version.",
+      "Install the libraries.",
+      "Create a pool.",
+      "Create an environment.",
+      "Set the default environment."
+     ],
+     "c": 4
     }
    ]
   },
@@ -1714,6 +1976,47 @@
     {
      "t": "Restricciones en Fabric (Requisito estricto de NOT ENFORCED) - Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/primary-foreign-key-constraints"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "DROP CONSTRAINT PK_DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+      "NOT ENFORCED",
+      "ALTER TABLE dbo.DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY CLUSTERED (CustomerKey)",
+      "ENFORCED"
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "DROP CONSTRAINT PK_DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+      "NOT ENFORCED",
+      "ALTER TABLE dbo.DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY CLUSTERED (CustomerKey)",
+      "ENFORCED"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "DROP CONSTRAINT PK_DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY NONCLUSTERED (CustomerKey)",
+      "NOT ENFORCED",
+      "ALTER TABLE dbo.DimCustomer",
+      "ADD CONSTRAINT PK_DimCustomer PRIMARY KEY CLUSTERED (CustomerKey)",
+      "ENFORCED"
+     ],
+     "c": 2
     }
    ]
   },
@@ -2013,6 +2316,46 @@
      "t": "Optimización de consultas y filtrado lógico en Data Lake - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/lakehouse-query-data"
     }
+   ],
+   "fields": [
+    {
+     "l": "JOIN con ProductSubCategories",
+     "le": "JOIN with ProductSubCategories",
+     "o": [
+      "FULL JOIN",
+      "INNER JOIN",
+      "LEFT ANTI JOIN",
+      "LEFT OUTER JOIN",
+      "OUTER JOIN"
+     ],
+     "c": 1
+    },
+    {
+     "l": "JOIN con ProductCategories",
+     "le": "JOIN with ProductCategories",
+     "o": [
+      "FULL JOIN",
+      "INNER JOIN",
+      "LEFT ANTI JOIN",
+      "LEFT OUTER JOIN",
+      "OUTER JOIN"
+     ],
+     "c": 1
+    },
+    {
+     "l": "WHERE",
+     "le": "WHERE",
+     "o": [
+      "CategoryID = 1;",
+      "CategoryName is not null;",
+      "IsActive = 1;",
+      "IsActive is not null;",
+      "ProductNumber is not null;",
+      "SubCategoryID = 1;",
+      "SubCategoryName is not null;"
+     ],
+     "c": 2
+    }
    ]
   },
   {
@@ -2125,6 +2468,41 @@
      "t": "Cláusula TOP (Transact-SQL como alternativa a LIMIT) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/queries/top-transact-sql"
     }
+   ],
+   "fields": [
+    {
+     "l": "Función de conversión a fecha",
+     "le": "Date conversion function",
+     "o": [
+      "CAST",
+      "CONVERT",
+      "REPLACE",
+      "SUBSTRING"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Tipo de JOIN con Contract",
+     "le": "JOIN type with Contract",
+     "o": [
+      "CROSS JOIN",
+      "INNER JOIN",
+      "LEFT OUTER JOIN",
+      "RIGHT OUTER JOIN"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Filtro de agrupación",
+     "le": "Group filter",
+     "o": [
+      "CONTAINS",
+      "HAVING",
+      "LIMIT",
+      "WHERE"
+     ],
+     "c": 1
+    }
    ]
   },
   {
@@ -2176,6 +2554,30 @@
     {
      "t": "Adición de un destino de Lakehouse a un eventstream - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/real-time-intelligence/event-streams/add-destination-lakehouse"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Procesador de datos (Data processor)",
+     "le": "Data processor",
+     "o": [
+      "A data pipeline",
+      "A Dataflow Gen2 dataflow",
+      "An eventstream with a custom endpoint",
+      "An eventstream with an external data source"
+     ],
+     "c": 3
+    },
+    {
+     "l": "Filtrado (Filtering)",
+     "le": "Filtering",
+     "o": [
+      "A filter activity in a data pipeline",
+      "A filter in a Dataflow Gen2 dataflow",
+      "A KQL statement",
+      "An eventstream processor"
+     ],
+     "c": 3
     }
    ]
   },
@@ -2295,6 +2697,26 @@
      "t": "Upsert (operación Merge) en tablas Delta - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/delta/merge"
     }
+   ],
+   "fields": [
+    {
+     "l": "La tabla de destino siempre se sobrescribirá.",
+     "le": "The target table will always be overwritten.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "La operación de combinación (merge) siempre se ejecutará.",
+     "le": "The merge operation will always run.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "El patrón de carga admite requisitos de carga completa e incremental.",
+     "le": "The loading pattern supports both full and incremental loading requirements.",
+     "yn": 1,
+     "c": 0
+    }
    ]
   },
   {
@@ -2338,6 +2760,28 @@
     {
      "t": "Resolución de claves subrogadas mediante fechas - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/power-bi/guidance/star-schema"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Primera condición del JOIN (AND)",
+     "le": "First JOIN condition (AND)",
+     "o": [
+      "c.is_current = 1",
+      "o.OrderDate > c.valid_to_datetime",
+      "o.OrderDate >= c.valid_from_datetime"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Segunda condición del JOIN (AND)",
+     "le": "Second JOIN condition (AND)",
+     "o": [
+      "c.is_current = 1",
+      "o.OrderDate < c.valid_to_datetime",
+      "o.OrderDate <= c.valid_from_datetime"
+     ],
+     "c": 1
     }
    ]
   },
@@ -2443,11 +2887,19 @@
    "group": null,
    "repeatOf": null,
    "conflict": null,
-   "type": "visual",
+   "type": "multi",
    "topic": "Streaming y KQL",
-   "stem": "<p>Tienes un workspace en Fabric que contiene Un eventhouse y una base de datos KQL llamada Database1. La base de datos1 tiene lo siguiente:</p>\n<ul>\n<li>Una tabla llamada Tabla1</li>\n<li>Una tabla llamada Tabla2</li>\n</ul>\n<p>Una política de actualización llamada Política1 -<br />\nPolítica1 envía datos de la Tabla1 a la Tabla2.<br />\nA continuación se muestra un ejemplo de los datos de la Tabla 2.</p>\n<img src=\"data/dp700/media/image50.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">\n\n<p>Recientemente, se realizaron las siguientes acciones en la Tabla 1:<br />\nSe añadió un elemento adicional llamado temperatura a la columna StreamData.<br />\nEl tipo de dato de la columna de marca de tiempo había cambiado hasta la fecha.<br />\nEl tipo de dato de la columna DeviceId se cambió a cadena.<br />\nPlaneas cargar registros adicionales en la Tabla 2.<br />\n¿Qué dos registros cargarán de la Tabla 1 a la Tabla 2? Cada respuesta correcta presenta una solución completa.<br />\nNOTA: Cada selección correcta vale un punto.</p>\n<ol type=\"1\">\n<li></li>\n</ol>\n<img src=\"data/dp700/media/image51.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">\n\n<ol start=\"2\" type=\"1\">\n<li></li>\n</ol>\n<img src=\"data/dp700/media/image52.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">\n\n<ol start=\"3\" type=\"1\">\n<li></li>\n</ol>\n<img src=\"data/dp700/media/image53.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">\n\n<ol start=\"4\" type=\"1\">\n<li></li>\n</ol>\n<img src=\"data/dp700/media/image54.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">",
-   "options": [],
-   "correct": [],
+   "stem": "<p>Tienes un workspace en Fabric que contiene Un eventhouse y una base de datos KQL llamada Database1. La base de datos1 tiene lo siguiente:</p>\n<ul>\n<li>Una tabla llamada Tabla1</li>\n<li>Una tabla llamada Tabla2</li>\n</ul>\n<p>Una política de actualización llamada Política1 -<br />\nPolítica1 envía datos de la Tabla1 a la Tabla2.<br />\nA continuación se muestra un ejemplo de los datos de la Tabla 2.</p>\n<img src=\"data/dp700/media/image50.png\" loading=\"lazy\" alt=\"Imagen de la pregunta\">\n\n<p>Recientemente, se realizaron las siguientes acciones en la Tabla 1:<br />\nSe añadió un elemento adicional llamado temperatura a la columna StreamData.<br />\nEl tipo de dato de la columna de marca de tiempo había cambiado hasta la fecha.<br />\nEl tipo de dato de la columna DeviceId se cambió a cadena.<br />\nPlaneas cargar registros adicionales en la Tabla 2.<br />\n¿Qué dos registros cargarán de la Tabla 1 a la Tabla 2? Cada respuesta correcta presenta una solución completa.<br />\nNOTA: Cada selección correcta vale un punto.</p>",
+   "options": [
+    "<img src=\"data/dp700/media/image51.png\" loading=\"lazy\" alt=\"\">",
+    "<img src=\"data/dp700/media/image52.png\" loading=\"lazy\" alt=\"\">",
+    "<img src=\"data/dp700/media/image53.png\" loading=\"lazy\" alt=\"\">",
+    "<img src=\"data/dp700/media/image54.png\" loading=\"lazy\" alt=\"\">"
+   ],
+   "correct": [
+    0,
+    3
+   ],
    "answer": {
     "correct": "<p><strong>Respuesta correcta:</strong></p>\n<ul>\n<li><p><strong>Opción A:</strong> El registro de la imagen (Fecha 2024-05-18, con GUID válido y temperatura).</p></li>\n<li><p><strong>Opción D:</strong> El registro de la imagen (Fecha 2024-05-24, con GUID válido sin temperatura).</p></li>\n</ul>\n<p><strong>Análisis detallado para las Opciones Correctas</strong></p>\n<p><strong>Por qué son correctas:</strong> La política de actualización (Update Policy) intentará convertir (castear) la cadena de texto de la Tabla 1 al tipo guid exigido por la Tabla 2. El motor KQL solo puede convertir una cadena a guid si tiene el formato hexadecimal válido exacto (8-4-4-4-12 caracteres). Estas dos imágenes son las únicas que presentan un DeviceId con el formato correcto (81416f30-60a2-4e75-9b19-2a84ea059735). Los otros dos cambios mencionados en el escenario no impiden la carga: el tipo de dato date se convierte automáticamente a datetime (añadiendo las horas en cero) y la columna dynamic acepta cualquier variación en el esquema del JSON, por lo que tener o no tener el nodo de temperatura es irrelevante.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/data-explorer/kusto/query/scalar-data-types/guid\">Tipo de dato guid en Kusto (KQL) - Microsoft Learn</a></li>\n</ul>\n<p><strong>Análisis detallado de las opciones incorrectas</strong></p>\n<p><strong>Registro B. Por qué es incorrecta:</strong> Este registro intenta enviar la cadena \"81416f30\" hacia la columna DeviceId de la Tabla 2. Al tener solo 8 caracteres, no cumple con la estructura obligatoria de un GUID. La conversión de tipos fallará durante la ejecución de la política de actualización y el registro no se cargará.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query\">Errores de conversión de tipos en la ingesta (Type mismatch) - Microsoft Learn</a></li>\n</ul>\n<p><strong>Registro C</strong> <strong>Por qué es incorrecta:</strong> Este registro intenta insertar una cadena demasiado larga (más de 32 caracteres) que además contiene letras que no pertenecen al sistema hexadecimal (como la h, y, t). Es matemáticamente imposible parsear esta cadena como un tipo guid válido, provocando el fallo del registro en el destino.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/data-explorer/kusto/query/toguid-function\">Conversión de tipos y funciones toguid() en KQL - Microsoft Learn</a></li>\n</ul>",
     "incorrect": ""
@@ -2504,6 +2956,28 @@
     {
      "t": "Formatos de estilo 112 ISO - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/functions/cast-and-convert-transact-sql#date-and-time-styles"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Columna ItemName",
+     "le": "ItemName column",
+     "o": [
+      "convert(varchar(20), item_name)",
+      "convert(varchar(max), item_name)",
+      "try_cast(item_name as varchar(20))"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Columna PurchaseDate",
+     "le": "PurchaseDate column",
+     "o": [
+      "convert(varchar, purchase_date, 7)",
+      "convert(varchar, purchase_date, 109)",
+      "convert(varchar, purchase_date, 112)"
+     ],
+     "c": 0
     }
    ]
   },
@@ -2711,6 +3185,26 @@
     {
      "t": "Funciones de ventana (Window functions) en KQL - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/data-explorer/kusto/query/windowfunctions"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Litware de New York se mostrará al principio del conjunto de resultados.",
+     "le": "Litware from New York will be displayed at the top of the result set.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "Fabrikam en Seattle tendrá el valor 2 en la columna Rank.",
+     "le": "Fabrikam in Seattle will have value = 2 in the Rank column.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "Litware en San Francisco tendrá el mismo valor en la columna Rank que Litware en New York.",
+     "le": "Litware in San Francisco will have the same value in the Rank column as Litware in New York.",
+     "yn": 1,
+     "c": 0
     }
    ]
   },
@@ -2956,6 +3450,30 @@
      "t": "Visualización de detalles de los elementos en Microsoft Fabric - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/fundamentals/item-details"
     }
+   ],
+   "fields": [
+    {
+     "l": "Para encontrar los detalles del error",
+     "le": "To find the error details",
+     "o": [
+      "Data insights",
+      "Data preview",
+      "Details",
+      "Runtime logs"
+     ],
+     "c": 3
+    },
+    {
+     "l": "Para encontrar el número total de errores",
+     "le": "To find the total number of errors",
+     "o": [
+      "Data insights",
+      "Data preview",
+      "Details",
+      "Runtime logs"
+     ],
+     "c": 0
+    }
    ]
   },
   {
@@ -3042,6 +3560,53 @@
     {
      "t": "CREATE FUNCTION (Transact-SQL) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/statements/create-function-transact-sql"
+    }
+   ],
+   "fields": [
+    {
+     "l": "WITH (función)",
+     "le": "WITH (function)",
+     "o": [
+      "AuthorSales",
+      "AuthorEmail",
+      "AuthorSales.AuthorEmail",
+      "BLOCK",
+      "FILTER",
+      "INLINE",
+      "SCHEMABINDING",
+      "USER_NAME()"
+     ],
+     "c": 6
+    },
+    {
+     "l": "WHERE @Author =",
+     "le": "WHERE @Author =",
+     "o": [
+      "AuthorSales",
+      "AuthorEmail",
+      "AuthorSales.AuthorEmail",
+      "BLOCK",
+      "FILTER",
+      "INLINE",
+      "SCHEMABINDING",
+      "USER_NAME()"
+     ],
+     "c": 7
+    },
+    {
+     "l": "ON (tabla de la política)",
+     "le": "ON (policy table)",
+     "o": [
+      "AuthorSales",
+      "AuthorEmail",
+      "AuthorSales.AuthorEmail",
+      "BLOCK",
+      "FILTER",
+      "INLINE",
+      "SCHEMABINDING",
+      "USER_NAME()"
+     ],
+     "c": 0
     }
    ]
   },
@@ -3186,6 +3751,47 @@
      "t": "Optimización de uniones con difusión (Broadcast) en Apache Spark - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/optimizations/broadcast-join"
     }
+   ],
+   "fields": [
+    {
+     "l": "Raíz del DAG (\": [)",
+     "le": "DAG root (\": [)",
+     "o": [
+      "activities",
+      "broadcast",
+      "dependencies",
+      "execute",
+      "notebooks",
+      "runMultiple"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Relación de ejecución ([\"Load_Salesperson\"])",
+     "le": "Execution relation ([\"Load_Salesperson\"])",
+     "o": [
+      "activities",
+      "broadcast",
+      "dependencies",
+      "execute",
+      "notebooks",
+      "runMultiple"
+     ],
+     "c": 2
+    },
+    {
+     "l": "mssparkutils.notebook.",
+     "le": "mssparkutils.notebook.",
+     "o": [
+      "activities",
+      "broadcast",
+      "dependencies",
+      "execute",
+      "notebooks",
+      "runMultiple"
+     ],
+     "c": 5
+    }
    ]
   },
   {
@@ -3242,6 +3848,53 @@
      "t": "UPDATE (Transact-SQL) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/queries/update-transact-sql"
     }
+   ],
+   "fields": [
+    {
+     "l": "___ TABLE dbo.CreditCard",
+     "le": "___ TABLE dbo.CreditCard",
+     "o": [
+      "ALTER",
+      "CREATE",
+      "DEFAULT",
+      "DROP",
+      "EMAIL",
+      "PARTIAL",
+      "REPLACE",
+      "UPDATE"
+     ],
+     "c": 0
+    },
+    {
+     "l": "___ COLUMN [CreditCard]",
+     "le": "___ COLUMN [CreditCard]",
+     "o": [
+      "ALTER",
+      "CREATE",
+      "DEFAULT",
+      "DROP",
+      "EMAIL",
+      "PARTIAL",
+      "REPLACE",
+      "UPDATE"
+     ],
+     "c": 0
+    },
+    {
+     "l": "FUNCTION = '___(2, \"XXXXXXXXXX\", 4)'",
+     "le": "FUNCTION = '___(2, \"XXXXXXXXXX\", 4)'",
+     "o": [
+      "ALTER",
+      "CREATE",
+      "DEFAULT",
+      "DROP",
+      "EMAIL",
+      "PARTIAL",
+      "REPLACE",
+      "UPDATE"
+     ],
+     "c": 5
+    }
    ]
   },
   {
@@ -3294,6 +3947,30 @@
      "t": "Establecer y usar variables de retorno de canalización - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/set-variable-activity#set-pipeline-return-value"
     }
+   ],
+   "fields": [
+    {
+     "l": "@activity('___')",
+     "le": "@activity('___')",
+     "o": [
+      "Batch Object Copy",
+      "Dynamic Data Copy",
+      "Extraction Loop",
+      "Lookup Schema and Table"
+     ],
+     "c": 3
+    },
+    {
+     "l": ".___ (propiedad de salida)",
+     "le": ".___ (output property)",
+     "o": [
+      "output",
+      "output.count",
+      "output.pipelineReturnValue",
+      "output.value"
+     ],
+     "c": 3
+    }
    ]
   },
   {
@@ -3341,6 +4018,29 @@
     {
      "t": "Sintaxis obligatoria para la función aleatoria (Random) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/relational-databases/security/dynamic-data-masking#random-masking"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Máscara para BirthDate",
+     "le": "Mask for BirthDate",
+     "o": [
+      "'default()'",
+      "'partial(1900-01-01)'",
+      "'random(1900-01-01, 1900-01-01)'"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Máscara para EmailAddress",
+     "le": "Mask for EmailAddress",
+     "o": [
+      "'default()'",
+      "'email()'",
+      "'partial(1,\"@\",5)'",
+      "'random(1,\"@\",5)'"
+     ],
+     "c": 2
     }
    ]
   },
@@ -3808,6 +4508,30 @@
      "t": "Identificadores de base de datos (Corchetes y comillas) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/sql/relational-databases/databases/database-identifiers"
     }
+   ],
+   "fields": [
+    {
+     "l": "GRANT ___ ON",
+     "le": "GRANT ___ ON",
+     "o": [
+      "ALTER",
+      "EXECUTE",
+      "READ",
+      "SELECT",
+      "VIEW"
+     ],
+     "c": 3
+    },
+    {
+     "l": "TO ___",
+     "le": "TO ___",
+     "o": [
+      "user1",
+      "[User1]",
+      "[user1@contoso.com]"
+     ],
+     "c": 2
+    }
    ]
   },
   {
@@ -3949,6 +4673,28 @@
      "t": "Granularidad en el modelado dimensional - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/power-bi/guidance/star-schema#fact-tables"
     }
+   ],
+   "fields": [
+    {
+     "l": "ProductCategory, ProductSubcategory y Product deben ser…",
+     "le": "ProductCategory, ProductSubcategory and Product must be…",
+     "o": [
+      "Added to the model as individual tables",
+      "Denormalized by being added to the SalesOrder table",
+      "Denormalized into a single product dimension table"
+     ],
+     "c": 2
+    },
+    {
+     "l": "La clave de unión debe ser…",
+     "le": "The joining key must be…",
+     "o": [
+      "The product name and the date",
+      "The unique system generated identifier",
+      "The product category name"
+     ],
+     "c": 1
+    }
    ]
   },
   {
@@ -4004,6 +4750,38 @@
     {
      "t": "Elección entre flujos de datos Gen2 y canalizaciones de datos - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/decision-guide-data-factory"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Team1",
+     "le": "Team1",
+     "o": [
+      "Data pipelines",
+      "Notebooks",
+      "Dataflow Gen2 dataflow"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Team2",
+     "le": "Team2",
+     "o": [
+      "Data pipelines",
+      "Notebooks",
+      "Dataflow Gen2 dataflow"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Team3",
+     "le": "Team3",
+     "o": [
+      "Data pipelines",
+      "Notebooks",
+      "Dataflow Gen2 dataflow"
+     ],
+     "c": 0
     }
    ]
   },
@@ -4061,6 +4839,38 @@
      "t": "Información general sobre bases de datos KQL en Fabric - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/real-time-intelligence/create-database"
     }
+   ],
+   "fields": [
+    {
+     "l": "Dataset1",
+     "le": "Dataset1",
+     "o": [
+      "A Dataflow Gen2 dataflow",
+      "A notebook",
+      "A T-SQL statement"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Dataset2",
+     "le": "Dataset2",
+     "o": [
+      "A Dataflow Gen2 dataflow",
+      "A notebook",
+      "A T-SQL statement"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Dataset3",
+     "le": "Dataset3",
+     "o": [
+      "A Dataflow Gen2 dataflow",
+      "A KQL queryset",
+      "A T-SQL statement"
+     ],
+     "c": 2
+    }
    ]
   },
   {
@@ -4113,6 +4923,47 @@
      "t": "Comportamiento de la cláusula WHEN NOT MATCHED - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/delta/merge#--when-not-matched-clause"
     }
+   ],
+   "fields": [
+    {
+     "l": "1.er bloque (set LastModified)",
+     "le": "1st block (set LastModified)",
+     "o": [
+      ".whenMatchedInsert(",
+      ".whenMatchedUpdate(",
+      ".whenNotMatchedBySourceInsert(",
+      ".whenNotMatchedBySourceUpdate(",
+      ".whenNotMatchedInsert(",
+      ".whenNotMatchedUpdate("
+     ],
+     "c": 1
+    },
+    {
+     "l": "2.º bloque (values …)",
+     "le": "2nd block (values …)",
+     "o": [
+      ".whenMatchedInsert(",
+      ".whenMatchedUpdate(",
+      ".whenNotMatchedBySourceInsert(",
+      ".whenNotMatchedBySourceUpdate(",
+      ".whenNotMatchedInsert(",
+      ".whenNotMatchedUpdate("
+     ],
+     "c": 4
+    },
+    {
+     "l": "3.er bloque (condition … inactive)",
+     "le": "3rd block (condition … inactive)",
+     "o": [
+      ".whenMatchedInsert(",
+      ".whenMatchedUpdate(",
+      ".whenNotMatchedBySourceInsert(",
+      ".whenNotMatchedBySourceUpdate(",
+      ".whenNotMatchedInsert(",
+      ".whenNotMatchedUpdate("
+     ],
+     "c": 3
+    }
    ]
   },
   {
@@ -4152,6 +5003,44 @@
     {
      "t": "Diferencias entre bucles ForEach y Until - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/until-activity"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "Add a ForEach activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Get metadata activity to query Control.Object and generate a list of schemas and tables to copy.",
+      "Add an Until activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Lookup activity to query Control.Object and generate a list of the schemas and tables to copy.",
+      "Add a Copy data activity as an inner activity to the iterator activity."
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "Add a ForEach activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Get metadata activity to query Control.Object and generate a list of schemas and tables to copy.",
+      "Add an Until activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Lookup activity to query Control.Object and generate a list of the schemas and tables to copy.",
+      "Add a Copy data activity as an inner activity to the iterator activity."
+     ],
+     "c": 0
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "Add a ForEach activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Get metadata activity to query Control.Object and generate a list of schemas and tables to copy.",
+      "Add an Until activity to iterate over the list of tables and copy the source data to the lakehouse Delta tables.",
+      "Add a Lookup activity to query Control.Object and generate a list of the schemas and tables to copy.",
+      "Add a Copy data activity as an inner activity to the iterator activity."
+     ],
+     "c": 4
     }
    ]
   },
@@ -4271,6 +5160,26 @@
      "t": "Eliminación de filas duplicadas en DataFrames de PySpark (dropDuplicates) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/sql/language-manual/functions/array_distinct"
     }
+   ],
+   "fields": [
+    {
+     "l": "La línea 01 sustituirá todos los valores nulos y vacíos de la columna CustomerName por el valor Unknown.",
+     "le": "Line 01 will replace all the null and empty values in the CustomerName column with the Unknown value.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "La línea 02 extraerá el valor anterior al carácter @ y generará una nueva columna llamada Username.",
+     "le": "Line 02 will extract the value before the @ character and generate a new column named Username.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "La línea 03 extraerá el año de la columna OrderDate y conservará solo la primera aparición de cada año.",
+     "le": "Line 03 will extract the year value from the OrderDate column and keep only the first occurrence for each year.",
+     "yn": 1,
+     "c": 1
+    }
    ]
   },
   {
@@ -4310,6 +5219,44 @@
     {
      "t": "Comando de control .create function (Kusto) - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/data-explorer/kusto/management/create-function"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Segmento 1",
+     "le": "Segment 1",
+     "o": [
+      "StreamData:long)",
+      ".create table EventStreamData (",
+      "StreamData:dynamic )",
+      ".create function EventStreamData (",
+      "TimeStamp:datetime, DeviceId:string"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Segmento 2",
+     "le": "Segment 2",
+     "o": [
+      "StreamData:long)",
+      ".create table EventStreamData (",
+      "StreamData:dynamic )",
+      ".create function EventStreamData (",
+      "TimeStamp:datetime, DeviceId:string"
+     ],
+     "c": 4
+    },
+    {
+     "l": "Segmento 3",
+     "le": "Segment 3",
+     "o": [
+      "StreamData:long)",
+      ".create table EventStreamData (",
+      "StreamData:dynamic )",
+      ".create function EventStreamData (",
+      "TimeStamp:datetime, DeviceId:string"
+     ],
+     "c": 2
     }
    ]
   },
@@ -4574,6 +5521,50 @@
      "t": "Operador take en KQL - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/data-explorer/kusto/query/take-operator"
     }
+   ],
+   "fields": [
+    {
+     "l": "___ by Timestamp",
+     "le": "___ by Timestamp",
+     "o": [
+      "evaluate",
+      "extend",
+      "lookup",
+      "project",
+      "sort",
+      "summarize",
+      "take"
+     ],
+     "c": 4
+    },
+    {
+     "l": "___ PrevMeterReading = prev(MeterReading), …",
+     "le": "___ PrevMeterReading = prev(MeterReading), …",
+     "o": [
+      "evaluate",
+      "extend",
+      "lookup",
+      "project",
+      "sort",
+      "summarize",
+      "take"
+     ],
+     "c": 1
+    },
+    {
+     "l": "___ City, Area, MeterReading, …",
+     "le": "___ City, Area, MeterReading, …",
+     "o": [
+      "evaluate",
+      "extend",
+      "lookup",
+      "project",
+      "sort",
+      "summarize",
+      "take"
+     ],
+     "c": 3
+    }
    ]
   },
   {
@@ -4645,6 +5636,41 @@
     {
      "t": "Actividades admitidas en las canalizaciones de datos - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-activities"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Source1",
+     "le": "Source1",
+     "o": [
+      "Apache Spark Structured Streaming",
+      "An eventstream",
+      "A data pipeline",
+      "A streaming dataflow"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Source2",
+     "le": "Source2",
+     "o": [
+      "Apache Spark Structured Streaming",
+      "An eventstream",
+      "A data pipeline",
+      "A streaming dataflow"
+     ],
+     "c": 3
+    },
+    {
+     "l": "Source3",
+     "le": "Source3",
+     "o": [
+      "Apache Spark Structured Streaming",
+      "An eventstream",
+      "A data pipeline",
+      "A streaming dataflow"
+     ],
+     "c": 0
     }
    ]
   },
@@ -5061,6 +6087,26 @@
      "t": "Estrategias de carga de datos inicial e incremental en Delta Lake - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/lakehouse-write-data"
     }
+   ],
+   "fields": [
+    {
+     "l": "La tabla de destino siempre se sobrescribirá.",
+     "le": "The target table will always be overwritten.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "La operación de combinación (merge) siempre se ejecutará.",
+     "le": "The merge operation will always run.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "El código admite la carga incremental y la creación inicial de la tabla.",
+     "le": "The code supports incremental loading and the initial table creation.",
+     "yn": 1,
+     "c": 0
+    }
    ]
   },
   {
@@ -5206,6 +6252,29 @@
      "t": "Actividad de invocación de canalización - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/invoke-pipeline-activity"
     }
+   ],
+   "fields": [
+    {
+     "l": "Para identificar el error",
+     "le": "To identify the failure",
+     "o": [
+      "A Fail activity",
+      "An If condition activity",
+      "An On failure dependency condition",
+      "An On completion dependency condition"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Para enviar la notificación",
+     "le": "To send the notification",
+     "o": [
+      "A Teams activity",
+      "An Invoke pipeline activity",
+      "An Office365Outlook activity"
+     ],
+     "c": 2
+    }
    ]
   },
   {
@@ -5292,6 +6361,60 @@
     {
      "t": "Reglas de implementación y flujo de trabajo - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/deploy-rules"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "Select pipeline1.",
+      "Select the Test stage.",
+      "Select Deploy.",
+      "From Deploy from, select Development.",
+      "From Deploy from, select Production.",
+      "Select the Development stage."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "Select pipeline1.",
+      "Select the Test stage.",
+      "Select Deploy.",
+      "From Deploy from, select Development.",
+      "From Deploy from, select Production.",
+      "Select the Development stage."
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "Select pipeline1.",
+      "Select the Test stage.",
+      "Select Deploy.",
+      "From Deploy from, select Development.",
+      "From Deploy from, select Production.",
+      "Select the Development stage."
+     ],
+     "c": 0
+    },
+    {
+     "l": "Paso 4",
+     "le": "Step 4",
+     "o": [
+      "Select pipeline1.",
+      "Select the Test stage.",
+      "Select Deploy.",
+      "From Deploy from, select Development.",
+      "From Deploy from, select Production.",
+      "Select the Development stage."
+     ],
+     "c": 2
     }
    ]
   },
@@ -5415,6 +6538,26 @@
      "t": "Función year en Apache Spark - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/sql/language-manual/functions/year"
     }
+   ],
+   "fields": [
+    {
+     "l": "La línea 01 sustituirá todos los valores nulos y vacíos de la columna CustomerName por el valor Unknown.",
+     "le": "Line 01 will replace all null and empty values in the CustomerName column with the Unknown value.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "La línea 02 extraerá el valor anterior al primer punto y generará una nueva columna llamada FirstName.",
+     "le": "Line 02 will extract the value before the first period and generate a new column named FirstName.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "La línea 03 extraerá el año de la columna OrderDate y llamará Year a la columna.",
+     "le": "Line 03 will extract the year value from the OrderDate column and name the column as Year.",
+     "yn": 1,
+     "c": 0
+    }
    ]
   },
   {
@@ -5462,6 +6605,41 @@
     {
      "t": "Orígenes y destinos admitidos en Eventstreams - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/real-time-intelligence/event-streams/overview#supported-sources-and-destinations"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Group1 (Project1: mover datos entre origen y destino)",
+     "le": "Group1 (Project1: move data between source and sink)",
+     "o": [
+      "A data pipeline",
+      "A Dataflow Gen2",
+      "An eventstream",
+      "A notebook"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Group2 (Project2: transformar con low-code)",
+     "le": "Group2 (Project2: transform with low-code)",
+     "o": [
+      "A data pipeline",
+      "A Dataflow Gen2",
+      "An eventstream",
+      "A notebook"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Group3",
+     "le": "Group3",
+     "o": [
+      "A data pipeline",
+      "A Dataflow Gen2",
+      "An eventstream",
+      "A notebook"
+     ],
+     "c": 3
     }
    ]
   },
@@ -5592,6 +6770,38 @@
     {
      "t": "Planificación del acceso a espacios de trabajo - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/get-started/roles-in-workspaces"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Para Group1",
+     "le": "To Group1",
+     "o": [
+      "Assign the Admin role for Workspace1.",
+      "Assign the Contributor role for Workspace1.",
+      "Assign the Viewer role for Workspace1."
+     ],
+     "c": 0
+    },
+    {
+     "l": "Para Group2",
+     "le": "To Group2",
+     "o": [
+      "Assign the Viewer role for Workspace2.",
+      "Assign the Contributor role for Workspace2.",
+      "Configure only item security for Workspace2."
+     ],
+     "c": 2
+    },
+    {
+     "l": "Para User1",
+     "le": "To User1",
+     "o": [
+      "Assign the Contributor role for Workspace2 and the Viewer role for Workspace4.",
+      "Assign the Viewer role for Workspace2 and the Contributor role for Workspace4.",
+      "Assign the Member role for Workspace2 and the Viewer role for Workspace4."
+     ],
+     "c": 0
     }
    ]
   },
@@ -5826,6 +7036,30 @@
      "t": "Planificación de capacidad y clústeres de Spark - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/spark-best-practices-capacity-planning"
     }
+   ],
+   "fields": [
+    {
+     "l": "Entorno para Notebook1",
+     "le": "Environment for Notebook1",
+     "o": [
+      "A custom Spark pool that has multiple nodes and high concurrency mode enabled",
+      "A custom Spark pool that has a single small node and high concurrency mode enabled",
+      "A serverless Spark environment",
+      "A starter pool"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Entorno para Notebook2",
+     "le": "Environment for Notebook2",
+     "o": [
+      "A custom Spark pool that has multiple nodes",
+      "A custom Spark pool that has a single small node",
+      "A serverless Spark environment",
+      "A starter pool"
+     ],
+     "c": 0
+    }
    ]
   },
   {
@@ -5947,6 +7181,28 @@
     {
      "t": "Patrones de diseño para sincronización de datos y eliminaciones - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/lakehouse-write-data"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Crear registros nuevos",
+     "le": "Create new records",
+     "o": [
+      "Full",
+      "Incremental",
+      "Snapshot"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Eliminar registros existentes",
+     "le": "Delete existing records",
+     "o": [
+      "Full",
+      "Incremental",
+      "Snapshot"
+     ],
+     "c": 2
     }
    ]
   },
@@ -6070,6 +7326,29 @@
      "t": "Acciones y condiciones de error en canalizaciones de Fabric - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-activities#dependency-conditions"
     }
+   ],
+   "fields": [
+    {
+     "l": "Monitorizar Pipeline1",
+     "le": "Monitor Pipeline1",
+     "o": [
+      "Monitor hub",
+      "Azure Monitor",
+      "Real-Time Intelligence monitoring"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Alerta por correo",
+     "le": "Email alert",
+     "o": [
+      "A Microsoft Power Automate flow",
+      "A Web activity",
+      "A Fabric Activator action",
+      "A Data Factory trigger"
+     ],
+     "c": 0
+    }
    ]
   },
   {
@@ -6144,6 +7423,30 @@
     {
      "t": "Permisos granulares de SQL en Microsoft Fabric - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/sql-granular-permissions"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Función de enmascaramiento para Table1",
+     "le": "Masking function for Table1",
+     "o": [
+      "default()",
+      "email()",
+      "random()",
+      "partial()"
+     ],
+     "c": 3
+    },
+    {
+     "l": "Permiso para que Group2 vea los valores sin enmascarar de todas las columnas",
+     "le": "Permission to allow Group2 to see unmasked values for all the columns",
+     "o": [
+      "ALTER ANY MASK",
+      "SELECT on Table1",
+      "UNMASK at the database scope",
+      "UNMASK on Table1 (FirstName)"
+     ],
+     "c": 2
     }
    ]
   },
@@ -6440,6 +7743,28 @@
      "t": "Seguridad de OneLake en el punto de conexión de análisis SQL - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/onelake/sql-analytics-endpoint-onelake-security"
     }
+   ],
+   "fields": [
+    {
+     "l": "Método de acceso a datos para WS2",
+     "le": "Data access method for WS2",
+     "o": [
+      "Create OneLake shortcuts.",
+      "Configure database mirroring.",
+      "Copy the tables by using pipelines."
+     ],
+     "c": 0
+    },
+    {
+     "l": "Modo del punto de conexión de análisis SQL en WS2",
+     "le": "SQL analytics endpoint mode in WS2",
+     "o": [
+      "Owner's identity mode",
+      "Service principal mode",
+      "User's identity mode"
+     ],
+     "c": 2
+    }
    ]
   },
   {
@@ -6471,6 +7796,41 @@
     {
      "t": "Introducción a la integración con Git de Fabric - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/intro-to-git-integration"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Entorno de desarrollo de cada ingeniero",
+     "le": "Development environment for each engineer",
+     "o": [
+      "A dedicated deployment pipeline stage",
+      "A dedicated Fabric workspace",
+      "A dedicated workspace folder",
+      "A shared workspace"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Rama conectada a cada entorno de desarrollo",
+     "le": "Branch connected to each development environment",
+     "o": [
+      "A dedicated feature branch",
+      "A detached commit",
+      "The main branch",
+      "The same release branch"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Método de integración",
+     "le": "Integration method",
+     "o": [
+      "Modify the published folder.",
+      "Merge by using a pull request.",
+      "Deploy to the production workspace.",
+      "Publish from the development workspace."
+     ],
+     "c": 1
     }
    ]
   },
@@ -6620,6 +7980,28 @@
     {
      "t": "Streaming estructurado en producción - Microsoft Learn",
      "u": "https://learn.microsoft.com/es-es/azure/databricks/structured-streaming/production"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Método tras partitionBy",
+     "le": "Method after partitionBy",
+     "o": [
+      ".groupBy",
+      ".orderBy",
+      ".row_number"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Método sobre decoded_df",
+     "le": "Method on decoded_df",
+     "o": [
+      "select",
+      "transform",
+      "withColumn"
+     ],
+     "c": 2
     }
    ]
   },

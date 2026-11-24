@@ -10193,7 +10193,7 @@
    "conflict": null,
    "type": "visual",
    "topic": "Modelos semánticos y DAX",
-   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1. Model1 contiene las tablas siguientes.</p><table><thead><tr><th>Nombre</th><th>Descripción</th></tr></thead><tbody><tr><td>Sales</td><td>Contiene tres columnas: SalesDate, StoreID y ProductID</td></tr><tr><td>Product</td><td>Contiene una columna: ProductID</td></tr><tr><td>Store</td><td>Contiene una columna: StoreID</td></tr><tr><td>Campaign</td><td>Contiene seis columnas: CampaignDate, CampaignID, ProductID, StoreID, Name y Description</td></tr></tbody></table><p>Product y Store pueden formar parte de varias campañas, y pueden existir varias campañas activas a la vez.</p><p>Planeas crear un informe llamado Report1 que mostrará las ventas realizadas después de una campaña para una tienda determinada.</p><p>Debes agregar una tabla a Model1 y configurar la cardinalidad de las relaciones de esa tabla. ¿Qué debes configurar?</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n204_stem.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1. Model1 contiene las tablas siguientes.</p><img src=\"data/dp600/media/n204_table.webp\" loading=\"lazy\" alt=\"\"><p>Product y Store pueden formar parte de varias campañas, y pueden existir varias campañas activas a la vez.</p><p>Planeas crear un informe llamado Report1 que mostrará las ventas realizadas después de una campaña para una tienda determinada.</p><p>Debes agregar una tabla a Model1 y configurar la cardinalidad de las relaciones de esa tabla. ¿Qué debes configurar?</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n204_stem.webp\" loading=\"lazy\" alt=\"\">",
    "options": [],
    "correct": [],
    "answer": {
@@ -10274,7 +10274,7 @@
    "conflict": null,
    "type": "visual",
    "topic": "Modelos semánticos y DAX",
-   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1 que contiene las tablas siguientes: FactPackageEvents (dos columnas: PackageID y CarrierID), DimPackage (una columna: PackageID) y DimCarrier (una columna: CarrierID).</p><p>Estás diseñando un informe de Power BI llamado Report1 que ofrecerá datos de envíos casi en tiempo real (NRT) sobre muchos paquetes enviados.</p><p>Debes asegurarte de que cada tabla esté en el modo de almacenamiento adecuado para dar soporte a Report1. La solución debe admitir entrega de datos casi en tiempo real manteniendo un alto rendimiento de las consultas.</p><p>¿Qué modo de almacenamiento debes seleccionar para cada tabla? Cada modo puede usarse una vez, más de una vez o ninguna.</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n206_stem.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1 que contiene las tablas siguientes.</p><img src=\"data/dp600/media/n206_table.webp\" loading=\"lazy\" alt=\"\"><p>Estás diseñando un informe de Power BI llamado Report1 que ofrecerá datos de envíos casi en tiempo real (NRT) sobre muchos paquetes enviados.</p><p>Debes asegurarte de que cada tabla esté en el modo de almacenamiento adecuado para dar soporte a Report1. La solución debe admitir entrega de datos casi en tiempo real manteniendo un alto rendimiento de las consultas.</p><p>¿Qué modo de almacenamiento debes seleccionar para cada tabla? Cada modo puede usarse una vez, más de una vez o ninguna.</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n206_stem.webp\" loading=\"lazy\" alt=\"\">",
    "options": [],
    "correct": [],
    "answer": {
@@ -10428,7 +10428,7 @@
    "conflict": null,
    "type": "visual",
    "topic": "Administración y gobernanza",
-   "stem": "<p>Tienes un tenant de Microsoft Entra llamado contoso.com y un usuario externo llamado user1@fabrikam.com.</p><p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un modelo semántico llamado Model1 y un informe llamado Report1. user1@fabrikam.com tiene acceso a Report1.</p><p>Habilitas lectura-escritura en el punto de conexión XMLA para ofrecer modelado semántico avanzado con DAX Studio.</p><p>Debes proporcionar a user1@fabrikam.com una URL que permita la conexión con DAX Studio. ¿Cómo debes completar la URL? <code>powerbi://api.powerbi.com/v1.0/[__]/[__]</code></p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n210_stem.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un tenant de Microsoft Entra llamado contoso.com y un usuario externo llamado user1@fabrikam.com.</p><p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un modelo semántico llamado Model1 y un informe llamado Report1. user1@fabrikam.com tiene acceso a Report1.</p><p>Habilitas lectura-escritura en el punto de conexión XMLA para ofrecer modelado semántico avanzado con DAX Studio.</p><p>Debes proporcionar a user1@fabrikam.com una URL que permita la conexión con DAX Studio. ¿Cómo debes completar la URL?</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n210_stem.webp\" loading=\"lazy\" alt=\"\">",
    "options": [],
    "correct": [],
    "answer": {
@@ -10632,7 +10632,7 @@
    "conflict": null,
    "type": "single",
    "topic": "Modelos semánticos y DAX",
-   "stem": "<p>Tienes un modelo semántico de Microsoft Power BI que contiene una tabla llamada Date. Date contiene los datos siguientes.</p><table><thead><tr><th>Fiscal Month</th><th>Month Number</th></tr></thead><tbody><tr><td>Jan</td><td>1</td></tr><tr><td>Feb</td><td>2</td></tr><tr><td>Mar</td><td>3</td></tr><tr><td>Apr</td><td>4</td></tr><tr><td>May</td><td>5</td></tr><tr><td>Jun</td><td>6</td></tr><tr><td>Jul</td><td>7</td></tr><tr><td>Aug</td><td>8</td></tr><tr><td>Sep</td><td>9</td></tr><tr><td>Oct</td><td>10</td></tr><tr><td>Nov</td><td>11</td></tr><tr><td>Dec</td><td>12</td></tr></tbody></table><p>Debes asegurarte de que los objetos visuales que usan la tabla Date aparezcan en orden cronológico. La solución debe minimizar el esfuerzo administrativo.</p><p>¿Qué debes hacer?</p>",
+   "stem": "<p>Tienes un modelo semántico de Microsoft Power BI que contiene una tabla llamada Date. Date contiene los datos siguientes.</p><img src=\"data/dp600/media/n215_table.webp\" loading=\"lazy\" alt=\"\"><p>Debes asegurarte de que los objetos visuales que usan la tabla Date aparezcan en orden cronológico. La solución debe minimizar el esfuerzo administrativo.</p><p>¿Qué debes hacer?</p>",
    "options": [
     "Ordenar la columna Month Number por columna.",
     "Ordenar los objetos visuales con la opción de orden ascendente en Fiscal Month.",
@@ -10793,7 +10793,7 @@
    "conflict": null,
    "type": "visual",
    "topic": "Warehouse y SQL",
-   "stem": "<p>Tienes un data warehouse con las tablas DimCustomer, DimEmployee, DimGeography y FactInternetSales. Cada tabla tiene una clave principal y las relaciones siguientes: CustomerKey = FactInternetSales.CustomerKey; EmployeeKey = FactInternetSales.EmployeeKey; Geography = DimCustomer.GeographyKey.</p><p>Tienes una consulta T-SQL llamada Query1 con las instrucciones siguientes.</p><p>Para cada una de las afirmaciones siguientes, selecciona Sí si es verdadera. De lo contrario, selecciona No.</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n220_code.webp\" loading=\"lazy\" alt=\"\"><img src=\"data/dp600/media/n220_stem.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un data warehouse con las tablas DimCustomer, DimEmployee, DimGeography y FactInternetSales. Cada tabla tiene una clave principal y las relaciones siguientes: CustomerKey = FactInternetSales.CustomerKey; EmployeeKey = FactInternetSales.EmployeeKey; Geography = DimCustomer.GeographyKey.</p><p>Tienes una consulta T-SQL llamada Query1 con las instrucciones siguientes.</p><pre><code>SELECT\n    c.CustomerKey,\n    c.FirstName,\n    c.LastName,\n    g.CountryRegionCode,\n    g.EnglishCountryRegionName AS Country,\n    e.EmployeeKey,\n    e.FirstName AS SalesPersonFirstName,\n    e.LastName AS SalesPersonLastName,\n    f.SalesOrderNumber,\n    f.OrderDate,\n    f.SalesAmount\nFROM FactInternetSales AS f\nINNER JOIN DimCustomer AS c\n    ON f.CustomerKey = c.CustomerKey\nINNER JOIN DimEmployee AS e\n    ON f.EmployeeKey = e.EmployeeKey\nINNER JOIN DimGeography AS g\n    ON c.GeographyKey = g.GeographyKey;</code></pre><p>Para cada una de las afirmaciones siguientes, selecciona Sí si es verdadera. De lo contrario, selecciona No.</p><p>NOTA: Cada selección correcta vale un punto.</p><img src=\"data/dp600/media/n220_stem.webp\" loading=\"lazy\" alt=\"\">",
    "options": [],
    "correct": [],
    "answer": {

@@ -9990,6 +9990,959 @@
      "c": 0
     }
    ]
+  },
+  {
+   "id": "q200",
+   "n": 200,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Ciclo de vida y DevOps",
+   "stem": "<p>Tienes un tenant de Fabric con cuatro áreas de trabajo llamadas Development, Test, QA y Production. Todas las áreas de trabajo están en modo de licencia Premium por usuario (PPU).</p><p>Planeas usar un release pipeline para dar soporte al ciclo de vida del desarrollo desde Development hasta Production.</p><p>¿Qué tres acciones debes realizar en secuencia? Para responder, mueve las acciones adecuadas de la lista al área de respuesta y ordénalas correctamente.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Create a deployment pipeline.</li><li><strong>Paso 2:</strong> Assign workspaces.</li><li><strong>Paso 3:</strong> Create a deployment rule.</li></ul><p>Un pipeline de implementación (deployment pipeline) es el recurso que modela el ciclo de vida: primero se crea el pipeline, después se asigna a cada etapa el área de trabajo correspondiente y, por último, se definen las reglas de implementación que cambian parámetros o orígenes de datos al pasar de una etapa a otra.</p><ul><li><strong>Move each workspace to Pro license mode</strong> es incorrecta: los pipelines de implementación funcionan con áreas de trabajo en PPU, Premium o capacidad de Fabric; no hace falta cambiarlas.</li><li><strong>Create the QA stage</strong> no forma parte de la clave del documento (ver el aviso).</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta secuencia, pero un pipeline nuevo trae por defecto tres etapas (Development, Test, Production) y aquí hay cuatro áreas de trabajo, por lo que una secuencia como crear el pipeline, crear la etapa QA y asignar las áreas de trabajo también podría defenderse. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a los pipelines de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules\">Crear reglas de implementación</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Introducción a los pipelines de implementación",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines"
+    },
+    {
+     "t": "Crear reglas de implementación",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "Move each workspace to Pro license mode.",
+      "Create a deployment pipeline.",
+      "Create a deployment rule.",
+      "Assign workspaces.",
+      "Create the QA stage."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "Move each workspace to Pro license mode.",
+      "Create a deployment pipeline.",
+      "Create a deployment rule.",
+      "Assign workspaces.",
+      "Create the QA stage."
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "Move each workspace to Pro license mode.",
+      "Create a deployment pipeline.",
+      "Create a deployment rule.",
+      "Assign workspaces.",
+      "Create the QA stage."
+     ],
+     "c": 2
+    }
+   ]
+  },
+  {
+   "id": "q201",
+   "n": 201,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "multi",
+   "topic": "Seguridad y permisos",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un lakehouse llamado Lakehouse1 y un usuario llamado User1.</p><p>Debes asegurarte de que User1 pueda leer todos los datos de Lakehouse1. La solución debe seguir el principio de mínimo privilegio.</p><p>¿Qué dos acciones debes realizar? Cada respuesta correcta presenta parte de la solución.</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [
+    "Asignar el rol Colaborador (Contributor) a User1.",
+    "Seleccionar Read all Apache Spark.",
+    "Asignar el rol Lector (Viewer) a User1.",
+    "Compartir Lakehouse1 mediante permisos de elemento.",
+    "Asignar el rol Miembro (Member) a User1."
+   ],
+   "correct": [
+    1,
+    3
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> Seleccionar Read all Apache Spark.</li><li><strong>Opción D:</strong> Compartir Lakehouse1 mediante permisos de elemento.</li></ul><p>Los roles de área de trabajo dan acceso a <em>todos</em> los elementos del área de trabajo, algo que excede el mínimo privilegio. Lo correcto es compartir solo Lakehouse1 con User1 (permisos de elemento) y, en el cuadro de uso compartido, marcar <strong>Read all Apache Spark</strong>, que le permite leer todos los archivos y tablas de OneLake del lakehouse.</p><ul><li><strong>Contributor, Viewer y Member</strong> son incorrectas: son roles de área de trabajo y conceden acceso a todos los elementos del área (Contributor y Member además permiten escribir), no solo a Lakehouse1.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-engineering/lakehouse-sharing\">Cómo funciona el uso compartido de lakehouse (permisos)</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Cómo funciona el uso compartido de lakehouse (permisos)",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/lakehouse-sharing"
+    }
+   ]
+  },
+  {
+   "id": "q202",
+   "n": 202,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un modelo semántico de Microsoft Power BI que contiene una única tabla llamada Orders. Orders contiene las columnas siguientes: Product Name, Order Date y Quantity.</p><p>Tienes un informe de Power BI con una página llamada Inventory. Inventory contiene una segmentación de datos para la columna Product Name y un gráfico de columnas agrupadas que muestra Quantity por Order Date.</p><p>Debes asegurarte de que los usuarios puedan elegir si el gráfico muestra Quantity por Product Name o Quantity por Order Date. La solución debe minimizar el esfuerzo de desarrollo.</p><p>¿Qué debes crear?</p>",
+   "options": [
+    "una medida",
+    "una cadena de formato dinámico",
+    "un parámetro de campo",
+    "un grupo de cálculo"
+   ],
+   "correct": [
+    2
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción C:</strong> un parámetro de campo.</li></ul><p>Un <strong>parámetro de campo</strong> permite al usuario elegir con una segmentación qué campos o medidas aparecen en un objeto visual (aquí, el eje del gráfico: Product Name u Order Date) sin escribir DAX a mano; se crea en Power BI Desktop con una sola opción de menú.</p><ul><li><strong>Una medida</strong> es incorrecta: devolvería un valor, pero no permite cambiar el campo del eje.</li><li><strong>Una cadena de formato dinámico</strong> es incorrecta: solo cambia el formato de una medida.</li><li><strong>Un grupo de cálculo</strong> es incorrecta: modifica cálculos (por ejemplo, time intelligence) sobre medidas, no el campo que se usa en el eje, y exige más esfuerzo.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/create-reports/power-bi-field-parameters\">Usar parámetros de campo en Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Usar parámetros de campo en Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/create-reports/power-bi-field-parameters"
+    }
+   ]
+  },
+  {
+   "id": "q203",
+   "n": 203,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Ciclo de vida y DevOps",
+   "stem": "<p>Tienes tres áreas de trabajo de Fabric llamadas Workspace1, Workspace2 y Workspace3. Workspace1 contiene un informe llamado Report1 y un modelo semántico llamado Model1 en modo Import.</p><p>Realizas las acciones siguientes: creas un pipeline de implementación llamado Pipeline1 con tres etapas (development, test y production); asignas Workspace1 a development, Workspace2 a test y Workspace3 a production; y modificas Model1.</p><p>Debes asegurarte de que los cambios de Model1 estén disponibles en la etapa de producción lo antes posible. La solución NO debe afectar a la disponibilidad de Report1.</p><p>¿Qué tres acciones debes realizar en secuencia? Para responder, mueve las acciones adecuadas al área de respuesta y ordénalas correctamente.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Run Pipeline1 from the development stage to the test stage.</li><li><strong>Paso 2:</strong> Run Pipeline1 from the test stage to the production stage.</li><li><strong>Paso 3:</strong> Refresh Model1 in the production stage.</li></ul><p>Los cambios se promueven etapa a etapa: primero de desarrollo a prueba y luego de prueba a producción. Como Model1 está en modo Import, la implementación copia la definición del modelo pero no sus datos, por lo que hay que actualizarlo en producción para que los datos queden disponibles. No hace falta actualizar en desarrollo ni en prueba.</p><ul><li><strong>Refresh Model1 in the test stage</strong> y <strong>Refresh Model1 in the development stage</strong> son incorrectas: actualizar etapas anteriores no hace que los datos lleguen a producción y retrasa el resultado.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca este orden, pero las opciones solo contemplan implementaciones completas de una etapa a otra; en la práctica también se puede implementar de forma selectiva solo Model1, de modo que contrasta con la documentación si la actualización en producción es suficiente para mantener Report1 disponible.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Proceso de implementación en pipelines",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Paso 1",
+     "le": "Step 1",
+     "o": [
+      "Refresh Model1 in the test stage.",
+      "Run Pipeline1 from the development stage to the test stage.",
+      "Refresh Model1 in the development stage.",
+      "Run Pipeline1 from the test stage to the production stage.",
+      "Refresh Model1 in the production stage."
+     ],
+     "c": 1
+    },
+    {
+     "l": "Paso 2",
+     "le": "Step 2",
+     "o": [
+      "Refresh Model1 in the test stage.",
+      "Run Pipeline1 from the development stage to the test stage.",
+      "Refresh Model1 in the development stage.",
+      "Run Pipeline1 from the test stage to the production stage.",
+      "Refresh Model1 in the production stage."
+     ],
+     "c": 3
+    },
+    {
+     "l": "Paso 3",
+     "le": "Step 3",
+     "o": [
+      "Refresh Model1 in the test stage.",
+      "Run Pipeline1 from the development stage to the test stage.",
+      "Refresh Model1 in the development stage.",
+      "Run Pipeline1 from the test stage to the production stage.",
+      "Refresh Model1 in the production stage."
+     ],
+     "c": 4
+    }
+   ]
+  },
+  {
+   "id": "q204",
+   "n": 204,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1. Model1 contiene las tablas siguientes.</p><table><thead><tr><th>Nombre</th><th>Descripción</th></tr></thead><tbody><tr><td>Sales</td><td>Contiene tres columnas: SalesDate, StoreID y ProductID</td></tr><tr><td>Product</td><td>Contiene una columna: ProductID</td></tr><tr><td>Store</td><td>Contiene una columna: StoreID</td></tr><tr><td>Campaign</td><td>Contiene seis columnas: CampaignDate, CampaignID, ProductID, StoreID, Name y Description</td></tr></tbody></table><p>Product y Store pueden formar parte de varias campañas, y pueden existir varias campañas activas a la vez.</p><p>Planeas crear un informe llamado Report1 que mostrará las ventas realizadas después de una campaña para una tienda determinada.</p><p>Debes agregar una tabla a Model1 y configurar la cardinalidad de las relaciones de esa tabla. ¿Qué debes configurar?</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Tipo de tabla:</strong> Bridging</li><li><strong>Cardinalidad:</strong> One-to-many</li></ul><p>Product y Store se relacionan entre sí en varias campañas (relación varios a varios), por lo que se añade una <strong>tabla puente</strong> que resuelve esa relación. La tabla puente se conecta a cada dimensión con relaciones <strong>uno a varios</strong> (una fila de Product o de Store puede aparecer en muchas filas de la tabla puente), lo que evita relaciones directas varios a varios.</p><ul><li><strong>Dimension</strong> y <strong>Fact</strong> son incorrectas como tipo de tabla: la nueva tabla no describe una entidad ni registra eventos medibles, sino que resuelve la relación entre dos dimensiones.</li><li><strong>Many-to-many</strong> y <strong>One-to-one</strong> son incorrectas como cardinalidad: la primera es lo que se intenta evitar y la segunda no refleja que un producto o una tienda aparece en varias campañas.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta respuesta, pero la tabla Campaign tiene fecha, identificador y atributos propios, por lo que también podría discutirse si es una tabla de hechos o de dimensión. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/relationships-many-to-many\">Pautas para relaciones varios a varios</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/star-schema\">Esquema de estrella e importancia para Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Pautas para relaciones varios a varios",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/relationships-many-to-many"
+    },
+    {
+     "t": "Esquema de estrella e importancia para Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/star-schema"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Tipo de tabla",
+     "le": "Type of table",
+     "o": [
+      "Bridging",
+      "Dimension",
+      "Fact"
+     ],
+     "c": 0
+    },
+    {
+     "l": "Cardinalidad",
+     "le": "Cardinality",
+     "o": [
+      "Many-to-many",
+      "One-to-many",
+      "One-to-one"
+     ],
+     "c": 1
+    }
+   ]
+  },
+  {
+   "id": "q205",
+   "n": 205,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Ciclo de vida y DevOps",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 y un repositorio de GitHub llamado Repo1.</p><p>Debes conectar Workspace1 a la rama principal (main) de Repo1.</p><p>¿Qué información debes proporcionar?</p>",
+   "options": [
+    "un token de firma de acceso compartido (SAS) y el nombre de la rama de Repo1",
+    "un token de acceso personal (PAT) y la URL de Repo1",
+    "una clave de acceso y el nombre de la rama de Repo1",
+    "una clave de acceso y la URL de Repo1"
+   ],
+   "correct": [
+    1
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> un token de acceso personal (PAT) y la URL de Repo1.</li></ul><p>Para conectar un área de trabajo a GitHub con la integración de Git de Fabric se agrega una cuenta de GitHub con un <strong>token de acceso personal (PAT)</strong> y se indica la <strong>URL del repositorio</strong>; después se elige la rama (main) y la carpeta.</p><ul><li><strong>SAS token y clave de acceso</strong> son incorrectas: son mecanismos de Azure Storage, no de GitHub.</li><li><strong>El nombre de la rama</strong> por sí solo no identifica el repositorio; la rama se selecciona después de conectar con la URL.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started\">Introducción a la integración de Git</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Introducción a la integración de Git",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started"
+    }
+   ]
+  },
+  {
+   "id": "q206",
+   "n": 206,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1 que contiene las tablas siguientes: FactPackageEvents (dos columnas: PackageID y CarrierID), DimPackage (una columna: PackageID) y DimCarrier (una columna: CarrierID).</p><p>Estás diseñando un informe de Power BI llamado Report1 que ofrecerá datos de envíos casi en tiempo real (NRT) sobre muchos paquetes enviados.</p><p>Debes asegurarte de que cada tabla esté en el modo de almacenamiento adecuado para dar soporte a Report1. La solución debe admitir entrega de datos casi en tiempo real manteniendo un alto rendimiento de las consultas.</p><p>¿Qué modo de almacenamiento debes seleccionar para cada tabla? Cada modo puede usarse una vez, más de una vez o ninguna.</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>FactPackageEvents:</strong> Hybrid</li><li><strong>DimPackage:</strong> DirectQuery</li><li><strong>DimCarrier:</strong> Dual</li></ul><p><strong>FactPackageEvents, Hybrid:</strong> una tabla de hechos grande con datos casi en tiempo real combina particiones importadas (datos históricos, rápidos) con una partición DirectQuery para los datos más recientes. <strong>DimCarrier, Dual:</strong> una dimensión pequeña en modo Dual puede responder desde la caché cuando se consulta junto a tablas en Import o desde el origen cuando se consulta junto a tablas en DirectQuery, evitando relaciones limitadas. <strong>DimPackage, DirectQuery:</strong> es la dimensión que la clave del documento mantiene en DirectQuery.</p><ul><li><strong>Import</strong> para la tabla de hechos es incorrecta: no ofrece datos casi en tiempo real.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca DirectQuery para DimPackage, pero lo habitual para una dimensión relacionada con una tabla de hechos híbrida es Dual (como DimCarrier), de modo que DimPackage también podría defenderse como Dual. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-storage-mode\">Modos de almacenamiento en Power BI Desktop</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Modos de almacenamiento en Power BI Desktop",
+     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-storage-mode"
+    }
+   ],
+   "fields": [
+    {
+     "l": "FactPackageEvents",
+     "le": "FactPackageEvents",
+     "o": [
+      "DirectQuery",
+      "Dual",
+      "Hybrid",
+      "Import"
+     ],
+     "c": 2
+    },
+    {
+     "l": "DimPackage",
+     "le": "DimPackage",
+     "o": [
+      "DirectQuery",
+      "Dual",
+      "Hybrid",
+      "Import"
+     ],
+     "c": 0
+    },
+    {
+     "l": "DimCarrier",
+     "le": "DimCarrier",
+     "o": [
+      "DirectQuery",
+      "Dual",
+      "Hybrid",
+      "Import"
+     ],
+     "c": 1
+    }
+   ]
+  },
+  {
+   "id": "q207",
+   "n": 207,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "multi",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1. Model1 contiene una tabla de hechos con millones de filas de datos de envíos.</p><p>Debes habilitar el particionamiento para mejorar el rendimiento de las consultas y la capacidad de administración de Model1.</p><p>¿Qué dos herramientas puedes usar para lograrlo? Cada respuesta correcta presenta una solución completa.</p><p>NOTA: Cada respuesta correcta vale un punto.</p>",
+   "options": [
+    "Tabular Editor",
+    "DAX Studio",
+    "Microsoft Power BI Desktop",
+    "el servicio Microsoft Power BI",
+    "Microsoft SQL Server Management Studio (SSMS)"
+   ],
+   "correct": [
+    0,
+    4
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción A:</strong> Tabular Editor.</li><li><strong>Opción E:</strong> Microsoft SQL Server Management Studio (SSMS).</li></ul><p>Las particiones personalizadas de un modelo semántico se crean y administran a través del punto de conexión XMLA con herramientas que lo admiten: <strong>Tabular Editor</strong> y <strong>SSMS</strong> (que además permite procesar particiones individuales).</p><ul><li><strong>DAX Studio</strong> es incorrecta: sirve para consultar y analizar el rendimiento, no para crear particiones.</li><li><strong>Power BI Desktop</strong> y <strong>el servicio de Power BI</strong> son incorrectas: no ofrecen una interfaz para definir particiones personalizadas.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/enterprise/service-premium-connect-tools\">Conectividad de modelos semánticos con el punto de conexión XMLA</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Conectividad de modelos semánticos con el punto de conexión XMLA",
+     "u": "https://learn.microsoft.com/es-es/power-bi/enterprise/service-premium-connect-tools"
+    }
+   ]
+  },
+  {
+   "id": "q208",
+   "n": 208,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un modelo semántico de Fabric llamado Model1 que contiene una tabla llamada Sales.</p><p>Debes habilitar la actualización incremental para la tabla Sales.</p><p>¿Qué debes hacer primero?</p>",
+   "options": [
+    "Mover Model1 a un área de trabajo Premium por usuario (PPU).",
+    "Crear parámetros en Power Query.",
+    "En la configuración, activar el formato de almacenamiento de modelo semántico grande.",
+    "Automatizar la preparación de datos con Dataflow Gen2."
+   ],
+   "correct": [
+    1
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> Crear parámetros en Power Query.</li></ul><p>El primer paso para configurar la actualización incremental es crear en Power Query los parámetros de fecha y hora <strong>RangeStart</strong> y <strong>RangeEnd</strong> y usarlos para filtrar la tabla; después se define la directiva de actualización incremental.</p><ul><li><strong>Mover a PPU, activar el almacenamiento grande o usar Dataflow Gen2</strong> son incorrectas: no son requisitos previos para definir la actualización incremental.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/connect-data/incremental-refresh-configure\">Configurar la actualización incremental</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Configurar la actualización incremental",
+     "u": "https://learn.microsoft.com/es-es/power-bi/connect-data/incremental-refresh-configure"
+    }
+   ]
+  },
+  {
+   "id": "q209",
+   "n": 209,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Ingesta y orquestación",
+   "stem": "<p>Tienes una base de datos de Azure SQL llamada DB1 y un área de trabajo de Fabric llamada Workspace1. Workspace1 contiene un lakehouse llamado LH1 y un Dataflow Gen2 llamado Dataflow1. Dataflow1 incluye una consulta llamada Query1 que carga datos de DB1, aplica transformaciones y después filtra los datos.</p><p>Descubres que Query1 carga todos los datos antes de aplicar las transformaciones.</p><p>Debes asegurarte de que Query1 use plegado de consultas (query folding). ¿Qué debes hacer?</p>",
+   "options": [
+    "Quitar las columnas no usadas de Query1.",
+    "Habilitar la actualización incremental para Query1.",
+    "Reemplazar DB1 por una base de datos de Microsoft SQL Server.",
+    "Mover los pasos de filtrado antes de las transformaciones en Query1."
+   ],
+   "correct": [
+    3
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción D:</strong> Mover los pasos de filtrado antes de las transformaciones en Query1.</li></ul><p>El plegado de consultas traduce los pasos de Power Query a una sola consulta en el origen, pero se rompe en cuanto aparece un paso que el origen no puede traducir. Al colocar los pasos de filtrado <em>antes</em> de las transformaciones que impiden el plegado, el filtro se envía al origen y solo se cargan los datos necesarios.</p><ul><li><strong>Quitar columnas</strong> reduce el volumen, pero no restaura el plegado. <strong>Actualización incremental</strong> y <strong>cambiar de origen</strong> son incorrectas: DB1 ya admite plegado y la causa es el orden de los pasos.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-query/query-folding-basics\">Conceptos básicos del plegado de consultas</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Conceptos básicos del plegado de consultas",
+     "u": "https://learn.microsoft.com/es-es/power-query/query-folding-basics"
+    }
+   ]
+  },
+  {
+   "id": "q210",
+   "n": 210,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Administración y gobernanza",
+   "stem": "<p>Tienes un tenant de Microsoft Entra llamado contoso.com y un usuario externo llamado user1@fabrikam.com.</p><p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un modelo semántico llamado Model1 y un informe llamado Report1. user1@fabrikam.com tiene acceso a Report1.</p><p>Habilitas lectura-escritura en el punto de conexión XMLA para ofrecer modelado semántico avanzado con DAX Studio.</p><p>Debes proporcionar a user1@fabrikam.com una URL que permita la conexión con DAX Studio. ¿Cómo debes completar la URL? <code>powerbi://api.powerbi.com/v1.0/[__]/[__]</code></p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Primer segmento:</strong> contoso.com</li><li><strong>Segundo segmento:</strong> Workspace1</li></ul><p>La cadena de conexión XMLA de un área de trabajo tiene el formato <code>powerbi://api.powerbi.com/v1.0/&lt;tenant&gt;/&lt;área de trabajo&gt;</code>. Para un usuario invitado (B2B) el segmento del inquilino es el dominio del tenant que aloja el área de trabajo (<strong>contoso.com</strong>), no el de su propio correo, y el segundo segmento es el nombre del área de trabajo (<strong>Workspace1</strong>); el modelo se elige después como catálogo inicial en DAX Studio.</p><ul><li><strong>fabrikam.com</strong> es incorrecta: es el dominio del usuario invitado, no el del tenant que aloja el área de trabajo. <strong>myorg</strong> y <strong>common</strong> son incorrectas para un usuario externo: <code>myorg</code> solo funciona dentro del propio tenant del usuario.</li><li><strong>Model1</strong> y <strong>Report1</strong> son incorrectas: la URL identifica el área de trabajo, no el modelo ni el informe.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/enterprise/service-premium-connect-tools\">Conectividad de modelos semánticos con el punto de conexión XMLA</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Conectividad de modelos semánticos con el punto de conexión XMLA",
+     "u": "https://learn.microsoft.com/es-es/power-bi/enterprise/service-premium-connect-tools"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Primer segmento (inquilino)",
+     "le": "First segment (tenant)",
+     "o": [
+      "common",
+      "contoso.com",
+      "fabrikam.com",
+      "myorg"
+     ],
+     "c": 1
+    },
+    {
+     "l": "Segundo segmento",
+     "le": "Second segment",
+     "o": [
+      "Model1",
+      "Report1",
+      "Workspace1"
+     ],
+     "c": 2
+    }
+   ]
+  },
+  {
+   "id": "q211",
+   "n": 211,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Seguridad y permisos",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 y un warehouse llamado Warehouse1. Workspace1 contiene un usuario llamado User1, que tiene asignado el rol Lector (Viewer) en Workspace1.</p><p>Debes asegurarte de que User1 pueda compartir Warehouse1 con otros usuarios. La solución debe seguir el principio de mínimo privilegio.</p><p>¿Qué rol debes asignar a User1?</p>",
+   "options": [
+    "Member en Workspace1",
+    "db_owner en Warehouse1",
+    "Contributor en Workspace1",
+    "Admin en Workspace1"
+   ],
+   "correct": [
+    0
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción A:</strong> Member en Workspace1.</li></ul><p>Compartir elementos con otros usuarios requiere como mínimo el rol <strong>Member</strong> (o Admin) del área de trabajo; es el rol de menor privilegio que lo permite.</p><ul><li><strong>Contributor</strong> es incorrecta: puede escribir contenido pero no compartir elementos. <strong>Admin</strong> es incorrecta: concede más privilegios de los necesarios. <strong>db_owner</strong> es incorrecta: es un rol de base de datos del warehouse, no controla el uso compartido del elemento.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/fundamentals/roles-workspaces\">Roles en áreas de trabajo de Fabric</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Roles en áreas de trabajo de Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/fundamentals/roles-workspaces"
+    }
+   ]
+  },
+  {
+   "id": "q212",
+   "n": 212,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un modelo semántico que contiene las tablas Sales, Product y Location.</p><p>Estás creando una medida DAX llamada Measure1 que calculará el porcentaje de todas las ventas de un producto seleccionado. Measure1 usará la fórmula DAX siguiente.</p><pre><code>[Percentage of All Product Sales] =\nDIVIDE(\n    [Total Sales Amount],\n    CALCULATE(\n        [Total Sales Amount],\n        REMOVEFILTERS ( &#x27;Product&#x27; )\n    )\n)</code></pre><p>Para cada una de las afirmaciones siguientes, selecciona Sí si es verdadera. De lo contrario, selecciona No.</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Afirmación 1:</strong> No</li><li><strong>Afirmación 2:</strong> Sí</li><li><strong>Afirmación 3:</strong> Sí</li></ul><p><strong>1 – No.</strong> <code>DIVIDE</code> controla la división por cero y devuelve BLANK en lugar de un error.</p><p><strong>2 – Sí.</strong> El numerador es la venta del producto seleccionado y el denominador, la venta de todos los productos; <code>DIVIDE</code> devuelve su cociente como valor decimal (formateable como porcentaje).</p><p><strong>3 – Sí.</strong> <code>REMOVEFILTERS('Product')</code> dentro de <code>CALCULATE</code> elimina los filtros de la tabla Product, de modo que el denominador se evalúa con ese contexto de filtro modificado.</p><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/removefilters-function-dax\">Función REMOVEFILTERS (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/divide-function-dax\">Función DIVIDE (DAX)</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Función REMOVEFILTERS (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/removefilters-function-dax"
+    },
+    {
+     "t": "Función DIVIDE (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/divide-function-dax"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Measure1 devolverá un error si no hay ventas para ningún producto.",
+     "le": "Measure1 will return an error if there are no sales for all products.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "Measure1 devolverá un valor decimal que representa la proporción entre las ventas totales del producto actual y las ventas totales de todos los productos.",
+     "le": "Measure1 will return a decimal value that represents the ratio of the current product's total sales to the total sales across all products.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "El denominador de Measure1 se calculará usando el contexto de filtro modificado creado por la función DAX REMOVEFILTERS ('Product').",
+     "le": "The denominator of Measure1 will be calculated by using the modified filter context created by the REMOVEFILTERS ('Product') DAX function.",
+     "yn": 1,
+     "c": 0
+    }
+   ]
+  },
+  {
+   "id": "q213",
+   "n": 213,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Lakehouse, Delta y OneLake",
+   "stem": "<p>Tienes un área de trabajo de Fabric que contiene un warehouse grande.</p><p>Planeas crear un lakehouse llamado Lakehouse1 para un conjunto de datos de ventas. Lakehouse1 contendrá las tablas siguientes:</p><ul><li>Sales: contiene transacciones de ventas.</li><li>Stores: lista única de nombres y ubicaciones de tiendas.</li><li>Loyalty: lista de clientes y sus tiendas preferidas.</li><li>Customers: lista única de nombres y direcciones de clientes.</li><li>Products: lista única de productos disponibles y sus descripciones.</li></ul><p>Debes configurar un esquema en estrella para Lakehouse1. ¿Qué tabla debes definir como tabla de hechos y qué tipo de relación debes configurar de la tabla Sales a la tabla Customers?</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Tabla de hechos:</strong> Sales</li><li><strong>Relación:</strong> Many-to-one</li></ul><p>En un esquema en estrella la <strong>tabla de hechos</strong> es la que registra las transacciones medibles (Sales); las demás (Stores, Customers, Products) son dimensiones con listas únicas. La relación de la tabla de hechos hacia una dimensión es <strong>varios a uno</strong>: muchas filas de Sales (varias compras) apuntan a un único cliente.</p><ul><li><strong>One-to-many</strong> es la misma relación vista desde la dimensión (Customers → Sales), no desde Sales a Customers. <strong>One-to-one</strong> es incorrecta: un cliente puede tener muchas ventas.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/star-schema\">Esquema de estrella e importancia para Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Esquema de estrella e importancia para Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/star-schema"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Tabla de hechos",
+     "le": "Fact table",
+     "o": [
+      "Customers",
+      "Products",
+      "Sales",
+      "Stores"
+     ],
+     "c": 2
+    },
+    {
+     "l": "Relación (Sales → Customers)",
+     "le": "Relationship (Sales → Customers)",
+     "o": [
+      "Many-to-one",
+      "One-to-one",
+      "One-to-many"
+     ],
+     "c": 0
+    }
+   ]
+  },
+  {
+   "id": "q214",
+   "n": 214,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Ingesta y orquestación",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un warehouse llamado Warehouse1 y un lakehouse llamado Lakehouse1. Warehouse1 contiene una tabla llamada Table1. Lakehouse1 contiene una tabla delta llamada Table2.</p><p>Debes persistir los datos de Table1 en Table2. La solución debe usar una interfaz de poco código (low-code).</p><p>¿Qué debes hacer?</p>",
+   "options": [
+    "Usar un notebook para leer los datos de Table2 e insertarlos en Table1.",
+    "Usar un notebook para leer los datos de Table1 e insertarlos en Table2.",
+    "Usar un Dataflow Gen2 para leer los datos de Table1 e insertarlos en Table2.",
+    "Usar un procedimiento almacenado para leer los datos de Table2 e insertarlos en Table1."
+   ],
+   "correct": [
+    2
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción C:</strong> Usar un Dataflow Gen2 para leer los datos de Table1 e insertarlos en Table2.</li></ul><p>Dataflow Gen2 es la herramienta de poco código (Power Query) de Fabric: lee Table1 del warehouse y la carga en Table2 del lakehouse usando el lakehouse como destino.</p><ul><li><strong>Las opciones A y D</strong> son incorrectas: invierten el sentido (de Table2 a Table1). <strong>La opción B</strong> es incorrecta: un notebook exige código (PySpark/SQL), no es de poco código.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/dataflows-gen2-overview\">Información general de Dataflow Gen2</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Información general de Dataflow Gen2",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-factory/dataflows-gen2-overview"
+    }
+   ]
+  },
+  {
+   "id": "q215",
+   "n": 215,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un modelo semántico de Microsoft Power BI que contiene una tabla llamada Date. Date contiene los datos siguientes.</p><table><thead><tr><th>Fiscal Month</th><th>Month Number</th></tr></thead><tbody><tr><td>Jan</td><td>1</td></tr><tr><td>Feb</td><td>2</td></tr><tr><td>Mar</td><td>3</td></tr><tr><td>Apr</td><td>4</td></tr><tr><td>May</td><td>5</td></tr><tr><td>Jun</td><td>6</td></tr><tr><td>Jul</td><td>7</td></tr><tr><td>Aug</td><td>8</td></tr><tr><td>Sep</td><td>9</td></tr><tr><td>Oct</td><td>10</td></tr><tr><td>Nov</td><td>11</td></tr><tr><td>Dec</td><td>12</td></tr></tbody></table><p>Debes asegurarte de que los objetos visuales que usan la tabla Date aparezcan en orden cronológico. La solución debe minimizar el esfuerzo administrativo.</p><p>¿Qué debes hacer?</p>",
+   "options": [
+    "Ordenar la columna Month Number por columna.",
+    "Ordenar los objetos visuales con la opción de orden ascendente en Fiscal Month.",
+    "Ordenar la columna Fiscal Month por columna.",
+    "Ordenar la tabla Date por columna."
+   ],
+   "correct": [
+    2
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción C:</strong> Ordenar la columna Fiscal Month por columna.</li></ul><p>Con <strong>Ordenar por columna</strong> se configura una sola vez en el modelo que Fiscal Month se ordene según Month Number; así todos los objetos visuales que usan Fiscal Month salen en orden cronológico sin ajustes individuales.</p><ul><li><strong>Ordenar Month Number por columna</strong> es incorrecta: la columna de ordenación es Month Number, la que se ordena es Fiscal Month. <strong>Ordenar cada objeto visual</strong> exige repetir el trabajo en cada informe y, además, ordenaría alfabéticamente. <strong>Ordenar la tabla Date</strong> no es una opción de Power BI.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/create-reports/desktop-sort-by-column\">Ordenar una columna por otra columna en Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Ordenar una columna por otra columna en Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/create-reports/desktop-sort-by-column"
+    }
+   ]
+  },
+  {
+   "id": "q216",
+   "n": 216,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "multi",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un tenant de Fabric con un modelo semántico llamado Model1. Model1 contiene una tabla de hechos llamada FactSales con una relación con una tabla de dimensión llamada DimDate en una columna llamada OrderDate.</p><p>A FactSales le agregas una segunda relación con DimDate basada en una columna llamada ShippedDate.</p><p>Debes filtrar mediante ShippedDate en un informe nuevo. La solución NO debe afectar al funcionamiento de los informes existentes.</p><p>¿Qué dos acciones debes realizar? Cada respuesta correcta presenta parte de la solución.</p><p>NOTA: Cada respuesta correcta vale un punto.</p>",
+   "options": [
+    "Habilitar la relación ShippedDate.",
+    "Usar la función DAX RELATEDTABLE.",
+    "Usar la función DAX CROSSFILTER.",
+    "Usar la función DAX USERELATIONSHIP.",
+    "Deshabilitar la relación ShippedDate entre las tablas."
+   ],
+   "correct": [
+    3,
+    4
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción D:</strong> Usar la función DAX USERELATIONSHIP.</li><li><strong>Opción E:</strong> Deshabilitar la relación ShippedDate entre las tablas.</li></ul><p>Entre dos tablas solo puede haber una relación activa. Si la relación de ShippedDate se dejara activa, cambiaría el filtrado de los informes existentes (que usan OrderDate). Manteniéndola <strong>inactiva</strong> los informes actuales no cambian, y en el informe nuevo se activa solo cuando hace falta con <strong>USERELATIONSHIP</strong> dentro de una medida.</p><ul><li><strong>Habilitar la relación</strong> es incorrecta: la haría activa y alteraría los informes existentes. <strong>RELATEDTABLE</strong> y <strong>CROSSFILTER</strong> son incorrectas: no activan una relación inactiva para un cálculo (CROSSFILTER solo cambia la dirección del filtro).</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca D y E, pero al crear una segunda relación entre las mismas tablas Power BI la deja inactiva por defecto, por lo que «deshabilitar» podría ser redundante y la clave podría discutirse. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/userelationship-function-dax\">Función USERELATIONSHIP (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-relationships-understand\">Relaciones del modelo en Power BI Desktop</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Función USERELATIONSHIP (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/userelationship-function-dax"
+    },
+    {
+     "t": "Relaciones del modelo en Power BI Desktop",
+     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-relationships-understand"
+    }
+   ]
+  },
+  {
+   "id": "q217",
+   "n": 217,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Tienes un tenant de Fabric.</p><p>Debes crear un modelo semántico que ofrezca una representación rápida de los informes, minimice la latencia de las consultas y maximice la flexibilidad para los cálculos DAX.</p><p>¿Qué modo de almacenamiento debes seleccionar?</p>",
+   "options": [
+    "Import",
+    "Direct Lake",
+    "Modo compuesto",
+    "DirectQuery"
+   ],
+   "correct": [
+    1
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> Direct Lake.</li></ul><p><strong>Direct Lake</strong> lee directamente los archivos Delta de OneLake sin copiar los datos ni traducir consultas a un origen externo: ofrece un rendimiento cercano a Import, baja latencia y admite cálculos DAX completos.</p><ul><li><strong>Import</strong> es incorrecta: copia los datos y requiere actualizaciones. <strong>DirectQuery</strong> es incorrecta: mayor latencia y limitaciones en DAX. <strong>Modo compuesto</strong> es incorrecta: combina modos y añade complejidad.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/fundamentals/direct-lake-overview\">Información general de Direct Lake</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Información general de Direct Lake",
+     "u": "https://learn.microsoft.com/es-es/fabric/fundamentals/direct-lake-overview"
+    }
+   ]
+  },
+  {
+   "id": "q218",
+   "n": 218,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Seguridad y permisos",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 y un usuario llamado User1.</p><p>Debes asegurarte de que User1 pueda realizar las tareas siguientes en Workspace1: crear paneles (dashboards), publicar modelos semánticos y crear y publicar informes. La solución debe seguir el principio de mínimo privilegio.</p><p>¿Qué rol de área de trabajo debes asignar a User1?</p>",
+   "options": [
+    "Contributor",
+    "Member",
+    "Viewer",
+    "Admin"
+   ],
+   "correct": [
+    0
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción A:</strong> Contributor.</li></ul><p>El rol <strong>Contributor</strong> permite crear y editar contenido (informes, paneles, modelos semánticos) y publicarlo en el área de trabajo; es el rol de menor privilegio que cubre las tareas pedidas.</p><ul><li><strong>Viewer</strong> es incorrecta: solo lectura. <strong>Member</strong> y <strong>Admin</strong> son incorrectas: conceden más privilegios de los necesarios (compartir, gestionar acceso).</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/fundamentals/roles-workspaces\">Roles en áreas de trabajo de Fabric</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Roles en áreas de trabajo de Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/fundamentals/roles-workspaces"
+    }
+   ]
+  },
+  {
+   "id": "q219",
+   "n": 219,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Modelos semánticos y DAX",
+   "stem": "<p>Estás diseñando un modelo semántico de Fabric llamado Model1 para un área de trabajo de análisis financiero. Model1 incluye una medida DAX llamada Measure1 que devuelve las ventas totales.</p><p>Tienes una tabla llamada Currency con una columna llamada Format, que define las cadenas de formato de moneda de cada registro: <code>$#,##0.00</code>, <code>€#,##0.00</code> o <code>¥#,##0.00</code>.</p><p>Tienes un informe que usa la columna Currency para identificar qué símbolo y formato mostrar. En el informe, Measure1 debe mostrarse con dos decimales y el símbolo de moneda adecuado según el valor seleccionado en la columna Currency.</p><p>Creas la fórmula DAX siguiente: <code>FORMAT = SELECTEDVALUE( 'Currency'[Format] )</code></p><p>Debes asegurarte de que Measure1 se muestre correctamente en los objetos visuales. La solución debe minimizar la duplicación de lógica.</p><p>¿Qué debes hacer?</p>",
+   "options": [
+    "Crear una cadena de formato dinámico para Measure1 que haga referencia a la medida FORMAT.",
+    "En Model1, establecer la categoría de datos de Measure1 en País o región.",
+    "En Model1, establecer el tipo de formato de Measure1 en Moneda.",
+    "Copiar la expresión DAX de la columna Format y pegarla en la expresión de cadena de formato de Measure1."
+   ],
+   "correct": [
+    0
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción A:</strong> Crear una cadena de formato dinámico para Measure1 que haga referencia a la medida FORMAT.</li></ul><p>Una <strong>cadena de formato dinámico</strong> permite que el formato de Measure1 lo determine una expresión DAX; al hacer que devuelva la medida FORMAT, el símbolo y los decimales cambian según la moneda seleccionada sin duplicar lógica.</p><ul><li><strong>Categoría de datos</strong> y <strong>tipo de formato Moneda</strong> son incorrectas: aplican un formato fijo, no dependiente de la selección. <strong>Copiar la expresión</strong> es incorrecta: duplica lógica y no sigue la selección del usuario.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/create-reports/desktop-dynamic-format-strings\">Cadenas de formato dinámico en Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Cadenas de formato dinámico en Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/create-reports/desktop-dynamic-format-strings"
+    }
+   ]
+  },
+  {
+   "id": "q220",
+   "n": 220,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Warehouse y SQL",
+   "stem": "<p>Tienes un data warehouse con las tablas DimCustomer, DimEmployee, DimGeography y FactInternetSales. Cada tabla tiene una clave principal y las relaciones siguientes: CustomerKey = FactInternetSales.CustomerKey; EmployeeKey = FactInternetSales.EmployeeKey; Geography = DimCustomer.GeographyKey.</p><p>Tienes una consulta T-SQL llamada Query1 con las instrucciones siguientes.</p><pre><code>SELECT\n    c.CustomerKey,\n    c.FirstName,\n    c.LastName,\n    g.CountryRegionCode,\n    g.EnglishCountryRegionName AS Country,\n    e.EmployeeKey,\n    e.FirstName AS SalesPersonFirstName,\n    e.LastName AS SalesPersonLastName,\n    f.SalesOrderNumber,\n    f.OrderDate,\n    f.SalesAmount\nFROM FactInternetSales AS f\nINNER JOIN DimCustomer AS c\n    ON f.CustomerKey = c.CustomerKey\nINNER JOIN DimEmployee AS e\n    ON f.EmployeeKey = e.EmployeeKey\nINNER JOIN DimGeography AS g\n    ON c.GeographyKey = g.GeographyKey;</code></pre><p>Para cada una de las afirmaciones siguientes, selecciona Sí si es verdadera. De lo contrario, selecciona No.</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Afirmación 1:</strong> Sí</li><li><strong>Afirmación 2:</strong> No</li><li><strong>Afirmación 3:</strong> No</li></ul><p><strong>1 – Sí.</strong> La consulta parte de la tabla de hechos: devuelve una fila por cada venta, así que un cliente con varios pedidos aparece varias veces.</p><p><strong>2 – No.</strong> Con <code>INNER JOIN</code> solo se devuelven las filas con coincidencia en ambas tablas; si el GeographyKey del cliente no existe en DimGeography, sus ventas desaparecen del resultado (haría falta un <code>LEFT JOIN</code>).</p><p><strong>3 – No.</strong> Añadir solo un <code>GROUP BY</code> no calcula nada: la consulta tiene muchas columnas sin agregar en el <code>SELECT</code> y sin una función como <code>SUM(f.SalesAmount)</code> daría error.</p><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/sql/t-sql/queries/select-group-by-transact-sql\">GROUP BY (Transact-SQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/sql/relational-databases/performance/joins\">Combinaciones (JOIN)</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "GROUP BY (Transact-SQL)",
+     "u": "https://learn.microsoft.com/es-es/sql/t-sql/queries/select-group-by-transact-sql"
+    },
+    {
+     "t": "Combinaciones (JOIN)",
+     "u": "https://learn.microsoft.com/es-es/sql/relational-databases/performance/joins"
+    }
+   ],
+   "fields": [
+    {
+     "l": "Query1 devolverá varias filas para un mismo cliente si el cliente ha hecho más de un pedido de venta online.",
+     "le": "Query1 will return multiple rows for a single customer if the customer has placed more than one online sales order.",
+     "yn": 1,
+     "c": 0
+    },
+    {
+     "l": "Si un registro de DimCustomer tiene un valor de GeographyKey que NO existe en DimGeography, los datos de ventas del cliente seguirán apareciendo en los resultados de Query1.",
+     "le": "If a customer record in DimCustomer has a GeographyKey value that does NOT exist in DimGeography, the customer's sales data will still appear in the Query1 results.",
+     "yn": 1,
+     "c": 1
+    },
+    {
+     "l": "Agregar la cláusula GROUP BY g.EnglishCountryRegionName a Query1 calculará las ventas totales por país.",
+     "le": "Adding the clause GROUP BY g.EnglishCountryRegionName to Query1 will calculate the total sales amount by country.",
+     "yn": 1,
+     "c": 1
+    }
+   ]
+  },
+  {
+   "id": "q221",
+   "n": 221,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "visual",
+   "topic": "Spark y notebooks",
+   "stem": "<p>Tienes un tenant de Fabric con un lakehouse llamado LH1 y un notebook. Tienes un archivo Parquet llamado invoice1 con una columna InvoiceDateKey de tipo timestamp.</p><p>Debes crear un script de PySpark que importe invoice1 y cree una tabla llamada fact_sale en LH1. Se agrega una columna nueva llamada Year a fact_sale y sus valores deben usar la columna InvoiceDateKey.</p><pre><code>from pyspark.sql.functions import *\ntable_name = &#x27;Table/fact_sale&#x27;\ndf = spark.read.format(&quot;parquet&quot;).load(&#x27;Files/parquet/full/invoice1&#x27;)\ndf = df.[__](&#x27;Year&#x27;, year([__](&quot;InvoiceDateKey&quot;)))\ndf.write.mode(&quot;overwrite&quot;).format(&quot;delta&quot;).partitionBy(&quot;Year&quot;).save(table_name)</code></pre><p>¿Cómo debes completar el script? Para responder, selecciona las opciones adecuadas.</p><p>NOTA: Cada selección correcta vale un punto.</p>",
+   "options": [],
+   "correct": [],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Primer hueco:</strong> withColumn</li><li><strong>Segundo hueco:</strong> col</li></ul><p><code>df.withColumn('Year', year(col(\"InvoiceDateKey\")))</code> añade la columna Year calculando el año de la marca de tiempo; <code>col(\"InvoiceDateKey\")</code> convierte el nombre de la columna en un objeto Column que acepta <code>year()</code>. Después la tabla se guarda en formato delta particionada por Year.</p><ul><li><strong>withColumnRenamed</strong> solo renombra una columna existente; <strong>withMetadata</strong> cambia los metadatos de una columna; <strong>transform</strong> aplica una función a un DataFrame. <strong>lit</strong> crea una constante (no lee la columna) y <strong>extract</strong> no es una función de PySpark para este uso.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-engineering/how-to-use-notebook\">Cómo usar notebooks de Microsoft Fabric</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Cómo usar notebooks de Microsoft Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/how-to-use-notebook"
+    }
+   ],
+   "fields": [
+    {
+     "l": "df.[__]( … )",
+     "le": "df.[__]( … )",
+     "o": [
+      "transform",
+      "withColumn",
+      "withColumnRenamed",
+      "withMetadata"
+     ],
+     "c": 1
+    },
+    {
+     "l": "year([__](…))",
+     "le": "year([__](…))",
+     "o": [
+      "col",
+      "extract",
+      "lit"
+     ],
+     "c": 0
+    }
+   ]
+  },
+  {
+   "id": "q222",
+   "n": 222,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Seguridad y permisos",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene los elementos siguientes: un warehouse llamado Warehouse1, un modelo semántico llamado Model1 y un informe interactivo llamado Report1.</p><p>Debes permitir que un usuario llamado User1 acceda a una sola tabla de Warehouse1. La solución debe seguir el principio de mínimo privilegio.</p><p>¿Qué debes hacer primero?</p>",
+   "options": [
+    "Asignar el rol Viewer de Workspace1 a User1.",
+    "Compartir Warehouse1 con User1.",
+    "Asignar permisos a nivel de objeto a User1 en Warehouse1.",
+    "Asignar el rol db_datareader de Warehouse1 a User1."
+   ],
+   "correct": [
+    1
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> Compartir Warehouse1 con User1.</li></ul><p>Para dar acceso a un solo elemento sin añadir al usuario al área de trabajo, el primer paso es <strong>compartir Warehouse1</strong> con User1 (esto le concede acceso de conexión). Después se le conceden permisos concretos sobre la tabla (por ejemplo, <code>GRANT SELECT</code>), cumpliendo el mínimo privilegio.</p><ul><li><strong>Viewer de Workspace1</strong> es incorrecta: da acceso a todos los elementos del área de trabajo. <strong>Permisos a nivel de objeto</strong> y <strong>db_datareader</strong> son incorrectas como primer paso: el usuario aún no tiene acceso al warehouse y db_datareader daría lectura a todas las tablas.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-warehouse/share-warehouse-manage-permissions\">Compartir el warehouse y administrar permisos</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Compartir el warehouse y administrar permisos",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/share-warehouse-manage-permissions"
+    }
+   ]
+  },
+  {
+   "id": "q223",
+   "n": 223,
+   "case": null,
+   "repeat": false,
+   "group": null,
+   "repeatOf": null,
+   "conflict": null,
+   "type": "single",
+   "topic": "Ciclo de vida y DevOps",
+   "stem": "<p>Tienes un área de trabajo de Fabric llamada Workspace1 que contiene un modelo semántico y un informe llamado Report1. Workspace1 está conectada a un repositorio de Git llamado Git1.</p><p>Tienes un pipeline de implementación con tres etapas: Development, Test y Production.</p><p>Debes publicar Report1 en la etapa de producción. ¿Qué debes hacer?</p>",
+   "options": [
+    "Ejecutar un commit de Git.",
+    "Ejecutar una implementación completa.",
+    "Sincronizar Workspace1 con Git1.",
+    "Ejecutar una implementación hacia atrás."
+   ],
+   "correct": [
+    2
+   ],
+   "answer": {
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción C:</strong> Sincronizar Workspace1 con Git1.</li></ul><p>Según la clave del documento, antes de implementar hay que dejar el área de trabajo de desarrollo alineada con el repositorio, sincronizando Workspace1 con Git1 para que el contenido del repositorio sea el que se promueva por el pipeline.</p><ul><li><strong>Commit de Git</strong> solo guarda cambios del área de trabajo en el repositorio. <strong>Implementación hacia atrás</strong> es incorrecta: mueve contenido de una etapa posterior a una anterior.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca C, pero para publicar Report1 en la etapa de producción lo habitual es <strong>ejecutar una implementación</strong> desde el pipeline (B), y sincronizar con Git no despliega nada en Production. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started\">Introducción a la integración de Git</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Proceso de implementación en pipelines",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    },
+    {
+     "t": "Introducción a la integración de Git",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started"
+    }
+   ]
   }
  ]
 }

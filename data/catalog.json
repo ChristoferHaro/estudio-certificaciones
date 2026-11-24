@@ -15,7 +15,7 @@
   "name": "Microsoft Fabric DP-600",
   "subtitle": "Fabric Analytics Engineer Associate",
   "file": "data/dp600/questions.json",
-  "questions": 199,
+  "questions": 223,
   "overlay": {
    "en": "data/dp600/questions.en.json"
   },

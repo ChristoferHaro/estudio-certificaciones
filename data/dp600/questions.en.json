@@ -5719,6 +5719,444 @@
      "u": "https://learn.microsoft.com/en-us/kusto/query/row-window-session-function"
     }
    ]
+  },
+  "q200": {
+   "stem": "<p>You have a Fabric tenant that contains four workspaces named Development, Test, QA, and Production. All the workspaces are in Premium Per User (PPU) license mode.</p><p>You plan to use a release pipeline to support the development lifecycle from Development to Production.</p><p>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Step 1:</strong> Create a deployment pipeline.</li><li><strong>Step 2:</strong> Assign workspaces.</li><li><strong>Step 3:</strong> Create a deployment rule.</li></ul><p>A deployment pipeline is the item that models the lifecycle: you first create the pipeline, then assign the matching workspace to each stage and, finally, define the deployment rules that change parameters or data sources when content moves from one stage to the next.</p><ul><li><strong>Move each workspace to Pro license mode</strong> is wrong: deployment pipelines work with workspaces in PPU, Premium or Fabric capacity; there is no need to change them.</li><li><strong>Create the QA stage</strong> is not part of the study key (see the note).</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks this sequence, but a new pipeline has three stages by default (Development, Test, Production) and there are four workspaces here, so a sequence such as create the pipeline, create the QA stage and assign the workspaces could also be argued. Check it against the linked documentation.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Get started with deployment pipelines</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/create-rules\">Create deployment rules</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Get started with deployment pipelines",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines"
+    },
+    {
+     "t": "Create deployment rules",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/create-rules"
+    }
+   ]
+  },
+  "q201": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 that contains a lakehouse named Lakehouse1 and a user named User1.</p><p>You need to ensure that User1 can read all the data in Lakehouse1. The solution must follow the principle of least privilege.</p><p>Which two actions should you perform? Each correct answer presents part of the solution.</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [
+    "Assign the Contributor role to User1.",
+    "Select Read all Apache Spark.",
+    "Assign the Viewer role to User1.",
+    "Share Lakehouse1 by using item permissions.",
+    "Assign the Member role to User1."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option B:</strong> Select Read all Apache Spark.</li><li><strong>Option D:</strong> Share Lakehouse1 by using item permissions.</li></ul><p>Workspace roles give access to <em>all</em> the items in the workspace, which goes beyond least privilege. The right approach is to share only Lakehouse1 with User1 (item permissions) and, in the sharing dialog, select <strong>Read all Apache Spark</strong>, which lets the user read all the OneLake files and tables of the lakehouse.</p><ul><li><strong>Contributor, Viewer and Member</strong> are wrong: they are workspace roles and grant access to every item in the workspace (Contributor and Member also allow writing), not only to Lakehouse1.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sharing\">How lakehouse sharing works (permissions)</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "How lakehouse sharing works (permissions)",
+     "u": "https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sharing"
+    }
+   ]
+  },
+  "q202": {
+   "stem": "<p>You have a Microsoft Power BI semantic model that contains a single table named Orders. Orders contains the following columns: Product Name, Order Date and Quantity.</p><p>You have a Power BI report that contains a page named Inventory. Inventory contains a slicer for the Product Name column and a clustered column chart that shows Quantity by Order Date.</p><p>You need to ensure that users can select whether to display Quantity by Product Name or Quantity by Order Date in the chart. The solution must minimize development effort.</p><p>What should you create?</p>",
+   "options": [
+    "a measure",
+    "a dynamic format string",
+    "a field parameter",
+    "a calculation group"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option C:</strong> a field parameter.</li></ul><p>A <strong>field parameter</strong> lets users pick, with a slicer, which fields or measures a visual shows (here, the chart axis: Product Name or Order Date) without hand-writing DAX; it is created in Power BI Desktop with a single menu option.</p><ul><li><strong>A measure</strong> is wrong: it would return a value but cannot switch the axis field.</li><li><strong>A dynamic format string</strong> is wrong: it only changes how a measure is formatted.</li><li><strong>A calculation group</strong> is wrong: it changes calculations (for example time intelligence) applied to measures, not the field used on the axis, and needs more effort.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-field-parameters\">Use field parameters in Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Use field parameters in Power BI",
+     "u": "https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-field-parameters"
+    }
+   ]
+  },
+  "q203": {
+   "stem": "<p>You have three Fabric workspaces named Workspace1, Workspace2 and Workspace3. Workspace1 contains a report named Report1 and a semantic model named Model1 in Import mode.</p><p>You perform these actions: create a deployment pipeline named Pipeline1 with three stages (development, test and production); assign Workspace1 to development, Workspace2 to test and Workspace3 to production; and modify Model1.</p><p>You need to ensure that changes to Model1 are available in the production stage as quickly as possible. The solution must NOT affect the availability of Report1.</p><p>Which three actions should you perform in sequence? To answer, move the appropriate actions to the answer area and arrange them in the correct order.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Step 1:</strong> Run Pipeline1 from the development stage to the test stage.</li><li><strong>Step 2:</strong> Run Pipeline1 from the test stage to the production stage.</li><li><strong>Step 3:</strong> Refresh Model1 in the production stage.</li></ul><p>Changes are promoted stage by stage: first from development to test and then from test to production. Because Model1 is in Import mode, the deployment copies the model definition but not its data, so it must be refreshed in production for the data to be available. There is no need to refresh in development or test.</p><ul><li><strong>Refresh Model1 in the test stage</strong> and <strong>Refresh Model1 in the development stage</strong> are wrong: refreshing earlier stages does not bring the data to production and delays the result.</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks this order, but the options only cover full stage-to-stage deployments; in practice you can also deploy only Model1 selectively, so check against the documentation whether the refresh in production is enough to keep Report1 available.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Understand the deployment process</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Understand the deployment process",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    }
+   ]
+  },
+  "q204": {
+   "stem": "<p>You have a Fabric tenant that contains a semantic model named Model1. Model1 contains the following tables.</p><table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>Sales</td><td>Contains three columns named SalesDate, StoreID and ProductID</td></tr><tr><td>Product</td><td>Contains a column named ProductID</td></tr><tr><td>Store</td><td>Contains a column named StoreID</td></tr><tr><td>Campaign</td><td>Contains six columns named CampaignDate, CampaignID, ProductID, StoreID, Name and Description</td></tr></tbody></table><p>Product and Store can be part of multiple campaigns, and multiple active campaigns can exist simultaneously.</p><p>You plan to create a report named Report1 that will display sales made after a campaign for a given store.</p><p>You need to add a table to Model1 and configure cardinality for the table's relationships. What should you configure?</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Type of table:</strong> Bridging</li><li><strong>Cardinality:</strong> One-to-many</li></ul><p>Product and Store relate to each other across multiple campaigns (a many-to-many relationship), so you add a <strong>bridging table</strong> that resolves it. The bridging table connects to each dimension with <strong>one-to-many</strong> relationships (one Product or Store row can appear in many bridging-table rows), which avoids direct many-to-many relationships.</p><ul><li><strong>Dimension</strong> and <strong>Fact</strong> are wrong as table type: the new table neither describes an entity nor records measurable events; it resolves the relationship between two dimensions.</li><li><strong>Many-to-many</strong> and <strong>One-to-one</strong> are wrong as cardinality: the first is what you are trying to avoid and the second does not reflect that a product or store appears in several campaigns.</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks this answer, but the Campaign table has its own date, identifier and attributes, so whether it is a fact or dimension table could also be debated. Check it against the linked documentation.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many\">Many-to-many relationship guidance</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/guidance/star-schema\">Understand star schema and the importance for Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Many-to-many relationship guidance",
+     "u": "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many"
+    },
+    {
+     "t": "Understand star schema and the importance for Power BI",
+     "u": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+    }
+   ]
+  },
+  "q205": {
+   "stem": "<p>You have a Fabric workspace named Workspace1.</p><p>You have a GitHub repository named Repo1.</p><p>You need to connect Workspace1 to the main branch of Repo1.</p><p>Which information should you provide?</p>",
+   "options": [
+    "a shared access signature (SAS) token and the branch name of Repo1",
+    "a personal access token (PAT) and the URL of Repo1",
+    "an access key and the branch name of Repo1",
+    "an access key and the URL of Repo1"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option B:</strong> a personal access token (PAT) and the URL of Repo1.</li></ul><p>To connect a workspace to GitHub with Fabric Git integration you add a GitHub account with a <strong>personal access token (PAT)</strong> and provide the <strong>repository URL</strong>; you then pick the branch (main) and the folder.</p><ul><li><strong>A SAS token and an access key</strong> are wrong: they are Azure Storage mechanisms, not GitHub ones.</li><li><strong>The branch name</strong> alone does not identify the repository; the branch is selected after connecting with the URL.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/git-integration/git-get-started\">Get started with Git integration</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Get started with Git integration",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/git-integration/git-get-started"
+    }
+   ]
+  },
+  "q206": {
+   "stem": "<p>You have a Fabric tenant that contains a semantic model named Model1 with these tables: FactPackageEvents (two columns: PackageID and CarrierID), DimPackage (a column named PackageID) and DimCarrier (a column named CarrierID).</p><p>You are designing a Microsoft Power BI report named Report1 that will deliver near-real-time (NRT) shipping data about many shipped packages.</p><p>You need to ensure that each table is in the appropriate storage mode to support Report1. The solution must support near-real-time data delivery while maintaining high query performance.</p><p>Which storage mode should you select for each table? Each mode may be used once, more than once, or not at all.</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>FactPackageEvents:</strong> Hybrid</li><li><strong>DimPackage:</strong> DirectQuery</li><li><strong>DimCarrier:</strong> Dual</li></ul><p><strong>FactPackageEvents, Hybrid:</strong> a large fact table with near-real-time data combines imported partitions (fast historical data) with a DirectQuery partition for the most recent data. <strong>DimCarrier, Dual:</strong> a small dimension in Dual mode can answer from cache when queried with Import tables or from the source when queried with DirectQuery tables, avoiding limited relationships. <strong>DimPackage, DirectQuery:</strong> this is the dimension the study key keeps in DirectQuery.</p><ul><li><strong>Import</strong> for the fact table is wrong: it does not deliver near-real-time data.</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks DirectQuery for DimPackage, but the usual choice for a dimension related to a hybrid fact table is Dual (like DimCarrier), so DimPackage could also be argued as Dual. Check it against the linked documentation.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-storage-mode\">Storage mode in Power BI Desktop</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Storage mode in Power BI Desktop",
+     "u": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-storage-mode"
+    }
+   ]
+  },
+  "q207": {
+   "stem": "<p>You have a Fabric tenant that contains a semantic model named Model1. Model1 contains a fact table with millions of rows of shipment data.</p><p>You need to enable partitioning to improve the query performance and manageability of Model1.</p><p>Which two tools can you use to achieve the goal? Each correct answer presents a complete solution.</p><p>NOTE: Each correct answer is worth one point.</p>",
+   "options": [
+    "Tabular Editor",
+    "DAX Studio",
+    "Microsoft Power BI Desktop",
+    "the Microsoft Power BI service",
+    "Microsoft SQL Server Management Studio (SSMS)"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option A:</strong> Tabular Editor.</li><li><strong>Option E:</strong> Microsoft SQL Server Management Studio (SSMS).</li></ul><p>Custom partitions of a semantic model are created and managed through the XMLA endpoint with tools that support it: <strong>Tabular Editor</strong> and <strong>SSMS</strong> (which also lets you process individual partitions).</p><ul><li><strong>DAX Studio</strong> is wrong: it is for querying and performance analysis, not for creating partitions.</li><li><strong>Power BI Desktop</strong> and <strong>the Power BI service</strong> are wrong: they do not offer an interface to define custom partitions.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/enterprise/service-premium-connect-tools\">Semantic model connectivity with the XMLA endpoint</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Semantic model connectivity with the XMLA endpoint",
+     "u": "https://learn.microsoft.com/en-us/power-bi/enterprise/service-premium-connect-tools"
+    }
+   ]
+  },
+  "q208": {
+   "stem": "<p>You have a Fabric semantic model named Model1 that contains a table named Sales.</p><p>You need to enable incremental refresh for the Sales table.</p><p>What should you do first?</p>",
+   "options": [
+    "Move Model1 to Premium Per User (PPU) workspace.",
+    "Create parameters in Power Query.",
+    "From Settings, set Large semantic model storage format to On.",
+    "Automate the data preparation by using Dataflow Gen2."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option B:</strong> Create parameters in Power Query.</li></ul><p>The first step to set up incremental refresh is to create the <strong>RangeStart</strong> and <strong>RangeEnd</strong> date/time parameters in Power Query and use them to filter the table; the incremental refresh policy is defined afterwards.</p><ul><li><strong>Moving to PPU, enabling large storage or using Dataflow Gen2</strong> are wrong: they are not prerequisites for defining incremental refresh.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-configure\">Configure incremental refresh</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Configure incremental refresh",
+     "u": "https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-configure"
+    }
+   ]
+  },
+  "q209": {
+   "stem": "<p>You have an Azure SQL database named DB1 and a Fabric workspace named Workspace1. Workspace1 contains a lakehouse named LH1 and a Dataflow Gen2 named Dataflow1. Dataflow1 includes a query named Query1 that loads data from DB1, applies transformations to the data, and then filters the data.</p><p>You discover that Query1 loads all the data before applying the transformations.</p><p>You need to ensure that Query1 uses query folding. What should you do?</p>",
+   "options": [
+    "Remove unused columns from Query1.",
+    "Enable incremental refresh for Query1.",
+    "Replace DB1 with a Microsoft SQL Server database.",
+    "Move the filter steps before the transformation steps in Query1."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option D:</strong> Move the filter steps before the transformation steps in Query1.</li></ul><p>Query folding translates Power Query steps into a single query at the source, but it breaks as soon as a step the source cannot translate appears. Putting the filter steps <em>before</em> the transformations that prevent folding sends the filter to the source so only the needed data is loaded.</p><ul><li><strong>Removing columns</strong> reduces volume but does not restore folding. <strong>Incremental refresh</strong> and <strong>changing the source</strong> are wrong: DB1 already supports folding and the cause is the step order.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-query/query-folding-basics\">Query folding basics</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Query folding basics",
+     "u": "https://learn.microsoft.com/en-us/power-query/query-folding-basics"
+    }
+   ]
+  },
+  "q210": {
+   "stem": "<p>You have a Microsoft Entra tenant named contoso.com and an external user named user1@fabrikam.com.</p><p>You have a Fabric workspace named Workspace1 that contains a semantic model named Model1 and a report named Report1. user1@fabrikam.com has access to Report1.</p><p>You enable read-write on the XML for Analysis (XMLA) endpoint to provide advanced semantic modeling by using DAX Studio.</p><p>You need to provide user1@fabrikam.com with a URL that will enable connectivity by using DAX Studio. How should you complete the URL? <code>powerbi://api.powerbi.com/v1.0/[__]/[__]</code></p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>First segment:</strong> contoso.com</li><li><strong>Second segment:</strong> Workspace1</li></ul><p>The XMLA connection string of a workspace has the format <code>powerbi://api.powerbi.com/v1.0/&lt;tenant&gt;/&lt;workspace&gt;</code>. For a guest (B2B) user the tenant segment is the domain of the tenant that hosts the workspace (<strong>contoso.com</strong>), not that of their own email, and the second segment is the workspace name (<strong>Workspace1</strong>); the model is chosen afterwards as the initial catalog in DAX Studio.</p><ul><li><strong>fabrikam.com</strong> is wrong: it is the guest user's domain, not the tenant that hosts the workspace. <strong>myorg</strong> and <strong>common</strong> are wrong for an external user: <code>myorg</code> only works within the user's own tenant.</li><li><strong>Model1</strong> and <strong>Report1</strong> are wrong: the URL identifies the workspace, not the model or the report.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/enterprise/service-premium-connect-tools\">Semantic model connectivity with the XMLA endpoint</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Semantic model connectivity with the XMLA endpoint",
+     "u": "https://learn.microsoft.com/en-us/power-bi/enterprise/service-premium-connect-tools"
+    }
+   ]
+  },
+  "q211": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 and a warehouse named Warehouse1. Workspace1 contains a user named User1. User1 is assigned the Viewer role for Workspace1.</p><p>You need to ensure that User1 can share Warehouse1 with other users. The solution must follow the principle of least privilege.</p><p>Which role should you assign to User1?</p>",
+   "options": [
+    "Member for Workspace1",
+    "db_owner for Warehouse1",
+    "Contributor for Workspace1",
+    "Admin for Workspace1"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option A:</strong> Member for Workspace1.</li></ul><p>Sharing items with other users requires at least the <strong>Member</strong> workspace role (or Admin); it is the lowest-privilege role that allows it.</p><ul><li><strong>Contributor</strong> is wrong: it can write content but cannot share items. <strong>Admin</strong> is wrong: it grants more privilege than needed. <strong>db_owner</strong> is wrong: it is a database role inside the warehouse and does not control item sharing.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces\">Roles in workspaces in Microsoft Fabric</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Roles in workspaces in Microsoft Fabric",
+     "u": "https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces"
+    }
+   ]
+  },
+  "q212": {
+   "stem": "<p>You have a semantic model that contains the following tables: Sales, Product and Location.</p><p>You are creating a DAX measure named Measure1 that will calculate the percentage of all the sales of a selected product. Measure1 will use the following DAX formula.</p><pre><code>[Percentage of All Product Sales] =\nDIVIDE(\n    [Total Sales Amount],\n    CALCULATE(\n        [Total Sales Amount],\n        REMOVEFILTERS ( &#x27;Product&#x27; )\n    )\n)</code></pre><p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Statement 1:</strong> No</li><li><strong>Statement 2:</strong> Yes</li><li><strong>Statement 3:</strong> Yes</li></ul><p><strong>1 – No.</strong> <code>DIVIDE</code> handles division by zero and returns BLANK instead of an error.</p><p><strong>2 – Yes.</strong> The numerator is the selected product's sales and the denominator is the sales of all products; <code>DIVIDE</code> returns their quotient as a decimal value (which can be formatted as a percentage).</p><p><strong>3 – Yes.</strong> <code>REMOVEFILTERS('Product')</code> inside <code>CALCULATE</code> removes the filters on the Product table, so the denominator is evaluated with that modified filter context.</p><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/dax/removefilters-function-dax\">REMOVEFILTERS function (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/dax/divide-function-dax\">DIVIDE function (DAX)</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "REMOVEFILTERS function (DAX)",
+     "u": "https://learn.microsoft.com/en-us/dax/removefilters-function-dax"
+    },
+    {
+     "t": "DIVIDE function (DAX)",
+     "u": "https://learn.microsoft.com/en-us/dax/divide-function-dax"
+    }
+   ]
+  },
+  "q213": {
+   "stem": "<p>You have a Fabric workspace that contains a large warehouse.</p><p>You plan to create a lakehouse named Lakehouse1 for a sales dataset. Lakehouse1 will contain the following tables:</p><ul><li>Sales: contains sales transactions.</li><li>Stores: contains a unique list of store names and locations.</li><li>Loyalty: contains a list of customers and their preferred stores.</li><li>Customers: contains a unique list of customer names and addresses.</li><li>Products: contains a unique list of available products and their descriptions.</li></ul><p>You need to configure a star schema for Lakehouse1. Which table should you define as the fact table, and which type of relationship should you configure from the Sales table to the Customers table?</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Fact table:</strong> Sales</li><li><strong>Relationship:</strong> Many-to-one</li></ul><p>In a star schema the <strong>fact table</strong> is the one that records measurable transactions (Sales); the others (Stores, Customers, Products) are dimensions with unique lists. The relationship from the fact table to a dimension is <strong>many-to-one</strong>: many Sales rows (several purchases) point to a single customer.</p><ul><li><strong>One-to-many</strong> is the same relationship seen from the dimension (Customers → Sales), not from Sales to Customers. <strong>One-to-one</strong> is wrong: a customer can have many sales.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/guidance/star-schema\">Understand star schema and the importance for Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Understand star schema and the importance for Power BI",
+     "u": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+    }
+   ]
+  },
+  "q214": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 that contains a warehouse named Warehouse1 and a lakehouse named Lakehouse1. Warehouse1 contains a table named Table1. Lakehouse1 contains a delta table named Table2.</p><p>You need to persist data from Table1 to Table2. The solution must use a low-code interface.</p><p>What should you do?</p>",
+   "options": [
+    "Use a notebook to read the data from Table2 and insert the data into Table1.",
+    "Use a notebook to read the data from Table1 and insert the data into Table2.",
+    "Use a Dataflow Gen2 to read the data from Table1 and insert the data into Table2.",
+    "Use stored procedure to read the data from Table2 and insert the data into Table1."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option C:</strong> Use a Dataflow Gen2 to read the data from Table1 and insert the data into Table2.</li></ul><p>Dataflow Gen2 is Fabric's low-code tool (Power Query): it reads Table1 from the warehouse and loads it into Table2 in the lakehouse by using the lakehouse as the destination.</p><ul><li><strong>Options A and D</strong> are wrong: they reverse the direction (Table2 to Table1). <strong>Option B</strong> is wrong: a notebook requires code (PySpark/SQL) and is not low-code.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-overview\">Dataflow Gen2 overview</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Dataflow Gen2 overview",
+     "u": "https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-overview"
+    }
+   ]
+  },
+  "q215": {
+   "stem": "<p>You have a Microsoft Power BI semantic model that contains a table named Date. Date contains the following data.</p><table><thead><tr><th>Fiscal Month</th><th>Month Number</th></tr></thead><tbody><tr><td>Jan</td><td>1</td></tr><tr><td>Feb</td><td>2</td></tr><tr><td>Mar</td><td>3</td></tr><tr><td>Apr</td><td>4</td></tr><tr><td>May</td><td>5</td></tr><tr><td>Jun</td><td>6</td></tr><tr><td>Jul</td><td>7</td></tr><tr><td>Aug</td><td>8</td></tr><tr><td>Sep</td><td>9</td></tr><tr><td>Oct</td><td>10</td></tr><tr><td>Nov</td><td>11</td></tr><tr><td>Dec</td><td>12</td></tr></tbody></table><p>You need to ensure that the visuals that use the Date table appear in chronological order. The solution must minimize administrative effort.</p><p>What should you do?</p>",
+   "options": [
+    "Sort the Month Number column by Column.",
+    "Sort the visuals by using the Sort ascending option on Fiscal Month.",
+    "Sort the Fiscal Month column by Column.",
+    "Sort the Date table by Column."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option C:</strong> Sort the Fiscal Month column by Column.</li></ul><p>With <strong>Sort by column</strong> you configure once, in the model, that Fiscal Month is sorted by Month Number; every visual that uses Fiscal Month then shows chronological order without individual adjustments.</p><ul><li><strong>Sorting Month Number by column</strong> is wrong: Month Number is the sort column, Fiscal Month is the column being sorted. <strong>Sorting each visual</strong> repeats work in every report and would sort alphabetically. <strong>Sorting the Date table</strong> is not a Power BI option.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-sort-by-column\">Sort one column by another column in Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Sort one column by another column in Power BI",
+     "u": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-sort-by-column"
+    }
+   ]
+  },
+  "q216": {
+   "stem": "<p>You have a Fabric tenant that contains a semantic model named Model1. Model1 contains a fact table named FactSales. FactSales has a relationship to a dimension table named DimDate on a column named OrderDate.</p><p>To FactSales, you add a second relationship between FactSales and DimDate based on a column named ShippedDate.</p><p>You need to filter by using ShippedDate in a new report. The solution must NOT affect the function of existing reports.</p><p>Which two actions should you perform? Each correct answer presents part of the solution.</p><p>NOTE: Each correct answer is worth one point.</p>",
+   "options": [
+    "Enable the ShippedDate relationship.",
+    "Use a RELATEDTABLE DAX function.",
+    "Use a CROSSFILTER DAX function.",
+    "Use a USERELATIONSHIP DAX function.",
+    "Disable the ShippedDate relationship between the tables."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option D:</strong> Use a USERELATIONSHIP DAX function.</li><li><strong>Option E:</strong> Disable the ShippedDate relationship between the tables.</li></ul><p>Only one relationship between two tables can be active. If the ShippedDate relationship were left active, it would change the filtering of the existing reports (which use OrderDate). Keeping it <strong>inactive</strong> leaves current reports untouched, and in the new report it is activated only when needed with <strong>USERELATIONSHIP</strong> inside a measure.</p><ul><li><strong>Enabling the relationship</strong> is wrong: it would make it active and alter existing reports. <strong>RELATEDTABLE</strong> and <strong>CROSSFILTER</strong> are wrong: they do not activate an inactive relationship for a calculation (CROSSFILTER only changes filter direction).</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks D and E, but when you create a second relationship between the same tables Power BI makes it inactive by default, so \"disable\" could be redundant and the key could be debated. Check it against the linked documentation.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/dax/userelationship-function-dax\">USERELATIONSHIP function (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand\">Model relationships in Power BI Desktop</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "USERELATIONSHIP function (DAX)",
+     "u": "https://learn.microsoft.com/en-us/dax/userelationship-function-dax"
+    },
+    {
+     "t": "Model relationships in Power BI Desktop",
+     "u": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
+    }
+   ]
+  },
+  "q217": {
+   "stem": "<p>You have a Fabric tenant.</p><p>You need to create a semantic model that delivers fast report rendering, minimizes query latency, and maximizes flexibility for DAX calculations.</p><p>Which storage mode should you select?</p>",
+   "options": [
+    "Import",
+    "Direct Lake",
+    "Composite Mode",
+    "DirectQuery"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option B:</strong> Direct Lake.</li></ul><p><strong>Direct Lake</strong> reads Delta files in OneLake directly without copying data or translating queries to an external source: it offers performance close to Import, low latency and full DAX support.</p><ul><li><strong>Import</strong> is wrong: it copies data and needs refreshes. <strong>DirectQuery</strong> is wrong: higher latency and DAX limitations. <strong>Composite Mode</strong> is wrong: it mixes modes and adds complexity.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/direct-lake-overview\">Direct Lake overview</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Direct Lake overview",
+     "u": "https://learn.microsoft.com/en-us/fabric/fundamentals/direct-lake-overview"
+    }
+   ]
+  },
+  "q218": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 and a user named User1.</p><p>You need to ensure that User1 can perform the following tasks in Workspace1: create dashboards, publish semantic models, and create and publish reports. The solution must follow the principle of least privilege.</p><p>Which workspace role should you assign to User1?</p>",
+   "options": [
+    "Contributor",
+    "Member",
+    "Viewer",
+    "Admin"
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option A:</strong> Contributor.</li></ul><p>The <strong>Contributor</strong> role can create and edit content (reports, dashboards, semantic models) and publish it to the workspace; it is the lowest-privilege role that covers the requested tasks.</p><ul><li><strong>Viewer</strong> is wrong: read-only. <strong>Member</strong> and <strong>Admin</strong> are wrong: they grant more privileges than needed (sharing, managing access).</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces\">Roles in workspaces in Microsoft Fabric</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Roles in workspaces in Microsoft Fabric",
+     "u": "https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces"
+    }
+   ]
+  },
+  "q219": {
+   "stem": "<p>You are designing a Fabric semantic model named Model1 for a financial analytics workspace. Model1 includes a DAX measure named Measure1 that returns total sales.</p><p>You have a table named Currency that contains a column named Format. The Format column defines currency formatting strings for each record as follows: <code>$#,##0.00</code>, <code>€#,##0.00</code>, or <code>¥#,##0.00</code>.</p><p>You have a report that uses the Currency column to identify which symbol and format string to display. In the report, Measure1 must appear with two decimal places and the appropriate currency symbol based on the selected value in the Currency column.</p><p>You create the following DAX formula: <code>FORMAT = SELECTEDVALUE( 'Currency'[Format] )</code></p><p>You need to ensure that Measure1 appears correctly in visuals. The solution must minimize logic duplication.</p><p>What should you do?</p>",
+   "options": [
+    "Create a dynamic format string for Measure1 that references the FORMAT measure.",
+    "For Model1, set the data category of Measure1 to Country/Region.",
+    "For Model1, set the format type of Measure1 to Currency.",
+    "Copy the DAX expression from the Format column and paste the expression into the format string expression of Measure1."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option A:</strong> Create a dynamic format string for Measure1 that references the FORMAT measure.</li></ul><p>A <strong>dynamic format string</strong> lets a DAX expression determine Measure1's format; by making it return the FORMAT measure, the symbol and decimals change with the selected currency without duplicating logic.</p><ul><li><strong>Data category</strong> and <strong>Currency format type</strong> are wrong: they apply a fixed format that does not depend on the selection. <strong>Copying the expression</strong> is wrong: it duplicates logic and does not follow the user's selection.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dynamic-format-strings\">Dynamic format strings in Power BI</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Dynamic format strings in Power BI",
+     "u": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dynamic-format-strings"
+    }
+   ]
+  },
+  "q220": {
+   "stem": "<p>You have a data warehouse that contains the tables DimCustomer, DimEmployee, DimGeography and FactInternetSales. Each table has a primary key and the following relationships: CustomerKey = FactInternetSales.CustomerKey; EmployeeKey = FactInternetSales.EmployeeKey; Geography = DimCustomer.GeographyKey.</p><p>You have a T-SQL query named Query1 that contains the following statements.</p><pre><code>SELECT\n    c.CustomerKey,\n    c.FirstName,\n    c.LastName,\n    g.CountryRegionCode,\n    g.EnglishCountryRegionName AS Country,\n    e.EmployeeKey,\n    e.FirstName AS SalesPersonFirstName,\n    e.LastName AS SalesPersonLastName,\n    f.SalesOrderNumber,\n    f.OrderDate,\n    f.SalesAmount\nFROM FactInternetSales AS f\nINNER JOIN DimCustomer AS c\n    ON f.CustomerKey = c.CustomerKey\nINNER JOIN DimEmployee AS e\n    ON f.EmployeeKey = e.EmployeeKey\nINNER JOIN DimGeography AS g\n    ON c.GeographyKey = g.GeographyKey;</code></pre><p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Statement 1:</strong> Yes</li><li><strong>Statement 2:</strong> No</li><li><strong>Statement 3:</strong> No</li></ul><p><strong>1 – Yes.</strong> The query starts from the fact table: it returns one row per sale, so a customer with several orders appears several times.</p><p><strong>2 – No.</strong> With <code>INNER JOIN</code> only rows that match in both tables are returned; if the customer's GeographyKey does not exist in DimGeography, their sales disappear from the result (a <code>LEFT JOIN</code> would be needed).</p><p><strong>3 – No.</strong> Adding only a <code>GROUP BY</code> calculates nothing: the query has many non-aggregated columns in the <code>SELECT</code> and, without a function such as <code>SUM(f.SalesAmount)</code>, it would fail.</p><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql\">GROUP BY (Transact-SQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/sql/relational-databases/performance/joins\">Joins</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "GROUP BY (Transact-SQL)",
+     "u": "https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql"
+    },
+    {
+     "t": "Joins",
+     "u": "https://learn.microsoft.com/en-us/sql/relational-databases/performance/joins"
+    }
+   ]
+  },
+  "q221": {
+   "stem": "<p>You have a Fabric tenant that contains a lakehouse named LH1 and a notebook. You have a Parquet file named invoice1 that contains a column named InvoiceDateKey of the timestamp data type.</p><p>You need to create a PySpark script that will import invoice1 and create a table named fact_sale in LH1. A new column named Year must be added to fact_sale and the values in Year must use the InvoiceDateKey column.</p><pre><code>from pyspark.sql.functions import *\ntable_name = &#x27;Table/fact_sale&#x27;\ndf = spark.read.format(&quot;parquet&quot;).load(&#x27;Files/parquet/full/invoice1&#x27;)\ndf = df.[__](&#x27;Year&#x27;, year([__](&quot;InvoiceDateKey&quot;)))\ndf.write.mode(&quot;overwrite&quot;).format(&quot;delta&quot;).partitionBy(&quot;Year&quot;).save(table_name)</code></pre><p>How should you complete the script? To answer, select the appropriate options in the answer area.</p><p>NOTE: Each correct selection is worth one point.</p>",
+   "options": [],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>First blank:</strong> withColumn</li><li><strong>Second blank:</strong> col</li></ul><p><code>df.withColumn('Year', year(col(\"InvoiceDateKey\")))</code> adds the Year column by computing the year of the timestamp; <code>col(\"InvoiceDateKey\")</code> turns the column name into a Column object accepted by <code>year()</code>. The table is then saved in delta format partitioned by Year.</p><ul><li><strong>withColumnRenamed</strong> only renames an existing column; <strong>withMetadata</strong> changes a column's metadata; <strong>transform</strong> applies a function to a DataFrame. <strong>lit</strong> creates a constant (it does not read the column) and <strong>extract</strong> is not a PySpark function for this use.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/data-engineering/how-to-use-notebook\">How to use Microsoft Fabric notebooks</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "How to use Microsoft Fabric notebooks",
+     "u": "https://learn.microsoft.com/en-us/fabric/data-engineering/how-to-use-notebook"
+    }
+   ]
+  },
+  "q222": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 that contains the following items: a warehouse named Warehouse1, a semantic model named Model1 and an interactive report named Report1.</p><p>You need to allow a user named User1 to access a single table in Warehouse1. The solution must follow the principle of least privilege.</p><p>What should you do first?</p>",
+   "options": [
+    "Assign the Viewer role to User1 for Workspace1.",
+    "Share Warehouse1 with User1.",
+    "Assign object-level permissions to User1 for Warehouse1.",
+    "Assign the db_datareader role to User1 for Warehouse1."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option B:</strong> Share Warehouse1 with User1.</li></ul><p>To give access to a single item without adding the user to the workspace, the first step is to <strong>share Warehouse1</strong> with User1 (this grants connect access). You then grant specific permissions on the table (for example <code>GRANT SELECT</code>), which meets least privilege.</p><ul><li><strong>Workspace1 Viewer</strong> is wrong: it gives access to every item in the workspace. <strong>Object-level permissions</strong> and <strong>db_datareader</strong> are wrong as a first step: the user does not yet have access to the warehouse, and db_datareader would give read on all tables.</li></ul><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/data-warehouse/share-warehouse-manage-permissions\">Share your warehouse and manage permissions</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Share your warehouse and manage permissions",
+     "u": "https://learn.microsoft.com/en-us/fabric/data-warehouse/share-warehouse-manage-permissions"
+    }
+   ]
+  },
+  "q223": {
+   "stem": "<p>You have a Fabric workspace named Workspace1 that contains a semantic model and a report named Report1. Workspace1 is connected to a Git repository named Git1.</p><p>You have a deployment pipeline that contains three stages named Development, Test, and Production.</p><p>You need to publish Report1 to the Production stage.</p><p>What should you do?</p>",
+   "options": [
+    "Run a Git commit.",
+    "Run a full deployment.",
+    "Sync Workspace1 with Git1.",
+    "Run a backward deployment."
+   ],
+   "answer": {
+    "correct": "<p><strong>Correct answer:</strong></p><ul><li><strong>Option C:</strong> Sync Workspace1 with Git1.</li></ul><p>According to the study key, before deploying you must align the development workspace with the repository by syncing Workspace1 with Git1, so that the repository content is what gets promoted through the pipeline.</p><ul><li><strong>A Git commit</strong> only saves workspace changes to the repository. <strong>A backward deployment</strong> is wrong: it moves content from a later stage to an earlier one.</li></ul><blockquote>\n<p>⚠️ <strong>Heads-up:</strong> The study source marks C, but to publish Report1 to the production stage you would normally <strong>run a deployment</strong> from the pipeline (B), and syncing with Git does not deploy anything to Production. Check it against the linked documentation.</p>\n</blockquote><ul><li class=\"docref\"><strong>Official documentation:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Understand the deployment process</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/en-us/fabric/cicd/git-integration/git-get-started\">Get started with Git integration</a></li></ul>",
+    "incorrect": ""
+   },
+   "links": [
+    {
+     "t": "Understand the deployment process",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    },
+    {
+     "t": "Get started with Git integration",
+     "u": "https://learn.microsoft.com/en-us/fabric/cicd/git-integration/git-get-started"
+    }
+   ]
   }
  }
 }

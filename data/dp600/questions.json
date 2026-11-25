@@ -10005,13 +10005,21 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Create a deployment pipeline.</li><li><strong>Paso 2:</strong> Assign workspaces.</li><li><strong>Paso 3:</strong> Create a deployment rule.</li></ul><p>Un pipeline de implementación (deployment pipeline) es el recurso que modela el ciclo de vida: primero se crea el pipeline, después se asigna a cada etapa el área de trabajo correspondiente y, por último, se definen las reglas de implementación que cambian parámetros o orígenes de datos al pasar de una etapa a otra.</p><ul><li><strong>Move each workspace to Pro license mode</strong> es incorrecta: los pipelines de implementación funcionan con áreas de trabajo en PPU, Premium o capacidad de Fabric; no hace falta cambiarlas.</li><li><strong>Create the QA stage</strong> no forma parte de la clave del documento (ver el aviso).</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta secuencia, pero un pipeline nuevo trae por defecto tres etapas (Development, Test, Production) y aquí hay cuatro áreas de trabajo, por lo que una secuencia como crear el pipeline, crear la etapa QA y asignar las áreas de trabajo también podría defenderse. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a los pipelines de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules\">Crear reglas de implementación</a></li></ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Create a deployment pipeline.</li><li><strong>Paso 2:</strong> Create the QA stage.</li><li><strong>Paso 3:</strong> Assign workspaces.</li></ul><p>Los cuatro espacios de trabajo (Development, Test, QA y Production) ya están en modo de licencia Premium por usuario (PPU), lo que cumple los requisitos de capacidad para usar pipelines de implementación en Microsoft Fabric sin cambiar su licencia. La secuencia para configurar un pipeline de cuatro etapas es:</p><ul><li><strong>1. Create a deployment pipeline:</strong> primero se crea el pipeline de implementación desde el menú de pipelines de implementación.</li><li><strong>2. Create the QA stage:</strong> Fabric define por defecto solo tres etapas (Development, Test y Production). Como se necesitan cuatro entornos, se añade y nombra la etapa adicional QA antes de completar la creación (Fabric permite entre 2 y 10 etapas, y tanto su número como sus nombres son permanentes una vez creado el pipeline).</li><li><strong>3. Assign workspaces:</strong> con la estructura de cuatro etapas creada, se asigna cada área de trabajo a su etapa correspondiente para habilitar la promoción de contenido entre entornos.</li></ul><ul><li><strong>Move each workspace to Pro license mode</strong> es incorrecta: los pipelines de implementación exigen espacios de trabajo en capacidad de Fabric (SKU F), Power BI Premium (SKU P) o PPU. Los espacios de trabajo en modo Pro no los admiten, así que pasar de PPU a Pro impediría asignarlos a las etapas.</li><li><strong>Create a deployment rule</strong> es incorrecta: las reglas de implementación (reglas de parámetros o de orígenes de datos en modelos semánticos y flujos de datos) son opcionales y se definen después de asignar los espacios de trabajo a las etapas y de haber elementos implementados; no forman parte de los pasos iniciales para estructurar el pipeline.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a los pipelines de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/faq\">Herramientas de administración del ciclo de vida de Fabric: preguntas más frecuentes</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules\">Crear reglas de implementación</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
      "t": "Introducción a los pipelines de implementación",
      "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines"
+    },
+    {
+     "t": "Proceso de implementación en pipelines",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    },
+    {
+     "t": "Herramientas de administración del ciclo de vida de Fabric: preguntas más frecuentes",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/faq"
     },
     {
      "t": "Crear reglas de implementación",
@@ -10041,7 +10049,7 @@
       "Assign workspaces.",
       "Create the QA stage."
      ],
-     "c": 3
+     "c": 4
     },
     {
      "l": "Paso 3",
@@ -10053,7 +10061,7 @@
       "Assign workspaces.",
       "Create the QA stage."
      ],
-     "c": 2
+     "c": 3
     }
    ]
   },
@@ -10135,13 +10143,17 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/n203_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Run Pipeline1 from the development stage to the test stage.</li><li><strong>Paso 2:</strong> Run Pipeline1 from the test stage to the production stage.</li><li><strong>Paso 3:</strong> Refresh Model1 in the production stage.</li></ul><p>Los cambios se promueven etapa a etapa: primero de desarrollo a prueba y luego de prueba a producción. Como Model1 está en modo Import, la implementación copia la definición del modelo pero no sus datos, por lo que hay que actualizarlo en producción para que los datos queden disponibles. No hace falta actualizar en desarrollo ni en prueba.</p><ul><li><strong>Refresh Model1 in the test stage</strong> y <strong>Refresh Model1 in the development stage</strong> son incorrectas: actualizar etapas anteriores no hace que los datos lleguen a producción y retrasa el resultado.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca este orden, pero las opciones solo contemplan implementaciones completas de una etapa a otra; en la práctica también se puede implementar de forma selectiva solo Model1, de modo que contrasta con la documentación si la actualización en producción es suficiente para mantener Report1 disponible.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a></li></ul>",
+    "correct": "<img src=\"data/dp600/media/n203_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> Run Pipeline1 from the development stage to the test stage.</li><li><strong>Paso 2:</strong> Run Pipeline1 from the test stage to the production stage.</li><li><strong>Paso 3:</strong> Refresh Model1 in the production stage.</li></ul><p>En los pipelines de implementación de Microsoft Fabric, el despliegue entre etapas transfiere únicamente los metadatos y la definición de los elementos (esquema, medidas y relaciones de un modelo semántico en modo Import), sin copiar los datos almacenados en caché dentro del modelo. Para llevar los cambios de Model1 a producción lo antes posible y garantizar que Report1 siga operativo sin errores de consulta:</p><ul><li><strong>1. Run Pipeline1 from the development stage to the test stage:</strong> los pipelines siguen una promoción secuencial estricta entre etapas adyacentes; no se puede saltar de desarrollo a producción. El primer paso obligatorio es implementar los metadatos actualizados de Model1 (con implementación selectiva, para no alterar innecesariamente Report1) desde Workspace1 (desarrollo) a Workspace2 (prueba).</li><li><strong>2. Run Pipeline1 from the test stage to the production stage:</strong> como la promoción solo copia definiciones y metadatos y no exige que el modelo de la etapa de prueba tenga datos cargados, el siguiente paso inmediato para minimizar el tiempo de entrega es promover los cambios de Workspace2 (prueba) a Workspace3 (producción).</li><li><strong>3. Refresh Model1 in the production stage:</strong> al implementar por primera vez un modelo semántico en modo Import en una etapa de destino (o al aplicar cambios estructurales a sus metadatos), el modelo de Workspace3 queda sin datos hasta que se ejecuta una actualización en esa misma etapa. Actualizar Model1 directamente en producción carga los datos con la nueva estructura y garantiza que Report1 pueda consultar el modelo sin interrupciones ni errores visuales.</li></ul><ul><li><strong>Refresh Model1 in the development stage</strong> es incorrecta: solo recarga los datos en caché del entorno de desarrollo. Como los pipelines nunca transfieren datos entre etapas (solo metadatos), no aporta datos a producción y retrasa innecesariamente la puesta en marcha de los cambios.</li><li><strong>Refresh Model1 in the test stage</strong> es incorrecta: aunque permitiría validar datos en Workspace2, no es un requisito técnico para promover los metadatos a producción ni transfiere datos a ella. Incluir una actualización intermedia en pruebas incumpliría el requisito de hacer disponibles los cambios en producción lo antes posible y dejaría sin actualizar el modelo de producción.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a los pipelines de implementación</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
      "t": "Proceso de implementación en pipelines",
      "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+    },
+    {
+     "t": "Introducción a los pipelines de implementación",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines"
     }
    ],
    "fields": [
@@ -10197,7 +10209,7 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/n204_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Tipo de tabla:</strong> Bridging</li><li><strong>Cardinalidad:</strong> One-to-many</li></ul><p>Product y Store se relacionan entre sí en varias campañas (relación varios a varios), por lo que se añade una <strong>tabla puente</strong> que resuelve esa relación. La tabla puente se conecta a cada dimensión con relaciones <strong>uno a varios</strong> (una fila de Product o de Store puede aparecer en muchas filas de la tabla puente), lo que evita relaciones directas varios a varios.</p><ul><li><strong>Dimension</strong> y <strong>Fact</strong> son incorrectas como tipo de tabla: la nueva tabla no describe una entidad ni registra eventos medibles, sino que resuelve la relación entre dos dimensiones.</li><li><strong>Many-to-many</strong> y <strong>One-to-one</strong> son incorrectas como cardinalidad: la primera es lo que se intenta evitar y la segunda no refleja que un producto o una tienda aparece en varias campañas.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta respuesta, pero la tabla Campaign tiene fecha, identificador y atributos propios, por lo que también podría discutirse si es una tabla de hechos o de dimensión. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/relationships-many-to-many\">Pautas para relaciones varios a varios</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/star-schema\">Esquema de estrella e importancia para Power BI</a></li></ul>",
+    "correct": "<img src=\"data/dp600/media/n204_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Tipo de tabla:</strong> Bridging</li><li><strong>Cardinalidad:</strong> One-to-many</li></ul><p>En Model1, Product (con ProductID) y Store (con StoreID) pueden participar en varias campañas a la vez; la tabla Campaign contiene los atributos de campaña (CampaignDate, CampaignID, Name, Description) junto con ProductID y StoreID, y la tabla Sales registra únicamente SalesDate, StoreID y ProductID. Es el escenario clásico de relación de varios a varios, en el que además Power BI no permite crear relaciones directas basadas en claves compuestas de dos columnas (StoreID + ProductID) entre Campaign y Sales.</p><ul><li><strong>Tipo de tabla (Bridging):</strong> según las prácticas recomendadas de modelado dimensional en Fabric y Power BI, cuando hay relaciones de varios a varios entre entidades (tiendas, productos y campañas) se incorpora una tabla puente que almacena las combinaciones únicas de claves para intermediar y propagar los filtros de forma determinista hacia la tabla de hechos (Sales).</li><li><strong>Cardinalidad (One-to-many):</strong> el objetivo de una tabla puente es evitar las relaciones directas de varios a varios en el modelo semántico. Las tablas de dimensiones (con claves únicas en el lado uno) se conectan a la tabla puente (con múltiples apariciones de esas claves en el lado varios) mediante relaciones de uno a varios.</li></ul><ul><li><strong>Dimension</strong> es incorrecta: una tabla de dimensión almacena atributos descriptivos únicos de una entidad de negocio (como ya hacen Product y Store). Añadir otra dimensión estándar no resuelve la relación de varios a varios ni el vínculo por clave compuesta entre Campaign (ProductID, StoreID) y Sales (ProductID, StoreID) sin introducir ambigüedad en las rutas de filtrado.</li><li><strong>Fact</strong> es incorrecta: una tabla de hechos registra eventos, transacciones o métricas numéricas a lo largo del tiempo (función que ya cumple Sales). Agregar otra tabla de hechos no crea un puente relacional que permita que los filtros de Campaign y Store se propaguen correctamente hacia Sales.</li><li><strong>Many-to-many</strong> es incorrecta: aunque el escenario de negocio describe una relación lógica de varios a varios, la función de una tabla puente es precisamente descomponerla en dos relaciones limpias de uno a varios. Configurar Many-to-many mantendría valores duplicados en ambos extremos, degradando el rendimiento y generando ambigüedades en la evaluación de medidas DAX.</li><li><strong>One-to-one</strong> es incorrecta: exige que la columna clave sea estrictamente única en ambas tablas, y en la tabla puente un mismo producto, tienda o campaña aparece varias veces para representar todas sus combinaciones; sería técnicamente inválida y fallaría al validarse en el modelo.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/relationships-many-to-many\">Pautas para relaciones varios a varios</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/star-schema\">Esquema de estrella e importancia para Power BI</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-many-to-many-relationships\">Relaciones de varios a varios en Power BI Desktop</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/relationships-one-to-one\">Pautas para relaciones uno a uno</a></li></ul>",
     "incorrect": ""
    },
    "links": [
@@ -10208,6 +10220,14 @@
     {
      "t": "Esquema de estrella e importancia para Power BI",
      "u": "https://learn.microsoft.com/es-es/power-bi/guidance/star-schema"
+    },
+    {
+     "t": "Relaciones de varios a varios en Power BI Desktop",
+     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-many-to-many-relationships"
+    },
+    {
+     "t": "Pautas para relaciones uno a uno",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/relationships-one-to-one"
     }
    ],
    "fields": [
@@ -10278,13 +10298,25 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/n206_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>FactPackageEvents:</strong> Hybrid</li><li><strong>DimPackage:</strong> DirectQuery</li><li><strong>DimCarrier:</strong> Dual</li></ul><p><strong>FactPackageEvents, Hybrid:</strong> una tabla de hechos grande con datos casi en tiempo real combina particiones importadas (datos históricos, rápidos) con una partición DirectQuery para los datos más recientes. <strong>DimCarrier, Dual:</strong> una dimensión pequeña en modo Dual puede responder desde la caché cuando se consulta junto a tablas en Import o desde el origen cuando se consulta junto a tablas en DirectQuery, evitando relaciones limitadas. <strong>DimPackage, DirectQuery:</strong> es la dimensión que la clave del documento mantiene en DirectQuery.</p><ul><li><strong>Import</strong> para la tabla de hechos es incorrecta: no ofrece datos casi en tiempo real.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca DirectQuery para DimPackage, pero lo habitual para una dimensión relacionada con una tabla de hechos híbrida es Dual (como DimCarrier), de modo que DimPackage también podría defenderse como Dual. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-storage-mode\">Modos de almacenamiento en Power BI Desktop</a></li></ul>",
+    "correct": "<img src=\"data/dp600/media/n206_ans-v2.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuesta correcta:</strong></p><ul><li><strong>FactPackageEvents:</strong> DirectQuery</li><li><strong>DimPackage:</strong> DirectQuery</li><li><strong>DimCarrier:</strong> Dual</li></ul><p><strong>FactPackageEvents, DirectQuery:</strong> es la tabla de hechos que registra los eventos de envío. Para entregar datos casi en tiempo real sin depender de refrescos programados ni de la caché, cada consulta debe leer directamente del origen los eventos más recientes.</p><p><strong>DimPackage, DirectQuery:</strong> el enunciado habla de <em>muchos</em> paquetes enviados, por lo que es una dimensión grande, de alta cardinalidad, que crece al ritmo de los hechos. Importarla (o ponerla en Dual) consumiría mucha memoria, exigiría refrescos y podría quedar desfasada respecto a los nuevos paquetes. En DirectQuery comparte grupo de origen con la tabla de hechos y la unión se resuelve en el origen.</p><p><strong>DimCarrier, Dual:</strong> es una dimensión pequeña y de baja cardinalidad. En modo Dual responde desde la caché cuando se consulta sola (por ejemplo, segmentadores) y actúa como DirectQuery cuando se filtra la tabla de hechos, evitando relaciones limitadas.</p><ul><li><strong>Hybrid</strong> es incorrecto: las tablas híbridas se crean con actualización incremental y requieren una columna de fecha/hora para separar las particiones Import (histórico) de la partición DirectQuery (tiempo real). FactPackageEvents solo tiene PackageID y CarrierID, y las dimensiones no se configuran como híbridas.</li><li><strong>Import</strong> es incorrecto para FactPackageEvents y DimPackage: los datos quedarían en caché y dependerían de refrescos, incumpliendo el requisito de tiempo real; en DimCarrier, Import en lugar de Dual generaría relaciones limitadas con la tabla DirectQuery.</li><li><strong>Dual</strong> es incorrecto para FactPackageEvents y DimPackage: mantiene una copia en memoria que solo se actualiza al refrescar, por lo que no garantiza datos casi en tiempo real y sobrecarga la memoria con una dimensión grande.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-storage-mode\">Modos de almacenamiento en Power BI Desktop</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/composite-model-guidance\">Directrices para modelos compuestos en Power BI</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-composite-models\">Uso de modelos compuestos en Power BI Desktop</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/connect-data/incremental-refresh-overview\">Actualización incremental y datos en tiempo real para modelos semánticos</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
      "t": "Modos de almacenamiento en Power BI Desktop",
      "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-storage-mode"
+    },
+    {
+     "t": "Directrices para modelos compuestos en Power BI",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/composite-model-guidance"
+    },
+    {
+     "t": "Uso de modelos compuestos en Power BI Desktop",
+     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-composite-models"
+    },
+    {
+     "t": "Actualización incremental y datos en tiempo real para modelos semánticos",
+     "u": "https://learn.microsoft.com/es-es/power-bi/connect-data/incremental-refresh-overview"
     }
    ],
    "fields": [
@@ -10297,7 +10329,7 @@
       "Hybrid",
       "Import"
      ],
-     "c": 2
+     "c": 0
     },
     {
      "l": "DimPackage",
@@ -10676,17 +10708,29 @@
     4
    ],
    "answer": {
-    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción D:</strong> Usar la función DAX USERELATIONSHIP.</li><li><strong>Opción E:</strong> Deshabilitar la relación ShippedDate entre las tablas.</li></ul><p>Entre dos tablas solo puede haber una relación activa. Si la relación de ShippedDate se dejara activa, cambiaría el filtrado de los informes existentes (que usan OrderDate). Manteniéndola <strong>inactiva</strong> los informes actuales no cambian, y en el informe nuevo se activa solo cuando hace falta con <strong>USERELATIONSHIP</strong> dentro de una medida.</p><ul><li><strong>Habilitar la relación</strong> es incorrecta: la haría activa y alteraría los informes existentes. <strong>RELATEDTABLE</strong> y <strong>CROSSFILTER</strong> son incorrectas: no activan una relación inactiva para un cálculo (CROSSFILTER solo cambia la dirección del filtro).</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca D y E, pero al crear una segunda relación entre las mismas tablas Power BI la deja inactiva por defecto, por lo que «deshabilitar» podría ser redundante y la clave podría discutirse. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/userelationship-function-dax\">Función USERELATIONSHIP (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-relationships-understand\">Relaciones del modelo en Power BI Desktop</a></li></ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción D:</strong> Usar la función DAX USERELATIONSHIP.</li><li><strong>Opción E:</strong> Deshabilitar la relación ShippedDate entre las tablas.</li></ul><p><strong>Por qué es correcta:</strong> entre dos mismas tablas (FactSales y DimDate) solo puede haber una relación activa a la vez, porque el motor necesita una única ruta predeterminada e inequívoca para propagar los filtros. Como los informes existentes dependen de la relación activa sobre OrderDate y el enunciado exige no afectarlos:</p><p><strong>Deshabilitar la relación ShippedDate (opción E):</strong> la segunda relación entre FactSales[ShippedDate] y DimDate debe permanecer inactiva (línea discontinua en la vista de modelo). Así, todos los cálculos e informes existentes siguen usando OrderDate sin alteraciones.</p><p><strong>Usar USERELATIONSHIP (opción D):</strong> para filtrar las métricas del nuevo informe por la fecha de envío sin cambiar la relación predeterminada, se definen medidas con CALCULATE y USERELATIONSHIP(FactSales[ShippedDate], DimDate[Date]). La función activa la relación inactiva únicamente durante la evaluación de esa medida.</p><ul><li><strong>Opción A, habilitar la relación ShippedDate:</strong> no pueden existir dos relaciones activas a la vez entre FactSales y DimDate; habría que desactivar antes la de OrderDate, lo que alteraría los informes existentes e incumpliría el requisito.</li><li><strong>Opción B, RELATEDTABLE:</strong> devuelve las filas relacionadas siguiendo solo la relación activa en el contexto de fila actual; no puede activar ni redirigir el filtro hacia una relación inactiva.</li><li><strong>Opción C, CROSSFILTER:</strong> solo cambia temporalmente la dirección del filtro cruzado de una relación (o la desactiva con None); no sustituye la relación activa por otra entre columnas distintas. Para usar una relación inactiva la guía oficial indica USERELATIONSHIP.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/guidance/relationships-active-inactive\">Guía sobre relaciones activas e inactivas</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/userelationship-function-dax\">Función USERELATIONSHIP (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-create-and-manage-relationships\">Crear y administrar relaciones en Power BI Desktop</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/relatedtable-function-dax\">Función RELATEDTABLE (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/crossfilter-function-dax\">Función CROSSFILTER (DAX)</a></li></ul>",
     "incorrect": ""
    },
    "links": [
+    {
+     "t": "Guía sobre relaciones activas e inactivas",
+     "u": "https://learn.microsoft.com/es-es/power-bi/guidance/relationships-active-inactive"
+    },
     {
      "t": "Función USERELATIONSHIP (DAX)",
      "u": "https://learn.microsoft.com/es-es/dax/userelationship-function-dax"
     },
     {
-     "t": "Relaciones del modelo en Power BI Desktop",
-     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-relationships-understand"
+     "t": "Crear y administrar relaciones en Power BI Desktop",
+     "u": "https://learn.microsoft.com/es-es/power-bi/transform-model/desktop-create-and-manage-relationships"
+    },
+    {
+     "t": "Función RELATEDTABLE (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/relatedtable-function-dax"
+    },
+    {
+     "t": "Función CROSSFILTER (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/crossfilter-function-dax"
     }
    ]
   },
@@ -10927,20 +10971,28 @@
     "Ejecutar una implementación hacia atrás."
    ],
    "correct": [
-    2
+    1
    ],
    "answer": {
-    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción C:</strong> Sincronizar Workspace1 con Git1.</li></ul><p>Según la clave del documento, antes de implementar hay que dejar el área de trabajo de desarrollo alineada con el repositorio, sincronizando Workspace1 con Git1 para que el contenido del repositorio sea el que se promueva por el pipeline.</p><ul><li><strong>Commit de Git</strong> solo guarda cambios del área de trabajo en el repositorio. <strong>Implementación hacia atrás</strong> es incorrecta: mueve contenido de una etapa posterior a una anterior.</li></ul><blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca C, pero para publicar Report1 en la etapa de producción lo habitual es <strong>ejecutar una implementación</strong> desde el pipeline (B), y sincronizar con Git no despliega nada en Production. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">Proceso de implementación en pipelines</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started\">Introducción a la integración de Git</a></li></ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción B:</strong> Ejecutar una implementación completa.</li></ul><p><strong>Por qué es correcta:</strong> en el flujo ALM de Fabric, cuando el área de trabajo de desarrollo (Workspace1) está conectada a Git1 y vinculada a un pipeline de implementación con tres etapas (Development, Test y Production), los elementos se promueven a las etapas superiores ejecutando el pipeline.</p><p><strong>Resolución de dependencias:</strong> Workspace1 contiene Report1 y el modelo semántico del que depende. En un pipeline de implementación no se puede publicar un informe en una etapa de destino si su modelo semántico no existe previamente en ella.</p><p><strong>Promoción íntegra a producción:</strong> con una implementación completa (Development → Test → Production) Fabric despliega juntos el modelo semántico y Report1, y el informe llega a Production con todas sus dependencias intactas.</p><ul><li><strong>Opción A, commit de Git:</strong> guarda los cambios de Workspace1 en la rama vinculada de Git1, pero no publica ni despliega nada en las etapas Test o Production.</li><li><strong>Opción C, sincronizar Workspace1 con Git1:</strong> solo mantiene alineada el área de trabajo de desarrollo con su rama del repositorio; no transfiere elementos a las áreas de trabajo de Test o Production.</li><li><strong>Opción D, implementación hacia atrás:</strong> copia contenido en sentido contrario, desde una etapa posterior a una anterior vacía del pipeline; el objetivo es promover Report1 hacia adelante, hasta Production.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/deploy-content\">Implementar contenido mediante pipelines de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a los pipelines de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-integration-process\">Proceso de integración de Git en Fabric</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/git-integration/intro-to-git-integration\">Introducción a la integración de Git en Fabric</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
-     "t": "Proceso de implementación en pipelines",
-     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process"
+     "t": "Implementar contenido mediante pipelines de implementación",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/deploy-content"
     },
     {
-     "t": "Introducción a la integración de Git",
-     "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-get-started"
+     "t": "Introducción a los pipelines de implementación",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines"
+    },
+    {
+     "t": "Proceso de integración de Git en Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/git-integration-process"
+    },
+    {
+     "t": "Introducción a la integración de Git en Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/cicd/git-integration/intro-to-git-integration"
     }
    ]
   }

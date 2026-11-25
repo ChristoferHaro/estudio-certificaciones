@@ -3394,25 +3394,29 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/p211_0079.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuestas correctas:</strong></p>\n<ul>\n<li><strong>Canalización de orquestación:</strong> Una programación (A schedule)</li>\n<li><strong>Capa Bronze:</strong> Una actividad Copy de la canalización</li>\n<li><strong>Capa Silver:</strong> Una actividad Dataflow de la canalización</li>\n<li><strong>Capa Gold:</strong> Una actividad Stored procedure de la canalización</li>\n</ul>\n<p><strong>Análisis de cada selección:</strong></p>\n<p><strong>Canalización de orquestación: una programación.</strong> Las capas deben rellenarse a diario y en orden. La canalización de orquestación única que encadena las tres etapas se inicia mediante una programación (un desencadenador diario sobre la canalización), y sus dependencias entre actividades (On success) imponen el orden Bronze, luego Silver y luego Gold. Una actividad Copy, Dataflow, Stored procedure o una definición de trabajo de Spark no pueden iniciar la ejecución de forma recurrente, y una actividad Invoke pipeline está dentro de una canalización, no es lo que la inicia a diario.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-runs\">Concepto: ejecuciones de canalizaciones de datos - Microsoft Fabric</a></li>\n</ul>\n<p><strong>Capa Bronze: una actividad Copy de la canalización.</strong> Bronze se rellena con los elementos \"Pipelines with Copy activities\", así que en la canalización de orquestación el paso Bronze es la actividad Copy que realiza la ingesta. Usar Copy directamente es la opción menos compleja.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/copy-data-activity\">Cómo copiar datos con la actividad Copy - Microsoft Fabric</a></li>\n</ul>\n<p><strong>Capa Silver: una actividad Dataflow de la canalización.</strong> Silver se construye con dataflows, y la actividad Dataflow ejecuta un Dataflow Gen2 como un paso de la canalización, lo que le permite esperar a que Bronze termine correctamente antes de empezar. Una definición de trabajo de Spark es incorrecta porque Silver no se construye con Spark.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/dataflow-activity\">Actividad Dataflow - Microsoft Fabric</a></li>\n</ul>\n<p><strong>Capa Gold: una actividad Stored procedure de la canalización.</strong> Gold vive en el warehouse y se rellena con procedimientos almacenados, que la actividad Stored procedure ejecuta desde la canalización cuando Silver ha terminado. Una actividad Copy no ejecutaría la lógica T-SQL de los procedimientos.</p>\n<blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta respuesta, pero el cuadro de la <strong>capa Bronze</strong> es discutible: la tabla describe Bronze como rellenada por \"Pipelines with Copy activities\" ya existentes, y para ejecutar canalizaciones existentes desde una canalización de orquestación lo habitual sería una actividad Invoke pipeline y no una actividad Copy. Las selecciones de la programación, la actividad Dataflow y la actividad Stored procedure no están en duda. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/stored-procedure-activity\">Actividad Stored procedure - Microsoft Fabric</a></li>\n</ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Canalización de orquestación:</strong> A schedule</li><li><strong>Capa Bronze:</strong> An Invoke pipeline activity</li><li><strong>Capa Silver:</strong> A pipeline Dataflow activity</li><li><strong>Capa Gold:</strong> A pipeline Stored procedure activity</li></ul><p><img src=\"data/dp600/media/n070_ans-v2.webp\" loading=\"lazy\" alt=\"\"></p><p><strong>Por qué es correcta:</strong> para orquestar una arquitectura medallón ejecutando elementos ya creados (canalizaciones hijas, dataflows y procedimientos almacenados) a diario y en orden estricto, con el mínimo esfuerzo y complejidad, se usa una canalización maestra de orquestación con dependencias On success entre actividades:</p><p><strong>Orquestación, una programación (schedule):</strong> las capas deben rellenarse a diario, así que se programa la canalización de orquestación para iniciar todo el flujo a una hora fija, sin programar cada elemento por separado.</p><p><strong>Bronze, actividad Invoke pipeline:</strong> los elementos ya creados para Bronze son canalizaciones con actividades Copy. La actividad Invoke pipeline permite que la canalización maestra ejecute esas canalizaciones existentes y espere a que terminen antes de pasar a la siguiente capa.</p><p><strong>Silver, actividad Dataflow:</strong> la capa Silver se rellena con dataflows. Encadenada tras el éxito de Bronze, la actividad Dataflow los ejecuta solo cuando los datos crudos ya están disponibles.</p><p><strong>Gold, actividad Stored procedure:</strong> la capa Gold del warehouse se construye con procedimientos almacenados. Encadenada tras Silver, la actividad Stored procedure ejecuta el T-SQL en el orden requerido.</p><ul><li><strong>A pipeline Copy activity</strong> es incorrecta para Bronze: ya existen canalizaciones con actividades Copy; añadir Copy directamente duplicaría lógica en lugar de reutilizarla con Invoke pipeline, aumentando esfuerzo y mantenimiento.</li><li><strong>A Spark job definition</strong> es incorrecta: ninguna capa usa Apache Spark (se usan canalizaciones de copia, dataflows y procedimientos almacenados), así que añadiría código innecesario.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/invoke-pipeline-activity\">Actividad Invoke pipeline en Data Factory de Microsoft Fabric</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/dataflow-activity\">Actividad Dataflow en Data Factory de Microsoft Fabric</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/stored-procedure-activity\">Actividad Stored procedure en Data Factory de Microsoft Fabric</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-runs\">Ejecuciones de canalizaciones de datos (programación)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-engineering/create-spark-job-definition\">Crear una definición de trabajo de Apache Spark</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
-     "t": "Concepto: ejecuciones de canalizaciones de datos - Microsoft Fabric",
-     "u": "https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-runs"
+     "t": "Actividad Invoke pipeline en Data Factory de Microsoft Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-factory/invoke-pipeline-activity"
     },
     {
-     "t": "Cómo copiar datos con la actividad Copy - Microsoft Fabric",
-     "u": "https://learn.microsoft.com/es-es/fabric/data-factory/copy-data-activity"
-    },
-    {
-     "t": "Actividad Dataflow - Microsoft Fabric",
+     "t": "Actividad Dataflow en Data Factory de Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/dataflow-activity"
     },
     {
-     "t": "Actividad Stored procedure - Microsoft Fabric",
+     "t": "Actividad Stored procedure en Data Factory de Microsoft Fabric",
      "u": "https://learn.microsoft.com/es-es/fabric/data-factory/stored-procedure-activity"
+    },
+    {
+     "t": "Ejecuciones de canalizaciones de datos (programación)",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-factory/pipeline-runs"
+    },
+    {
+     "t": "Crear una definición de trabajo de Apache Spark",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-engineering/create-spark-job-definition"
     }
    ],
    "fields": [
@@ -3440,7 +3444,7 @@
       "A Spark job definition",
       "An Invoke pipeline activity"
      ],
-     "c": 0
+     "c": 5
     },
     {
      "l": "Capa Silver",
@@ -4693,11 +4697,11 @@
     "cuando la función FILTER hace referencia a una columna de una sola tabla que usa el modo Import"
    ],
    "correct": [
-    0
+    3
    ],
    "answer": {
-    "correct": "<p><strong>Respuesta correcta:</strong></p>\n<ul>\n<li><strong>Opción A:</strong> cuando la función FILTER usa una función CALCULATE anidada</li>\n</ul>\n<p><strong>Por qué es correcta:</strong> KEEPFILTERS cambia cómo se combina un argumento de filtro con el contexto de filtro existente de CALCULATE: en lugar de reemplazar los filtros ya aplicados a una columna, se intersecta con ellos. Cuando la expresión de tabla pasada a CALCULATE se construye con FILTER sobre un iterador que contiene un CALCULATE anidado, se produce una transición de contexto por cada fila, lo cual es costoso. Usar KEEPFILTERS mantiene los filtros existentes y evita el trabajo extra de sobrescribir y reevaluar el contexto de filtro, que es el caso de uso en el que reemplazar FILTER por KEEPFILTERS puede reducir el tiempo de ejecución. En las otras opciones (una medida, columnas de varias tablas, una sola tabla en Import) FILTER se comporta como un simple filtro de filas, y reemplazarlo por KEEPFILTERS no aporta una ventaja de rendimiento.</p>\n<blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta respuesta, pero la guía de rendimiento de Microsoft es reemplazar FILTER sobre una columna por una expresión de filtro booleana, y KEEPFILTERS es sobre todo una herramienta semántica (intersecta con el contexto de filtro existente en lugar de sobrescribirlo) que la documentación no vincula con CALCULATE anidado. Las opciones A, C y D pueden defenderse según el caso que se plantee, y ninguna está respaldada explícitamente por la documentación. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/keepfilters-function-dax\">Función KEEPFILTERS (DAX)</a> y <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument\">Evitar usar FILTER como argumento de filtro</a></li>\n</ul>",
-    "incorrect": "<p><strong>Opciones incorrectas:</strong></p>\n<p><strong>B. cuando la función FILTER hace referencia a una medida</strong></p>\n<p><strong>Por qué es incorrecta:</strong> Si la condición de FILTER hace referencia a una medida, la medida debe evaluarse para cada fila de la tabla iterada (con transición de contexto). La referencia a la medida se evalúa por fila independientemente de KEEPFILTERS, y una expresión de filtro booleana tampoco puede referenciar una medida directamente, así que KEEPFILTERS no elimina ese coste.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument\">Evitar usar FILTER como argumento de filtro</a></li>\n</ul>\n<p><strong>C. cuando la función FILTER hace referencia a columnas de varias tablas</strong></p>\n<p><strong>Por qué es incorrecta:</strong> FILTER es la forma adecuada de aplicar una condición que involucra columnas de varias tablas, ya que las expresiones de filtro booleanas solo pueden referenciar columnas de una única tabla. KEEPFILTERS controla cómo se fusiona el filtro resultante con el contexto existente, pero no hace que un filtro multitabla sea más barato de calcular.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument\">Evitar usar FILTER como argumento de filtro</a></li>\n</ul>\n<p><strong>D. cuando la función FILTER hace referencia a una columna de una sola tabla que usa el modo Import</strong></p>\n<p><strong>Por qué es incorrecta:</strong> Este es el caso en el que la mejor optimización es reemplazar FILTER por una expresión de filtro booleana simple (por ejemplo <code>Sales[Color] = \"Red\"</code>), que el motor optimiza de forma nativa, y no por KEEPFILTERS. El modo de almacenamiento (Import) no convierte a KEEPFILTERS en una característica de rendimiento.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument\">Evitar usar FILTER como argumento de filtro</a></li>\n</ul>"
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Opción D:</strong> cuando la función FILTER hace referencia a una columna de una sola tabla que usa el modo Import.</li></ul><p><strong>Por qué es correcta:</strong> un error habitual de rendimiento en DAX es iterar una tabla completa con FILTER (por ejemplo, CALCULATE([Ventas], FILTER(Tabla, Tabla[Columna] = \"Valor\"))) en lugar de usar un predicado booleano con KEEPFILTERS (CALCULATE([Ventas], KEEPFILTERS(Tabla[Columna] = \"Valor\"))).</p><p><strong>Ejecución en el motor de almacenamiento:</strong> cuando la condición solo referencia una columna de una única tabla en modo Import, sustituir FILTER por KEEPFILTERS con una expresión booleana evita iterar fila por fila y materializar una tabla intermedia en el motor de fórmulas. Las tablas Import son almacenes de columnas en memoria optimizados para filtrar así, por lo que el tiempo de ejecución se reduce.</p><p><strong>Semántica de intersección:</strong> a diferencia de un filtro booleano normal dentro de CALCULATE (que sobrescribe los filtros previos sobre esa columna), KEEPFILTERS intersecta el nuevo filtro con el contexto existente, reproduciendo el comportamiento de FILTER sin penalizar el rendimiento.</p><ul><li><strong>Opción A, CALCULATE anidado:</strong> un predicado booleano no admite funciones CALCULATE anidadas; en ese caso hace falta un iterador como FILTER (o precalcular con VAR), por lo que KEEPFILTERS no puede sustituirlo directamente.</li><li><strong>Opción B, referencia a una medida:</strong> una expresión booleana en CALCULATE o KEEPFILTERS no puede referenciar una medida; si el criterio depende de una medida, es obligatorio usar FILTER.</li><li><strong>Opción C, columnas de varias tablas:</strong> las expresiones booleanas no pueden referenciar columnas de varias tablas en una misma condición; en ese caso hay que mantener FILTER.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/keepfilters-function-dax\">Función KEEPFILTERS (DAX)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument\">Evitar el uso de FILTER como argumento de filtro</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/dax/calculate-function-dax\">Función CALCULATE (DAX)</a></li></ul>",
+    "incorrect": ""
    },
    "links": [
     {
@@ -4705,20 +4709,12 @@
      "u": "https://learn.microsoft.com/es-es/dax/keepfilters-function-dax"
     },
     {
-     "t": "Evitar usar FILTER como argumento de filtro",
+     "t": "Evitar el uso de FILTER como argumento de filtro",
      "u": "https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument"
     },
     {
-     "t": "Evitar usar FILTER como argumento de filtro",
-     "u": "https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument"
-    },
-    {
-     "t": "Evitar usar FILTER como argumento de filtro",
-     "u": "https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument"
-    },
-    {
-     "t": "Evitar usar FILTER como argumento de filtro",
-     "u": "https://learn.microsoft.com/es-es/dax/best-practices/dax-avoid-avoid-filter-as-filter-argument"
+     "t": "Función CALCULATE (DAX)",
+     "u": "https://learn.microsoft.com/es-es/dax/calculate-function-dax"
     }
    ]
   },
@@ -8037,21 +8033,21 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/p390_0183.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuestas correctas:</strong></p>\n<ul>\n<li><strong>Primer desplegable (unión con SalesLT.SalesRegion):</strong> left outer join</li>\n<li><strong>Segundo desplegable (unión con SalesLT.Address):</strong> A.AddressID = CA.AddressID</li>\n</ul>\n<p><strong>Primer desplegable - left outer join.</strong> La vista debe contener <strong>una fila por cada CustomerID distinto</strong>. Customer es la tabla que dirige la consulta (5 millones de filas) y cada cliente tiene una única SalesRegion, por lo que la unión con SalesRegion no puede multiplicar filas. Un left outer join conserva todos los clientes aunque faltara la fila de SalesRegion correspondiente (las claves externas de un warehouse de Fabric se declaran pero no se aplican, así que el motor no garantiza la integridad referencial), lo que protege el requisito de una fila por cliente. Es la opción aceptada para el primer desplegable. Un <strong>full outer join</strong> es incorrecto porque además traería filas de SalesRegion sin cliente (regiones sin clientes), generando filas con CustomerID NULL y rompiendo la regla de una fila por cliente, y es la unión más costosa. Un <strong>inner join</strong> descartaría silenciosamente los clientes sin región coincidente, por lo que no es la respuesta esperada para esta pregunta.</p>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/training/modules/query-multiple-tables-with-joins/2-join-concepts\">Conceptos y sintaxis de las combinaciones (joins)</a> y <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/sql/t-sql/queries/from-transact-sql\">Cláusula FROM más JOIN, APPLY, PIVOT (Transact-SQL)</a></li>\n</ul>\n<p><strong>Segundo desplegable - A.AddressID = CA.AddressID.</strong> CustomerAddress es la tabla puente (PK CustomerID + AddressID, claves externas a Customer y Address), por lo que Address debe unirse mediante el <strong>AddressID</strong> que aporta CustomerAddress. <code>C.AddressID = CA.AddressID</code> es incorrecta porque Customer no tiene columna AddressID según la descripción de las tablas (su única clave externa es SalesRegionID). <code>C.CustomerID = A.CustomerID</code> es incorrecta porque Address solo tiene AddressID como clave principal y ninguna columna CustomerID. Junto con <code>CA.AddressType = 'Main Office'</code>, la unión con CustomerAddress se restringe a una dirección por cliente, lo que mantiene el resultado en una fila por CustomerID.</p>\n<blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta respuesta, pero para el primer desplegable también podría defenderse un inner join: todas las claves externas son no nulas y cada cliente tiene exactamente una región, así que un inner join devolvería las mismas filas y suele ser más barato, lo que encaja con \"minimizar el tiempo de procesamiento de consultas y los recursos\". Un left outer join solo es más seguro si puede haber claves huérfanas, algo que el warehouse de Fabric no impide. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/training/modules/query-multiple-tables-with-joins/3a-inner-joins\">Usar combinaciones internas (inner joins)</a></li>\n</ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Unión con SalesLT.SalesRegion:</strong> inner join</li><li><strong>Condición de la unión con SalesLT.Address:</strong> A.AddressID = CA.AddressID</li></ul><p><strong>Por qué es correcta:</strong> la vista desnormalizada debe devolver exactamente una fila por CustomerID, minimizando el tiempo de procesamiento y los recursos. La sentencia completa es:</p><p><pre><code>CREATE VIEW DimCustomer AS\nSELECT\n    C.CustomerID,\n    C.CustomerName,\n    C.CompanyName,\n    SR.SalesRegion,\n    A.City,\n    A.StateProvince,\n    A.CountryRegion,\n    A.PostalCode\nFROM SalesLT.Customer C\nINNER JOIN SalesLT.SalesRegion SR ON C.SalesRegionID = SR.SalesRegionID\nINNER JOIN [SalesLT].[CustomerAddress] CA ON CA.customerid = C.customerid\nINNER JOIN [SalesLT].[Address] A ON A.AddressID = CA.AddressID\nWHERE CA.AddressType = 'Main Office'</code></pre></p><p><strong>Primer desplegable, inner join:</strong> el enunciado garantiza que cada cliente tiene un único SalesRegion y que todos los valores de clave externa son no nulos. Con esa correspondencia obligatoria, inner join devuelve las mismas filas que un left outer join, pero permite al optimizador reordenar las uniones y filtrar con más eficiencia, sin el coste de preservar filas sin coincidencia.</p><p><strong>Segundo desplegable, A.AddressID = CA.AddressID:</strong> CustomerAddress (CA) es la tabla intermedia, con clave primaria compuesta (CustomerID, AddressID) y claves externas hacia Customer y Address. La primera unión conecta Customer con CustomerAddress (CA.customerid = C.customerid), así que la segunda debe enlazar CustomerAddress con Address por su clave primaria AddressID.</p><ul><li><strong>left outer join:</strong> funcionalmente devolvería las mismas filas porque las claves externas no son nulas, pero obliga a conservar todas las filas del lado izquierdo (Customer, 5 millones) y limita la reordenación del plan, con más tiempo y recursos.</li><li><strong>full outer join:</strong> conserva también las regiones sin clientes, generando filas con CustomerID NULL (incumple una fila por cliente), y es la unión más costosa.</li><li><strong>C.AddressID = CA.AddressID:</strong> Customer no tiene columna AddressID (solo CustomerID y la clave externa SalesRegionID), lo que daría un error de columna no válida.</li><li><strong>C.CustomerID = A.CustomerID:</strong> Address no tiene columna CustomerID; la relación con el cliente se resuelve a través de CustomerAddress.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/sql/t-sql/queries/from-transact-sql\">Cláusula FROM más JOIN, APPLY, PIVOT (Transact-SQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-warehouse/guidelines-warehouse-performance\">Instrucciones de rendimiento del almacenamiento de datos de Fabric</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/data-warehouse/create-views\">Vistas en Microsoft Fabric Data Warehouse</a></li></ul>",
     "incorrect": ""
    },
    "links": [
-    {
-     "t": "Conceptos y sintaxis de las combinaciones (joins)",
-     "u": "https://learn.microsoft.com/es-es/training/modules/query-multiple-tables-with-joins/2-join-concepts"
-    },
     {
      "t": "Cláusula FROM más JOIN, APPLY, PIVOT (Transact-SQL)",
      "u": "https://learn.microsoft.com/es-es/sql/t-sql/queries/from-transact-sql"
     },
     {
-     "t": "Usar combinaciones internas (inner joins)",
-     "u": "https://learn.microsoft.com/es-es/training/modules/query-multiple-tables-with-joins/3a-inner-joins"
+     "t": "Instrucciones de rendimiento del almacenamiento de datos de Fabric",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/guidelines-warehouse-performance"
+    },
+    {
+     "t": "Vistas en Microsoft Fabric Data Warehouse",
+     "u": "https://learn.microsoft.com/es-es/fabric/data-warehouse/create-views"
     }
    ],
    "fields": [
@@ -8063,7 +8059,7 @@
       "inner join",
       "left outer join"
      ],
-     "c": 2
+     "c": 1
     },
     {
      "l": "Condición de la unión con SalesLT.Address",
@@ -8353,7 +8349,7 @@
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Crear Enterprise [Test] y asignarla a la fase Test:</strong> botón Deploy de la fase Development</li><li><strong>Configurar la regla que cambia Date1 en Test:</strong> icono Deployment rules de la fase Test</li></ul><p><strong>Por qué son correctas:</strong> en las canalizaciones de implementación de Fabric, el flujo para crear el entorno de pruebas con la nomenclatura estándar y parametrizar el modelo semántico Model1 consta de dos pasos:</p><p><strong>Botón Deploy en Development:</strong> cuando la fase de destino (Test) aún no tiene un área de trabajo, desplegar desde el área de origen (Enterprise) hace que Fabric cree una nueva área con el patrón &lt;NombreOrigen&gt; [&lt;FaseDestino&gt;], es decir, Enterprise [Test], la asigne a la fase Test y copie en ella los elementos (Model1). Además, Model1 debe existir en la fase de destino antes de poder definir reglas sobre él.</p><p><strong>Icono Deployment rules en la fase Test:</strong> las reglas se configuran siempre sobre la fase de destino. Al pulsar el icono, se abre el panel donde seleccionas Model1 y añades una regla de parámetro que cambia automáticamente el valor del parámetro de Power Query Date1 cada vez que se despliegan cambios de Development a Test.</p><ul><li><strong>Icono verde / Assign a workspace en Test:</strong> solo vincula un área de trabajo que ya existe; el enunciado exige crear Enterprise [Test], y esa creación y asignación se hace con Deploy.</li><li><strong>Lápiz de Development o de Test:</strong> solo edita el nombre y la descripción de la fase. Las reglas no pueden crearse en la primera fase (Development), porque solo se aplican al recibir cambios en fases posteriores.</li><li><strong>Settings y Manage Access:</strong> configuran la canalización en general y los permisos de acceso; no crean áreas de trabajo ni definen reglas de parámetros.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/deploy-content\">Implementar contenido mediante canalizaciones de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules\">Crear reglas de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a las canalizaciones de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">El proceso de las canalizaciones de implementación</a></li></ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>① Crear Enterprise [Test] y asignarla a la fase Test:</strong> botón Deploy de la fase Development</li><li><strong>② Configurar la regla que cambia Date1 en Test:</strong> icono Deployment rules de la fase Test</li></ul><p><img src=\"data/dp600/media/n169_ans-v2.webp\" loading=\"lazy\" alt=\"\"></p><p><strong>Por qué son correctas:</strong> en las canalizaciones de implementación de Fabric, el flujo para crear el entorno de pruebas con la nomenclatura estándar y parametrizar el modelo semántico Model1 consta de dos pasos:</p><p><strong>Botón Deploy en Development:</strong> cuando la fase de destino (Test) aún no tiene un área de trabajo, desplegar desde el área de origen (Enterprise) hace que Fabric cree una nueva área con el patrón &lt;NombreOrigen&gt; [&lt;FaseDestino&gt;], es decir, Enterprise [Test], la asigne a la fase Test y copie en ella los elementos (Model1). Además, Model1 debe existir en la fase de destino antes de poder definir reglas sobre él.</p><p><strong>Icono Deployment rules en la fase Test:</strong> las reglas se configuran siempre sobre la fase de destino. Al pulsar el icono, se abre el panel donde seleccionas Model1 y añades una regla de parámetro que cambia automáticamente el valor del parámetro de Power Query Date1 cada vez que se despliegan cambios de Development a Test.</p><ul><li><strong>Icono verde / Assign a workspace en Test:</strong> solo vincula un área de trabajo que ya existe; el enunciado exige crear Enterprise [Test], y esa creación y asignación se hace con Deploy.</li><li><strong>Lápiz de Development o de Test:</strong> solo edita el nombre y la descripción de la fase. Las reglas no pueden crearse en la primera fase (Development), porque solo se aplican al recibir cambios en fases posteriores.</li><li><strong>Settings y Manage Access:</strong> configuran la canalización en general y los permisos de acceso; no crean áreas de trabajo ni definen reglas de parámetros.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/deploy-content\">Implementar contenido mediante canalizaciones de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/create-rules\">Crear reglas de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines\">Introducción a las canalizaciones de implementación</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/fabric/cicd/deployment-pipelines/understand-the-deployment-process\">El proceso de las canalizaciones de implementación</a></li></ul>",
     "incorrect": ""
    },
    "links": [
@@ -9330,29 +9326,41 @@
    "conflict": null,
    "type": "visual",
    "topic": "Tiempo real y KQL",
-   "stem": "<p>Tienes un eventhouse de Fabric llamado Eventhouse1 que contiene una tabla llamada Weatherdata. Una muestra de los datos de Weatherdata se muestra en la siguiente tabla.</p>\n<img src=\"data/dp600/media/p433_0218.webp\" loading=\"lazy\" alt=\"\">\n<p>Planificas usar un KQL queryset para manipular los datos de Eventhouse1. El conjunto de resultados debe tener las siguientes columnas.</p>\n<img src=\"data/dp600/media/p433_0219.webp\" loading=\"lazy\" alt=\"\">\n<p>Necesitas crear la consulta.</p>\n<p>¿Qué cuatro instrucciones KQL debes usar en secuencia? Para responder, mueve las instrucciones adecuadas de la lista de instrucciones al área de respuesta y ordénalas correctamente.</p>\n<img src=\"data/dp600/media/p433_0220.webp\" loading=\"lazy\" alt=\"\">",
+   "stem": "<p>Tienes un eventhouse de Fabric llamado Eventhouse1 que contiene una tabla llamada Weatherdata. Una muestra de los datos de Weatherdata se muestra en la siguiente tabla.</p>\n<img src=\"data/dp600/media/p433_0218.webp\" loading=\"lazy\" alt=\"\">\n<p>Planificas usar un KQL queryset para manipular los datos de Eventhouse1. El conjunto de resultados debe tener las siguientes columnas.</p>\n<img src=\"data/dp600/media/p433_0219.webp\" loading=\"lazy\" alt=\"\">\n<p>Necesitas crear la consulta.</p>\n<p>¿Qué cuatro instrucciones KQL debes usar en secuencia? Para responder, mueve las instrucciones adecuadas de la lista de instrucciones al área de respuesta y ordénalas correctamente.</p>\n<img src=\"data/dp600/media/n187_stem-v2.webp\" loading=\"lazy\" alt=\"\">",
    "options": [],
    "correct": [],
    "answer": {
-    "correct": "<img src=\"data/dp600/media/p434_0221.webp\" loading=\"lazy\" alt=\"\">\n<p><strong>Respuestas correctas (en orden):</strong></p>\n<ol type=\"1\">\n<li><code>Weatherdata</code></li>\n<li><code>| extend Delta_temperature = Temperature - prev(Temperature)</code></li>\n<li><code>| summarize Delta_temperature = sum(Temperature) -sum(prev(Temperature)) by Datetime</code></li>\n<li><code>| sort by Datetime asc</code></li>\n</ol>\n<p><strong>Análisis de cada selección:</strong></p>\n<ol type=\"1\">\n<li><strong><code>Weatherdata</code></strong> inicia toda consulta KQL: una consulta debe empezar por la tabla que es el origen de los datos tabulares que fluyen por los operadores de canalización (pipe).</li>\n<li><strong><code>extend Delta_temperature = Temperature - prev(Temperature)</code></strong> es la forma de calcular la diferencia entre la fila actual y la anterior. <code>prev()</code> devuelve el valor de la fila anterior de un conjunto de filas serializado, de modo que restarlo de la Temperature actual da el delta. Las alternativas son incorrectas: <code>next(Temperature,1)</code> mira la fila <em>siguiente</em> (y la resta tendría el sentido invertido) y <code>prev(Temperature,2)</code> mira dos filas atrás en lugar de la fila inmediatamente anterior.</li>\n<li><strong><code>summarize ... by Datetime</code></strong> es la tercera instrucción de la secuencia. Agrupar por Datetime deja una fila por marca de tiempo y genera la columna Delta_temperature en el conjunto de resultados.</li>\n<li><strong><code>sort by Datetime asc</code></strong> ordena la salida cronológicamente para que los deltas se lean en orden temporal.</li>\n</ol>\n<blockquote>\n<p>⚠️ <strong>Ojo:</strong> El documento de estudio marca esta secuencia, pero <code>prev()</code> necesita un conjunto de filas serializado (por ejemplo ordenado), por lo que en la práctica el sort iría antes del extend, y <code>prev()</code> no es válido dentro de <code>summarize</code>, que además descartaría las columnas Lat/Long. Una consulta más convencional es <code>Weatherdata | sort by Datetime asc | extend Delta_temperature = Temperature - prev(Temperature)</code>. Contrástalo con la documentación oficial enlazada.</p>\n</blockquote>\n<ul>\n<li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/kusto/query/prevfunction\">Función prev()</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/kusto/query/nextfunction\">Función next()</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/azure/kusto/query/serializeoperator\">Operador serialize</a> y <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/window-functions\">Información general de las funciones de ventana</a></li>\n</ul>",
+    "correct": "<p><strong>Respuesta correcta:</strong></p><ul><li><strong>Paso 1:</strong> <code>Weatherdata</code></li><li><strong>Paso 2:</strong> <code>| sort by Datetime asc</code></li><li><strong>Paso 3:</strong> <code>| extend Delta_temperature = Temperature - prev(Temperature)</code></li><li><strong>Paso 4:</strong> <code>| project Datetime, Lat, Long, Temperature, Delta_temperature</code></li></ul><p><img src=\"data/dp600/media/n187_ans-v2.webp\" loading=\"lazy\" alt=\"\"></p><p><strong>Por qué es correcta:</strong> en KQL, el cálculo de diferencias entre filas consecutivas exige este orden en la canalización (|):</p><p><strong>Weatherdata:</strong> toda consulta KQL tabular empieza con la tabla de origen sobre la que fluyen los operadores posteriores.</p><p><strong>| sort by Datetime asc:</strong> prev() es una función de ventana que solo puede ejecutarse sobre un conjunto de filas serializado. Ordenar de forma ascendente por Datetime serializa la tabla y garantiza que la fila anterior sea el registro cronológico previo.</p><p><strong>| extend Delta_temperature = Temperature - prev(Temperature):</strong> extend añade la columna derivada manteniendo las existentes. prev(Temperature), con desplazamiento por defecto de 1 fila, obtiene la temperatura de la fila anterior y la resta de la actual (52 - 50 = 2 en la segunda fila de la muestra).</p><p><strong>| project Datetime, Lat, Long, Temperature, Delta_temperature:</strong> la tabla original tiene seis columnas (Datetime, Lat, Long, Temperature, Pressure y Wind), pero el resultado pide solo cinco; project selecciona exactamente esas columnas, en el orden requerido, y excluye Pressure y Wind.</p><ul><li><strong>extend con next(Temperature,1):</strong> next() toma la fila siguiente y no la anterior, invirtiendo la lógica pedida.</li><li><strong>extend con prev(Temperature,2):</strong> el desplazamiento de 2 compara con dos filas atrás y no con la inmediatamente anterior (1 es el valor por defecto).</li><li><strong>summarize ... by Datetime:</strong> summarize agrupa y elimina las columnas Lat, Long y Temperature que deben aparecer; no tiene sentido agregar con sum() para una diferencia fila a fila, y las funciones de ventana serializadas como prev() no pueden usarse dentro de una agregación de summarize.</li></ul><ul><li class=\"docref\"><strong>Documentación oficial:</strong> <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/prev-function\">Función prev() (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/window-functions\">Funciones de ventana (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/sort-operator\">Operador sort (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/extend-operator\">Operador extend (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/project-operator\">Operador project (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/next-function\">Función next() (KQL)</a>, <a target=\"_blank\" rel=\"noopener\" href=\"https://learn.microsoft.com/es-es/kusto/query/summarize-operator\">Operador summarize (KQL)</a></li></ul>",
     "incorrect": ""
    },
    "links": [
     {
-     "t": "Función prev()",
-     "u": "https://learn.microsoft.com/es-es/azure/kusto/query/prevfunction"
+     "t": "Función prev() (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/prev-function"
     },
     {
-     "t": "Función next()",
-     "u": "https://learn.microsoft.com/es-es/azure/kusto/query/nextfunction"
-    },
-    {
-     "t": "Operador serialize",
-     "u": "https://learn.microsoft.com/es-es/azure/kusto/query/serializeoperator"
-    },
-    {
-     "t": "Información general de las funciones de ventana",
+     "t": "Funciones de ventana (KQL)",
      "u": "https://learn.microsoft.com/es-es/kusto/query/window-functions"
+    },
+    {
+     "t": "Operador sort (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/sort-operator"
+    },
+    {
+     "t": "Operador extend (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/extend-operator"
+    },
+    {
+     "t": "Operador project (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/project-operator"
+    },
+    {
+     "t": "Función next() (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/next-function"
+    },
+    {
+     "t": "Operador summarize (KQL)",
+     "u": "https://learn.microsoft.com/es-es/kusto/query/summarize-operator"
     }
    ],
    "fields": [
@@ -9365,7 +9373,8 @@
       "Weatherdata",
       "| extend Delta_temperature = Temperature - prev(Temperature)",
       "| sort by Datetime asc",
-      "| extend Delta_temperature = Temperature - prev(Temperature,2)"
+      "| extend Delta_temperature = Temperature - prev(Temperature,2)",
+      "| project Datetime, Lat, Long, Temperature, Delta_temperature"
      ],
      "c": 2
     },
@@ -9378,9 +9387,10 @@
       "Weatherdata",
       "| extend Delta_temperature = Temperature - prev(Temperature)",
       "| sort by Datetime asc",
-      "| extend Delta_temperature = Temperature - prev(Temperature,2)"
+      "| extend Delta_temperature = Temperature - prev(Temperature,2)",
+      "| project Datetime, Lat, Long, Temperature, Delta_temperature"
      ],
-     "c": 3
+     "c": 4
     },
     {
      "l": "Paso 3",
@@ -9391,9 +9401,10 @@
       "Weatherdata",
       "| extend Delta_temperature = Temperature - prev(Temperature)",
       "| sort by Datetime asc",
-      "| extend Delta_temperature = Temperature - prev(Temperature,2)"
+      "| extend Delta_temperature = Temperature - prev(Temperature,2)",
+      "| project Datetime, Lat, Long, Temperature, Delta_temperature"
      ],
-     "c": 1
+     "c": 3
     },
     {
      "l": "Paso 4",
@@ -9404,9 +9415,10 @@
       "Weatherdata",
       "| extend Delta_temperature = Temperature - prev(Temperature)",
       "| sort by Datetime asc",
-      "| extend Delta_temperature = Temperature - prev(Temperature,2)"
+      "| extend Delta_temperature = Temperature - prev(Temperature,2)",
+      "| project Datetime, Lat, Long, Temperature, Delta_temperature"
      ],
-     "c": 4
+     "c": 6
     }
    ]
   },

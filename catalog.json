@@ -1,0 +1,35 @@
+[
+ {
+  "id": "dp-700",
+  "name": "Microsoft Fabric DP-700",
+  "subtitle": "Data Engineer Associate",
+  "file": "data/dp700/questions.json",
+  "questions": 161,
+  "overlay": {
+   "en": "data/dp700/questions.en.json"
+  },
+  "examCase": 5
+ },
+ {
+  "id": "dp-600",
+  "name": "Microsoft Fabric DP-600",
+  "subtitle": "Fabric Analytics Engineer Associate",
+  "file": "data/dp600/questions.json",
+  "questions": 223,
+  "overlay": {
+   "en": "data/dp600/questions.en.json"
+  },
+  "examCase": 5
+ },
+ {
+  "id": "pl-300",
+  "name": "Microsoft Power BI PL-300",
+  "subtitle": "Data Analyst Associate",
+  "file": "data/pl300/questions.json",
+  "questions": 330,
+  "overlay": {
+   "en": "data/pl300/questions.en.json"
+  },
+  "examCase": 5
+ }
+]

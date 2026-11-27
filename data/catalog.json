@@ -8,7 +8,10 @@
   "overlay": {
    "en": "data/dp700/questions.en.json"
   },
-  "examCase": 5
+  "examCase": 5,
+  "vendor": "Microsoft",
+  "code": "DP-700",
+  "title": "Fabric Data Engineer Associate"
  },
  {
   "id": "dp-600",
@@ -19,7 +22,10 @@
   "overlay": {
    "en": "data/dp600/questions.en.json"
   },
-  "examCase": 5
+  "examCase": 5,
+  "vendor": "Microsoft",
+  "code": "DP-600",
+  "title": "Fabric Analytics Engineer Associate"
  },
  {
   "id": "pl-300",
@@ -30,7 +36,10 @@
   "overlay": {
    "en": "data/pl300/questions.en.json"
   },
-  "examCase": 5
+  "examCase": 5,
+  "vendor": "Microsoft",
+  "code": "PL-300",
+  "title": "Power BI Data Analyst Associate"
  },
  {
   "id": "databricks-de-associate",
@@ -40,6 +49,9 @@
   "questions": 335,
   "overlay": {
    "en": "data/dbx/questions.en.json"
-  }
+  },
+  "vendor": "Databricks",
+  "code": "Databricks Certified",
+  "title": "Data Engineer Associate"
  }
 ]

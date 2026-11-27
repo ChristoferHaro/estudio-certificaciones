@@ -31,5 +31,15 @@
    "en": "data/pl300/questions.en.json"
   },
   "examCase": 5
+ },
+ {
+  "id": "databricks-de-associate",
+  "name": "Databricks Data Engineer Associate",
+  "subtitle": "Certified Data Engineer Associate",
+  "file": "data/dbx/questions.json",
+  "questions": 335,
+  "overlay": {
+   "en": "data/dbx/questions.en.json"
+  }
  }
 ]

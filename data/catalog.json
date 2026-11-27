@@ -20,5 +20,16 @@
    "en": "data/dp600/questions.en.json"
   },
   "examCase": 5
+ },
+ {
+  "id": "pl-300",
+  "name": "Microsoft Power BI PL-300",
+  "subtitle": "Data Analyst Associate",
+  "file": "data/pl300/questions.json",
+  "questions": 330,
+  "overlay": {
+   "en": "data/pl300/questions.en.json"
+  },
+  "examCase": 5
  }
 ]

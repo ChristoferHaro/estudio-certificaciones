@@ -8,7 +8,7 @@
 :root{--bg:#f5f6f3;--card:#fff;--ink:#1c2530;--mut:#5d6a78;--line:#dfe3e0;--acc:#0e6e66;--on:#fff;--ok:#1b7a45;--okbg:#e8f5ec;--bad:#b3322c;--badbg:#fdeceb;--warn:#8a5a00;--warnbg:#fff4d6;--soft:#eef1ee}
 [data-theme=dark]{--bg:#111718;--card:#1a2324;--ink:#e6ecea;--mut:#9aa9a6;--line:#2c3938;--acc:#4fc3b6;--on:#062320;--ok:#5ccf8d;--okbg:#14301f;--bad:#ff8c84;--badbg:#3a1a19;--warn:#f0c15a;--warnbg:#33290e;--soft:#222d2e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
-#shell{display:flex;min-height:100vh}#ct{flex:1;min-width:0}
+#shell{display:flex;min-height:100vh}#ct{flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh}#app{flex:1 0 auto;width:100%}#ft{margin-top:auto}.vb{flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;border-radius:8px;color:#fff;font-weight:800;font-size:1rem;margin-right:.1rem}
 #side{width:236px;flex:none;background:var(--card);border-right:1px solid var(--line);position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column;padding:.6rem .5rem;transition:width .15s}
 #side.col{width:62px}#side.col .lb{display:none}
 .sh{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.sb{font-weight:700;line-height:1.2}
@@ -66,9 +66,11 @@ const plain=h=>h.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(),fdate=ms=>ne
 function ask(msg,yes,label){const m=$('#mod');m.innerHTML=`<div class="ov"><div class="dlg" role="dialog" aria-modal="true"><p>${msg}</p><div class="row"><button class="d" id="my">${label}</button><button id="mn">${t('Cancelar')}</button></div></div></div>`;$('#mn').focus();$('#mn').onclick=()=>m.innerHTML='';$('#my').onclick=()=>{m.innerHTML='';yes()}}
 
 /* ---------- menú lateral ---------- */
-function side(){document.documentElement.lang=lang;$('#ft').textContent=t('Proyecto de estudio interno. Las respuestas proceden del documento de estudio y pueden estar desactualizadas: contrástalas con los enlaces oficiales del fabricante. No es un examen oficial.')+' · v10';$('#ttl').textContent=cert?P.name:t('Estudio de certificaciones');
+const VC=v=>({Microsoft:'#2f5fa8',Databricks:'#c8442f'})[v]||`hsl(${[...v].reduce((a,ch)=>a*31+ch.charCodeAt(0)>>>0,7)%360} 45% 38%)`;
+const vbadge=()=>cert&&cert.vendor?`<span class="vb" style="background:${VC(cert.vendor)}" aria-hidden="true">${esc(cert.vendor[0])}</span>`:'';
+function side(){document.documentElement.lang=lang;$('#ft').textContent=t('Proyecto de estudio interno. Las respuestas proceden del documento de estudio y pueden estar desactualizadas: contrástalas con los enlaces oficiales del fabricante. No es un examen oficial.')+' · v10';$('#ttl').innerHTML=vbadge()+' '+esc(cert?P.name:t('Estudio de certificaciones'));
   const it=cert?[['home','⌂','Inicio'],['bank','☰','Banco de preguntas',Q.length],['rep','⧉','Preguntas repetidas'],['fav','★','Favoritas',S.favs.length],['stats','▥','Estadísticas'],['err','↻','Repasar errores'],['data','⚙','Datos y ajustes'],['cat','⇄','Cambiar certificación']]:[];
-  $('#side').innerHTML=`<div class="sh"><button id="tg" style="width:auto" aria-label="${t('Contraer o expandir menú')}"><span class="ic">☰</span></button><span class="lb sb">${esc(cert?P.name:t('Estudio de certificaciones'))}</span></div><nav>${it.map(([k,i,l,n])=>`<button data-n="${k}" class="${view===k?'on':''}" title="${t(l)}"><span class="ic">${i}</span><span class="lb">${t(l)}</span>${n?`<span class="lb bd">${n}</span>`:''}</button>`).join('')}</nav><div class="sf"><button data-n="th" title="${t('Tema')}"><span class="ic">${dark()?'☀':'☾'}</span><span class="lb">${dark()?t('Tema claro'):t('Tema oscuro')}</span></button><button data-n="lg" title="Idioma / Language"><span class="ic">🌐</span><span class="lb">${lang==='en'?'English':'Español'}</span></button></div>`;
+  $('#side').innerHTML=`<div class="sh"><button id="tg" style="width:auto" aria-label="${t('Contraer o expandir menú')}"><span class="ic">☰</span></button>${vbadge()?`<span class="lb">${vbadge()}</span>`:''}<span class="lb sb">${esc(cert?P.name:t('Estudio de certificaciones'))}</span></div><nav>${it.map(([k,i,l,n])=>`<button data-n="${k}" class="${view===k?'on':''}" title="${t(l)}"><span class="ic">${i}</span><span class="lb">${t(l)}</span>${n?`<span class="lb bd">${n}</span>`:''}</button>`).join('')}</nav><div class="sf"><button data-n="th" title="${t('Tema')}"><span class="ic">${dark()?'☀':'☾'}</span><span class="lb">${dark()?t('Tema claro'):t('Tema oscuro')}</span></button><button data-n="lg" title="Idioma / Language"><span class="ic">🌐</span><span class="lb">${lang==='en'?'English':'Español'}</span></button></div>`;
   $('#side').classList.toggle('col',!mobile()&&ls.get('certstudy:side')==='col')}
 function toggleSide(){if(mobile()){$('#side').classList.toggle('open');$('#sh2').classList.toggle('show')}else{const c=$('#side').classList.toggle('col');ls.set('certstudy:side',c?'col':'')}}
 $('#mb').onclick=toggleSide;$('#sh2').onclick=toggleSide;
@@ -87,7 +89,7 @@ async function init(){
   try{CAT=await (await fetch('data/catalog.json')).json()}catch{app.innerHTML=`<div class="card banner bad">${t('No se pudo cargar el catálogo. Abre la app desde su dirección web (no como archivo local).')}</div>`;return}
   const c=CAT.find(x=>x.id===ls.get('certstudy:last'));c?openCert(c):catalog()}
 function catalog(){cert=null;view='cat';side();
-  const col=v=>({Microsoft:'#2f5fa8',Databricks:'#c8442f'})[v]||`hsl(${[...v].reduce((a,ch)=>a*31+ch.charCodeAt(0)>>>0,7)%360} 45% 38%)`;
+  const col=VC;
   const norm=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const draw=q=>{const nq=norm(q).trim(),V={};
     CAT.forEach(c=>{const v=c.vendor||t('Otros');if(!nq||norm([v,c.code,c.title,c.name,c.subtitle,c.id].join(' ')).includes(nq))(V[v]=V[v]||[]).push(c)});
